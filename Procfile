@@ -1,0 +1,1 @@
+web: gunicorn SW2_AEFS.wsgi
