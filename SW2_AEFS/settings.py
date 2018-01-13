@@ -10,11 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-
-import dj_database_url
-        db_from_env = dj_database_url.config(conn_max_age=500)
-        DATABASES['default'].update(db_from_env)
-        
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -118,14 +113,18 @@ USE_L10N = True
 
 USE_TZ = True
 
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+  
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
         
 STATIC_URL = '/static/'
-        STATICFILES_DIRS = [
-                os.path.join(BASE_DIR, "static"),
-            ]
-        STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-        STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
         
