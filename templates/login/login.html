@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+
+{% block header %}
+<h4>Universidad de Lima</h4>
+{% endblock %}
+{% block content %}
+<h3>Login</h3>
+<form method="post">
+  {% csrf_token %}
+  <label for="email">Email: </label>
+  <input class="form-control" type="text" name="username">
+  <label for="contra">Contrasena: </label>
+  <input class="form-control" type="password" name="password">
+  <br>
+  <button type="submit" name="entrar"
+    class="btn btn-primary">Ingresar</button>
+    <br>
+</form>
+{% endblock %}
+{% block footer %}
+<h5>Lima, Peru 2018</h5>
+{% endblock %}
