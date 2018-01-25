@@ -12,7 +12,17 @@
   <tr><td> admin1</td></tr>
   </tbody>
 
-  <thead> <tr><th><a href= {% cerrar_sesion %}>Cerrar Sesión</a> </th></tr> </thead> </table>
+  <!--
+<thead> <tr><th><a href= >Cerrar Sesión</a> </th></tr> </thead>
+-->
+<form method="get">
+  {% csrf_token %}
+
+  <button type="submit" name="cerrar_sesion"
+    class="btn btn-primary">Cerrar Sesión</button>
+    <br>
+</form>
+ </table>
   </div>
 
   <div id="divCategoria">
