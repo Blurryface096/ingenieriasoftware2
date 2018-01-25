@@ -1,8 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 # Create your views here.
 def home(request):
     return render(request, 'home/home.html')
 
 def cerrar_sesion():
-    return render(request, 'login/login.html')
+    if request.method == 'GET':
+
+        return redirect('/login/login.html')
+    else:
+
+    return render(request, 'login/login.html', {'form':form})
