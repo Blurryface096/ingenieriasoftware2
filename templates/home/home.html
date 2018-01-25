@@ -1,10 +1,25 @@
 {% extends 'base/base.html' %}
 
 {% block header %}
+<link href="Css/estilos.css" rel="stylesheet" />
 <h4>Universidad de Lima</h4>
 {% endblock %}
 {% block content %}
-<h1>Bienvenido !</h1>
+
+<div id="divCabecera">
+<table class='table-sesion'> <tbody> <tr><td> Bienvenido, </td></tr>
+
+  <tr><td> admin1</td></tr>
+  </tbody>
+
+  <thead> <tr><th><a href='login.html'>Cerrar Sesión</a> </th></tr> </thead> </table>
+  </div>
+
+  <div id="divCategoria">
+       <ul class="menuH">
+<li><a href='trivia.html'></a> Trivia</li>
+<li><a href='polla.html'></a> Polla</li>
+         </div>
 {% endblock %}
 {% block footer %}
 <h5>Lima, Peru 2018</h5>
