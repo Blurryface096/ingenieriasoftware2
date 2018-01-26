@@ -4,6 +4,6 @@ from apps.login.views import index, ingresar
 
 app_name = 'login'
 urlpatterns = [
-    path('/login', index),
+    path('', index),
     path('ingresar/', ingresar, name='ingreso'),
 ]
