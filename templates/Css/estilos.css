@@ -1,3 +1,71 @@
+body{
+	background: #FFFFFF;
+	color:#D70AB2;
+	font-family: 'Arial', sans-serif;
+	font-size: 14px;
+}
+#container{
+	width: 60%;
+	background: #45E229;
+	margin: 20px auto;
+	overflow: auto;
+	padding: 25px;
+}
+header{
+	text-align: center;
+	border-bottom: #fff dashed 1px;
+}
+header h1{
+	margin: 0;
+	padding: 0;
+}
+header p{
+	padding: 0;
+	margin-top: 5px;
+	color: #000;
+}
+section{
+	min-height: 400px;
+}
+footer{
+	background: black;
+	text-align: center;
+}
+input[type = 'submit']{
+	width: 60%;
+	background: #f06226;
+	border:0;
+	color: #fff;
+	padding: 10px 15px;
+	cursor: pointer;
+}
+input[type = 'radio']{
+	transform: scale(2);
+}
+#results h3{
+	background: #FFFFFF;
+	color: #22C4C6;
+	padding:10px;
+	margin: 10px 0;
+
+}
+#results span{
+	color: red;
+	font-weight: bold;
+}
+.button {
+	font-size: 25px;
+    display: block;
+    width: 95%;
+    height: 25px;
+    background: #4E9CAF;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
 body {
     background-color:lightgray;
     font-family:Arial;
@@ -53,18 +121,18 @@ body {
 }
 
 table.db-table{
-	font: 11px Arial; 
+	font: 11px Arial;
 	color: #000000;
 	background: #ffffff;
     border:1px solid black;
-   
+
 }
 table.db-table4{
-	font: 13px Arial; 
+	font: 13px Arial;
 	color: #000000;
 	background: #bbc5f9;
     border:2px solid black;
-   
+
 }
 table.db-table4 thead{
 	color: #ffffff;
@@ -74,11 +142,11 @@ table.db-table4 thead{
 }
 
 table.db-table2{
-	font: 11px Arial; 
+	font: 11px Arial;
 	color: #000000;
 	background: #fff468;
     border: 2px solid black;
-   
+
 }
 table.db-table thead{
 	color: #000000;
@@ -140,7 +208,7 @@ table.db-table4 tbody tr td
 }
 table.db-table4 tbody  tr:hover
 {
-	
+
 }
 img.catalog{
     cursor:progress ;
@@ -155,21 +223,21 @@ img.catalog{
     width:50px;
     height:70px;
 }
-img.listado2 {  
+img.listado2 {
     width:25px;
     height:25px;
 }
 
 
 table.db-table3{
-	font: 12px Arial; 
+	font: 12px Arial;
 	color: #000000;
 	background: #FFFFFF;
 }
 table.db-table3 thead{
 	color: #FFFFFF;
 	background: #000000;
-	
+
 }
 table.db-table3 thead tr{
 height: 50px;
@@ -219,7 +287,7 @@ ul.menuH li a{
     background-color:#2565ee;
     color: white;
     text-align:center;
-    
+
     }
 
  ul.menuH li a:hover{
@@ -245,7 +313,7 @@ ul.menuV li a{
     background-color:#2565ee;
     color: white;
     text-align:center;
-    
+
     }
 
 
@@ -277,11 +345,11 @@ background-color:lightgray;
 }
 
 table.table-sesion{
-	font: 15px Arial; 
+	font: 15px Arial;
 	color: #000000;
 	background: #ff99bb;
     border:1px solid black;
-   
+
 }
 table.table-sesion thead{
 	color: #ffffff;
@@ -315,7 +383,7 @@ table.db-table-sesion tbody tr td
 }
 table.table-sesion tbody  tr:hover
 {
-	
+
 }
 
 table.table-sesion thead tr th a{
@@ -357,4 +425,3 @@ a:hover.Accesar {
  background:#dd99ff;
  color: #ffdd99;
 }
-

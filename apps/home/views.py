@@ -4,10 +4,6 @@ from django.http import HttpResponse
 def home(request):
     return render(request, 'home/home.html')
 
-def cerrar_sesion(request):
-    if request.method == 'GET':
-
-        return redirect('/login/login.html')
-    else:
-
-        return render(request, 'login/login.html', {'form':form})
+def trivia(request):
+    preguntas = Preguntas.objects.all()
+    return render(request, 'home/trivia.html')

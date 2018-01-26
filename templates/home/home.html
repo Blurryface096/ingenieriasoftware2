@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 
 {% block header %}
-<link href="Css/estilos.css" rel="stylesheet" />
+<link href="{% Css 'estilos.css' %}" rel="stylesheet" />
 <h4>Universidad de Lima</h4>
 {% endblock %}
 {% block content %}
@@ -15,20 +15,14 @@
 
 <thead> <tr><th><a href=/login >Cerrar Sesión</a> </th></tr> </thead>
 
-<form method="get">
-  {% csrf_token %}
 
-  <button type="submit" name="cerrar_sesion"
-    class="btn btn-primary">Cerrar Sesión</button>
-    <br>
-</form>
  </table>
   </div>
 
   <div id="divCategoria">
        <ul class="menuH">
-<li><a href='trivia.html'></a> Trivia</li>
-<li><a href='polla.html'></a> Polla</li>
+<li><a href=/home/trivia>Trivia</a> </li>
+<li><a href=/home/polla>Polla</a> </li>
          </div>
 {% endblock %}
 {% block footer %}
