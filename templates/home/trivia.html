@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<title>Juego Trivia</title>
-	<link rel = "stylesheet" href = "estilos.css">
-	<script src = "{% static 'js/quiz.js' %}"></script>
+	<link rel = "stylesheet" href = 'Css/estilos.css'>
+	<script src = 'trivia.js'></script>
 </head>
 <body>
 	<div id = "container">
@@ -17,7 +17,7 @@
 
 		<section>
 			<div id = "results"></div>
-			<form name = "quizForm" onsubmit = "return submitAnswers(answers = [{% for p in preguntas %}'{{ p.respuesta }}',{% endfor %}])">
+			<form name = "formPregunta" onsubmit = "return submitAnswers(answers = [{% for p in preguntas %}'{{ p.respuesta }}',{% endfor %}])">
 			{% for p in preguntas %}
 				<h3> {{ p.id }}.  {{ p.pregunta }}</h3>
 				<input type = "radio" name = "p{{ p.id }}" value = "a" id = "p1a">   a. {{ p.opcion1 }}<br><br>
