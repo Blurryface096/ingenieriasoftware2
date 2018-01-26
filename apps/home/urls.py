@@ -4,5 +4,5 @@ from apps.home.views import home
 app_name = 'home'
 urlpatterns = [
     path('', home, name='index'),
-    url(r'^trivia$', views.trivia)
+    url(r'^trivia$', views.trivia),
 ]
