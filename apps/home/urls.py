@@ -4,6 +4,6 @@ from apps.home.views import home
 from apps.home.views import trivia
 app_name = 'home'
 urlpatterns = [
-    path('', home, name='index'),
+    path('', trivia, name='index'),
     path('/trivia', trivia),
 ]
