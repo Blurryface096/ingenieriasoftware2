@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from . import Preguntas
+from apps.home.models import Preguntas
 
 # Create your views here.
 def home(request):

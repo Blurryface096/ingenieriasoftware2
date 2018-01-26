@@ -7,9 +7,9 @@ class Juego(models.Model):
 
 
 class Preguntas(models.Model):
-	pregunta = models.CharField(max_length = 500)
-	opcion1 = models.CharField(max_length = 20)
-	opcion2 = models.CharField(max_length = 20)
-	opcion3 = models.CharField(max_length = 20)
-	opcion4 = models.CharField(max_length = 20)
-	respuesta = models.CharField(max_length = 20)
+    pregunta = models.CharField(max_length = 500)
+    opcion1 = models.CharField(max_length = 20)
+    opcion2 = models.CharField(max_length = 20)
+    opcion3 = models.CharField(max_length = 20)
+    opcion4 = models.CharField(max_length = 20)
+    respuesta = models.CharField(max_length = 20)
