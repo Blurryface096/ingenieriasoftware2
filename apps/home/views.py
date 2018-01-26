@@ -4,7 +4,7 @@ from django.http import HttpResponse
 def home(request):
     return render(request, 'home/home.html')
 
-def cerrar_sesion():
+def cerrar_sesion(request):
     if request.method == 'GET':
 
         return redirect('/login/login.html')
