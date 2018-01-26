@@ -1,0 +1,427 @@
+body{
+	background: #FFFFFF;
+	color:#D70AB2;
+	font-family: 'Arial', sans-serif;
+	font-size: 14px;
+}
+#container{
+	width: 60%;
+	background: #45E229;
+	margin: 20px auto;
+	overflow: auto;
+	padding: 25px;
+}
+header{
+	text-align: center;
+	border-bottom: #fff dashed 1px;
+}
+header h1{
+	margin: 0;
+	padding: 0;
+}
+header p{
+	padding: 0;
+	margin-top: 5px;
+	color: #000;
+}
+section{
+	min-height: 400px;
+}
+footer{
+	background: black;
+	text-align: center;
+}
+input[type = 'submit']{
+	width: 60%;
+	background: #f06226;
+	border:0;
+	color: #fff;
+	padding: 10px 15px;
+	cursor: pointer;
+}
+input[type = 'radio']{
+	transform: scale(2);
+}
+#results h3{
+	background: #FFFFFF;
+	color: #22C4C6;
+	padding:10px;
+	margin: 10px 0;
+
+}
+#results span{
+	color: red;
+	font-weight: bold;
+}
+.button {
+	font-size: 25px;
+    display: block;
+    width: 95%;
+    height: 25px;
+    background: #4E9CAF;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+body {
+    background-color:lightgray;
+    font-family:Arial;
+    font-size:14px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+
+
+
+#mnuVertical ul {
+    list-style-type: none;
+    margin: 0px;
+    width: 200px;
+}
+
+#mnuVertical ul li {
+    background-color: #FFFFCC;
+}
+
+#mnuVertical ul li a {
+    color: #ccc;
+    text-decoration: none;
+    display: block;
+    padding: 10px 10px 10px 20px;
+}
+
+#mnuVertical ul li a:hover {
+    background: #000000;
+    border-left: 10px solid #FF0000;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+#mnuHorizontal ul{
+    padding:0px;
+}
+#mnuHorizontal ul li {
+    display: inline;
+}
+#mnuHorizontal ul li a {
+    text-decoration: none;
+    float:left;
+    padding: 10px;
+    background-color: lightgray;
+    color: black;
+}
+#mnuHorizontal ul li a:hover {
+    background-color: black;
+    border-left: 10px solid #0000FF;
+    color: lightgray;
+    font-weight: bold;
+}
+
+table.db-table{
+	font: 11px Arial;
+	color: #000000;
+	background: #ffffff;
+    border:1px solid black;
+
+}
+table.db-table4{
+	font: 13px Arial;
+	color: #000000;
+	background: #bbc5f9;
+    border:2px solid black;
+
+}
+table.db-table4 thead{
+	color: #ffffff;
+	font: 15px Arial;
+    background: #13226d;
+	height: 49px;
+}
+
+table.db-table2{
+	font: 11px Arial;
+	color: #000000;
+	background: #fff468;
+    border: 2px solid black;
+
+}
+table.db-table thead{
+	color: #000000;
+	background: #FFFFCC;
+	height: 30px;
+}
+table.db-table thead tr{
+}
+table.db-table thead tr th{
+	padding: 4px;
+	border-left: 1px solid #CDCDCD;
+	border-right: 1px solid #CDCDCD;
+	border-bottom: 1px solid #CDCDCD;
+	border-top: 1px solid #CDCDCD;
+}
+table.db-table thead tr td{
+	padding: 0px;
+}
+table.db-table tbody {
+}
+table.db-table tbody  tr{
+	height:20px;
+}
+table.db-table tbody tr td
+{
+	border-left: 1px solid #C1DAD7;
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+	white-space: nowrap;
+}
+table.db-table tbody  tr:hover
+{
+	background: #CDCDCD;
+}|
+
+table.db-table4 thead tr th{
+	padding: 2px;
+	border-left: 1px solid #CDCDCD;
+	border-right: 1px solid #CDCDCD;
+	border-bottom: 1px solid #CDCDCD;
+	border-top: 1px solid #CDCDCD;
+}
+table.db-table4 thead tr td{
+	padding: 4px;
+}
+table.db-table4 tbody {
+}
+table.db-table4 tbody  tr{
+	height:28px;
+}
+table.db-table4 tbody tr td
+{
+	border-left: 0px solid #C1DAD7;
+	border-right: 0px solid #C1DAD7;
+	border-bottom: 0px solid #C1DAD7;
+	border-top: 0px solid #C1DAD7;
+	white-space: nowrap;
+}
+table.db-table4 tbody  tr:hover
+{
+
+}
+img.catalog{
+    cursor:progress ;
+    width:120px;
+    height:180px;
+}
+
+ th, td {
+   border: 1px solid black;
+}
+ img.listado1 {
+    width:50px;
+    height:70px;
+}
+img.listado2 {
+    width:25px;
+    height:25px;
+}
+
+
+table.db-table3{
+	font: 12px Arial;
+	color: #000000;
+	background: #FFFFFF;
+}
+table.db-table3 thead{
+	color: #FFFFFF;
+	background: #000000;
+
+}
+table.db-table3 thead tr{
+height: 50px;
+}
+table.db-table3 thead tr th{
+	padding: 4px;
+	border-left: 1px solid #FFFFFF;
+	border-right: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+	border-top: 1px solid #FFFFFF;
+}
+table.db-table3 thead tr td{
+	padding: 0px;
+}
+table.db-table3 tbody {
+}
+table.db-table3 tbody  tr{
+	height:20px;
+}
+table.db-table3 tbody tr td
+{
+	border-left: 1px solid #C1DAD7;
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+	white-space: nowrap;
+}
+
+
+ul.menuH {
+ list-style-type: none;
+ margin: 0px;
+ padding: 2px;
+}
+
+
+ul.menuH li {
+    float:left;
+}
+
+
+ul.menuH li a{
+    width:100px;
+    display:block;
+    text-decoration: none;
+    height: 26px;
+    background-color:#2565ee;
+    color: white;
+    text-align:center;
+
+    }
+
+ ul.menuH li a:hover{
+            background-color:white;
+            color:#2565ee;
+        }
+
+
+
+
+
+ul.menuV {
+    list-style-type:none;
+    margin:0px;
+    padding:2px;
+}
+
+ul.menuV li a{
+    width:100px;
+    display:block;
+    text-decoration: none;
+    height: 36px;
+    background-color:#2565ee;
+    color: white;
+    text-align:center;
+
+    }
+
+
+
+#divCabecera{
+    width:100%;
+    height:150px;
+    background-color:#99FFDD;
+}
+
+#divCategoria {
+    height:30px;
+    width:100%;
+    background-color: #2565ee;
+}
+
+#divFiltro {
+width:20%;
+height:500px;
+float:left;
+background-color:lightgray;
+}
+
+#divDetalle{
+    width:80%;
+    height:500px;
+    background-color:#FFFFFF;
+    float:left;
+}
+
+table.table-sesion{
+	font: 15px Arial;
+	color: #000000;
+	background: #ff99bb;
+    border:1px solid black;
+
+}
+table.table-sesion thead{
+	color: #ffffff;
+	font: 15px Arial;
+    background: #4c2d38;
+	height: 40px;
+}
+
+table.table-sesion thead tr th{
+	padding: 2px;
+	border-left: 1px solid #CDCDCD;
+	border-right: 1px solid #CDCDCD;
+	border-bottom: 1px solid #CDCDCD;
+	border-top: 1px solid #CDCDCD;
+}
+table.table-sesion thead tr td{
+	padding: 4px;
+}
+table.table-sesion tbody {
+}
+table.table-sesion tbody  tr{
+	height:25px;
+}
+table.db-table-sesion tbody tr td
+{
+	border-left: 0px solid #C1DAD7;
+	border-right: 0px solid #C1DAD7;
+	border-bottom: 0px solid #C1DAD7;
+	border-top: 0px solid #C1DAD7;
+	white-space: nowrap;
+}
+table.table-sesion tbody  tr:hover
+{
+
+}
+
+table.table-sesion thead tr th a{
+    color: #a6b3af;
+    text-decoration: none;
+    display: block;
+    padding: 10px 10px 10px 20px;
+}
+
+table.table-sesion thead tr th a:hover {
+    background: #a6b3af;
+
+    color: #4c2d38;
+    font-weight: bold;
+}
+
+a.Accesar {
+ text-decoration: none;
+ margin: 2px;
+ padding: 2px;
+ padding-left:1.2%;
+ display: block;
+ width: 6%;
+ font-size:18px;
+ text-align:center;
+ background:#ffdd99;
+ color: #dd99ff;
+}
+
+a:hover.Accesar {
+
+ margin: 2px;
+ padding: 2px;
+ display: block;
+ padding-left:1.2%;
+ width:6.5%;
+ font-size:19px;
+ font-weight:300;
+ background:#dd99ff;
+ color: #ffdd99;
+}
