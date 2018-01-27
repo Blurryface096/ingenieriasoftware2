@@ -13,6 +13,16 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 from django.urls import reverse_lazy
 
+
+def look_folder_tree(root):
+    result = ()
+    for dir_name, sub_dirs, file_names in os.walk(root):
+        for sub_dir_name in sub_dirs:
+            result += (os.path.join(dir_name, sub_dir_name),)
+    return result
+
+PROJECT_DIR = os.path.dirname(__file__)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -134,5 +144,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_DIRS = os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS = look_folder_tree(STATIC_ROOT)
+#STATICFILES_DIRS = os.path.join(BASE_DIR,'static')
 LOGIN_REDIRECT_URL = reverse_lazy('home:index')
