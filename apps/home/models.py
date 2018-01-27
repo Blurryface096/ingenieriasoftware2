@@ -15,4 +15,4 @@ class Preguntas(models.Model):
     respuesta = models.CharField(max_length = 20)
 
     def __str__(self):
-        return self.pregunta_text
+        return self.pregunta
