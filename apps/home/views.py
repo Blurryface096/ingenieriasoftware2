@@ -7,5 +7,5 @@ def home(request):
     return render(request, 'home/home.html')
 
 def trivia(request):
-    preguntas = Preguntas.objects.all()
+    preguntas = Pregunta.objects.all()
     return render(request, 'home/trivia.html')
