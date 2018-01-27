@@ -1,6 +1,4 @@
-function verPreguntas(preguntas){
-	alert(preguntas);
-}
+
 function getName(){
 	login = document.getElementById("login").value;
 	alert("Hi, " + login);
