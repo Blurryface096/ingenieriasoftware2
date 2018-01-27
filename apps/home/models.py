@@ -6,7 +6,7 @@ class Juego(models.Model):
     modo = models.IntegerField()
 
 
-class Pregunta(models.Model):
+class Preguntas(models.Model):
     pregunta = models.CharField(max_length = 500)
     opcion1 = models.CharField(max_length = 20)
     opcion2 = models.CharField(max_length = 20)
