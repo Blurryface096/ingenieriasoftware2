@@ -1,4 +1,6 @@
-
+function verPreguntas(preguntas){
+	alert(preguntas);
+}
 function getName(){
 	login = document.getElementById("login").value;
 	alert("Hi, " + login);
@@ -66,6 +68,7 @@ function submitAnswers(answers){
 	var results = document.getElementById('results');
 	results.innerHTML = "<h3>Tu puntaje fue <span>" + score + "</span> de <span>" + total + "</span></h3>"
 	alert("Tu puntaje fue " + score + " de " + total);
+
 
 	return false;
 }

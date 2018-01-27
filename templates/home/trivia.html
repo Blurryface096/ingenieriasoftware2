@@ -5,7 +5,9 @@
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<title>Juego Trivia</title>
 	<link rel = "stylesheet" href ="{% static 'Css/estilos.css' %}"  >
-	<script src = "{% static 'js/trivia.js' %}" ></script>
+	<script src = "{% static 'js/trivia.js' %}" >
+return verPreguntas(preguntas={%preguntas %});
+	</script>
 </head>
 <body>
 	<div id = "container">
@@ -18,7 +20,7 @@
 		<section>
 			<div id = "results"></div>
 			<form name = "formPregunta" onsubmit = "return submitAnswers(answers = [{% for p in preguntas %}'{{ p.respuesta }}',{% endfor %}])">
-			{% for p in preguntas %}
+			{% for p in preguntass %}
 				<h3> {{ p.id }}.  {{ p.pregunta }}</h3>
 				<input type = "radio" name = "p{{ p.id }}" value = "a" id = "p1a">   a. {{ p.opcion1 }}<br><br>
 				<input type = "radio" name = "p{{ p.id }}" value = "b" id = "p1b">   b. {{ p.opcion2 }}<br><br>
