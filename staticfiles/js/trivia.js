@@ -1,4 +1,10 @@
 
+function validacionLogin(estado){
+	if(estado == False ){
+		alert('login incorrecto');
+		return false;
+	}
+}
 function getName(){
 	login = document.getElementById("login").value;
 	alert("Hi, " + login);
