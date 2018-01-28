@@ -149,5 +149,5 @@ STATICFILES_DIRS = look_folder_tree(STATIC_ROOT)
 #STATICFILES_DIRS = os.path.join(BASE_DIR,'static')
 
 
-LOGIN_REDIRECT_URL = reverse_lazy('home:index')
-LOGOUT_REDIRECT_URL=reverse_lazy('home:index')
+#LOGIN_REDIRECT_URL = reverse_lazy('home:index')
+#LOGOUT_REDIRECT_URL=reverse_lazy('home:index')
