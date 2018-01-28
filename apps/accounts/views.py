@@ -11,10 +11,10 @@ def signup_view(request):
              user = form.save()
              #  log the user in
              login(request, user)
-             return redirect('accounts/login.html')
+             return redirect('login.html')
     else:
         form = UserCreationForm()
-    return render(request, 'accounts/singup.html', { 'form': form})
+    return render(request, 'singup.html', { 'form': form})
 
 def login_view(request):
     if request.method == 'POST':
@@ -26,9 +26,9 @@ def login_view(request):
             return redirect('home:index')
     else:
         form = AuthenticationForm()
-    return render(request, 'accounts/login.html', { 'form': form})
+    return render(request, 'login.html', { 'form': form})
 
 def logout_view(request):
     if request.method == 'POST':
             logout(request)
-            return redirect('accounts/login.html')
+            return redirect('login.html')
