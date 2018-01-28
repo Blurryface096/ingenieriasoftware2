@@ -14,7 +14,7 @@ def signup(request):
              return redirect('accounts/login.html')
     else:
         form = UserCreationForm()
-    return render(request, 'accounts/singup.html, { 'form': form})
+    return render(request, 'accounts/singup.html', { 'form': form})
 
 def login(request):
     if request.method == 'POST':

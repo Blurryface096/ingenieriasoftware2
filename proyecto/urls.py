@@ -4,7 +4,7 @@ from django.contrib.auth.views import login
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('apps.accounts.urls',namespace="login")),
+    url(r'^accounts/', include('apps.accounts.urls',namespace="accounts")),
     url(r'^login/', include('apps.login.urls', namespace="login")),
     url(r'^home/', include('apps.home.urls', namespace="home")),
 ]
