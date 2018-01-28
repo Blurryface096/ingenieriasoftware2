@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.login',
     'apps.home',
+    'apps.accounts',
 ]
 
 MIDDLEWARE = [
@@ -146,5 +147,7 @@ STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = look_folder_tree(STATIC_ROOT)
 #STATICFILES_DIRS = os.path.join(BASE_DIR,'static')
+
+
 LOGIN_REDIRECT_URL = reverse_lazy('home:index')
 LOGOUT_REDIRECT_URL=reverse_lazy('home:index')
