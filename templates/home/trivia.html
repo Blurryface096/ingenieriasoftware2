@@ -8,6 +8,17 @@
 	<script src = "{% static 'js/trivia.js' %}" >
 
 	</script>
+
+	<nav>
+							<ul>
+									<li>
+											<form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+													{% csrf_token %}
+													<button type="submit">Logout</button>
+											</form>
+									</li>
+							</ul>
+					</nav>
 </head>
 <body>
 	<div id = "container">
