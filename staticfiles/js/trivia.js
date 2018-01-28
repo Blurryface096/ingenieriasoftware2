@@ -1,5 +1,6 @@
 
 function validacionLogin(estado){
+	alert('prueba');
 	if(estado == False ){
 		alert('login incorrecto');
 		return false;
