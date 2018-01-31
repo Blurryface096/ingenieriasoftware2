@@ -1,10 +1,31 @@
 {% extends 'base/base.html' %}
+{% load static %}
 
 {% block header %}
+
+<link rel="stylesheet" href="{% static 'Css/estilos.css' %}"  />
 <h4>Universidad de Lima</h4>
 {% endblock %}
 {% block content %}
-<h1>Bienvenido !</h1>
+
+<div id="divCabecera">
+<table class='table-sesion'> <tbody> <tr><td> Bienvenido, </td></tr>
+
+  <tr><td> admin1</td></tr>
+  </tbody>
+
+
+<thead> <tr><th><a href=/ >Cerrar Sesión</a> </th></tr> </thead>
+
+
+ </table>
+  </div>
+
+  <div id="divCategoria">
+       <ul class="menuH">
+<li><a href=trivia>Trivia</a> </li>
+<li><a href=polla>Polla</a> </li>
+         </div>
 {% endblock %}
 {% block footer %}
 <h5>Lima, Peru 2018</h5>

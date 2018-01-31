@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<title>Juego Trivia</title>
+	<link rel = "stylesheet" href ="{% static 'Css/estilos.css' %}"  >
+	<script src = "{% static 'js/trivia.js' %}" >
+
+	</script>
+
+	<nav>
+							<ul>
+									<li>
+											<form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+													{% csrf_token %}
+													<button type="submit">Logout</button>
+											</form>
+									</li>
+							</ul>
+					</nav>
+</head>
+<body>
+	<div id = "container">
+		<header>
+			<a href="/home" class = "button">Volver</a>
+			<h1>Trivia</h1>
+			<p> ¡Pelea por ver quien sabe mas! <strong>El ganador se lleva 100 soles </strong></p>
+		</header>
+
+		<section>
+			<div id = "results"></div>
+			<form name = "formPregunta" onsubmit = "return submitAnswers(answers = [{% for p in preguntas %}'{{ p.respuesta }}',{% endfor %}])">
+
+
+			{% for p in preguntas %}
+				<h3> {{ p.id }}.  {{ p.pregunta }}</h3>
+				<input type = "radio" name = "p{{ p.id }}" value = "a" id = "p1a">   a. {{ p.opcion1 }}<br><br>
+				<input type = "radio" name = "p{{ p.id }}" value = "b" id = "p1b">   b. {{ p.opcion2 }}<br><br>
+				<input type = "radio" name = "p{{ p.id }}" value = "c" id = "p1c">   c. {{ p.opcion3 }}<br><br>
+				<input type = "radio" name = "p{{ p.id }}" value = "d" id = "p1d">   d. {{ p.opcion4 }}<br><br>
+			{% endfor %}
+
+				<br><br>
+				<input type = "submit" value = "Submit Answer">
+			</form>
+			<br><br>
+		<a href="/home/trivia" class="button">Borrar respuestas</a>
+		</section>
+		<footer>
+			<p>Lima, Peru 2018</p>
+		</footer>
+	</div>
+
+</body>
+</html>
