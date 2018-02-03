@@ -1,6 +1,6 @@
 from django.db import models
 from django.forms import ModelForm
-from django.contib.auth.models import User
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -25,7 +25,7 @@ class Juego(models.Model):
     n_jugadores=models.PositiveIntegerField()
     #tipo=ModelForm.ModelChoiceField(queryset=TIPO_JUEGOS, empty_label='Trivia')
     tipo = models.CharField(max_length=15, choices=TIPO_JUEGOS)
-    organizador=models.ForeignKey(User,default=None)
+    organizador=models.ForeignKey(User,default=None, related_name='user', on_delete=models.CASCADE)
     def __str__(self):
         return self.name
 
