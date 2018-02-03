@@ -6,6 +6,7 @@ from apps.home.views import home
 from apps.home.views import trivia
 from apps.home.views import polla
 from apps.home.views import jugadores
+from apps.home.views import crear_juego
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout_then_login
 
@@ -19,6 +20,7 @@ urlpatterns = [
     #url(r'^accounts/', include('apps.accounts.urls')),
     url(r'^polla$',polla,name='polla'),
     url(r'^equipo$',jugadores,name='jugadores'),
+    url(r'^crearjuego$',crear_juego,name='crear_juego'),
     #path('jugadores/<int:formacion_id>', jugadores, name='jugadores'),
     #path('polla/<str:username>/', polla, name='polla'),
     #path('resultados/<int:score>/', resultados, name='resultados'),
