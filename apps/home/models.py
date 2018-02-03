@@ -21,7 +21,7 @@ class Usuario(models.Model):
 
 class Juego(models.Model):
 
-    nombre = models.CharField(max_length=15)
+    nombre = models.CharField(max_length=25)
     n_jugadores=models.PositiveIntegerField()
     #tipo=ModelForm.ModelChoiceField(queryset=TIPO_JUEGOS, empty_label='Trivia')
     tipo = models.CharField(max_length=15, choices=TIPO_JUEGOS)
