@@ -31,6 +31,19 @@ def crear_juego(request):
     return render(request, 'home/crear_juego.html', {'form':form})
 
 
+def organizar_juego(request):
+    if request.method=='POST':
+        form=JuegoForm(request.POST)
+        if form.is_valid():
+            instance=form.save(commit=False)
+            instance.organizador=request.user
+            instance.save()
+            cadena='home:'+str(instance.tipo)
+            return redirect(cadena)
+    else:
+        form=JuegoForm()
+    return render(request, 'home/crear_juego.html', {'form':form})
+
 def jugadores(request, formacion_id):
     if request.method == 'POST':
         rawform = request.body
