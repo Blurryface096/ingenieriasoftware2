@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+{% block title %} Elige a tus jugadores! {% endblock %}
+{% block content %}
+<div class="container">
+  <div align="center">
+    <form method="post">
+      {% csrf_token %}
+    <h2>Jugadores:</h2>
+    {% if formacion %}
+      <h2>Formacion elegida: {{formacion.cantidad_defensas}}
+        - {{formacion.cantidad_centrocampistas}}
+        - {{formacion.cantidad_delanteros}}</h2>
+      <h3>Arqueros:</h3>
+      <select name="jugador">
+      {% for arquero in arqueros %}
+        <option value={{arquero.id}}>{{arquero.nombre}} {{arquero.apellido}} | {{arquero.equipo}}</option>
+      {% endfor %}
+      </select>
+
+      <h3>Defensas:</h3>
+      {% for defs in lst_defs %}
+      <select name="jugador">
+        {% for defensa in defs %}
+          <option value={{defensa.id}}>{{defensa.nombre}} {{defensa.apellido}} | {{defensa.equipo}}</option>
+        {% endfor %}
+      </select>
+      {% endfor %}
+
+      <h3>Centrocampistas:</h3>
+      {% for cents in lst_cent %}
+      <select name="jugador">
+        {% for centrocampista in cents %}
+          <option value={{centrocampista.id}}>{{centrocampista.nombre}} {{centrocampista.apellido}} | {{centrocampista.equipo}}</option>
+        {% endfor %}
+      </select>
+      {% endfor %}
+
+      <h3>Delanteros:</h3>
+      {% for delas in lst_dela %}
+      <select name="jugador">
+        {% for delantero in delas %}
+          <option value={{delantero.id}}>{{delantero.nombre}} {{delantero.apellido}} | {{delantero.equipo}}</option>
+        {% endfor %}
+      </select>
+      {% endfor %}
+    {% endif %}
+    <br>
+    <br>
+    <div align="center">
+      <br>
+      <button type="submir" class="btn">Enviar Equipo Ideal</button>
+    </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

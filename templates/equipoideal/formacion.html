@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% block title %} Elige tu formacion! {% endblock %}
+{% block content %}
+<div class="container">
+  <form method="post">
+    {% csrf_token %}
+    <div align="center">
+      {% if formaciones %}
+      <select name="formacion">
+        {% for formacion in formaciones %}
+        <option value={{formacion.id}}>{{formacion.cantidad_defensas}} -
+          {{formacion.cantidad_centrocampistas}} -
+          {{formacion.cantidad_delanteros}}</option>
+        {% endfor %}
+      </select>
+      {% endif %}
+    </div>
+    <div align="center">
+        <button class="btn" type="submit">Siguiente!</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

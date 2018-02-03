@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% block title %} RESULTADOS {% endblock %}
+{% block content %}
+<div class="container">
+  <div align="center">
+    <h1>Su puntaje es: {{score}} de {{ partidos|length }}</h1>
+  </div>
+  <br>
+  <h3>Resultados de los partidos: </h3>
+  <table class="table">
+    <thead>
+      <th>Equipo Local</th>
+      <th>Equipo Visita</th>
+      <th>Fecha</th>
+      <th>Victoria</th>
+    </thead>
+    <tbody>
+      {% if partidos %}
+      {% for partido in partidos %}
+      <tr>
+        <td>{{ partido.eq_local }}</td>
+        <td>{{ partido.eq_visita }}</td>
+        <td>{{ partido.fecha }}</td>
+
+        {% if partido.resultado == 1 %}
+          <td>Local</td>
+        {% elif partido.resultado == 2 %}
+          <td>Visita</td>
+        {% else %}
+          <td>Empate  </td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

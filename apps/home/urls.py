@@ -1,8 +1,11 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
+from apps.home import views
 from apps.home.views import home
 from apps.home.views import trivia
+from apps.home.views import polla
+from apps.home.views import jugadores
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout_then_login
 
@@ -14,4 +17,9 @@ urlpatterns = [
     url(r'^trivia$',login_required(views.trivia),),
     url(r'^logout$',logout_then_login,name='logout'),
     #url(r'^accounts/', include('apps.accounts.urls')),
+    url(r'^polla$',polla,name='polla'),
+    url(r'^equipo$',jugadores,name='jugadores'),
+    #path('jugadores/<int:formacion_id>', jugadores, name='jugadores'),
+    #path('polla/<str:username>/', polla, name='polla'),
+    #path('resultados/<int:score>/', resultados, name='resultados'),
 ]
