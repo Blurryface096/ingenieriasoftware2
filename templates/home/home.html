@@ -29,14 +29,12 @@
          </div>
 
 <br>
-<form method="POST" action="">
-    {% csrf_token %}
-    {{ crear }}
+
          <div>
            <button type="submit" name="juego"
-             class="btn btn-primary">Crear Juego</button>
+             class="btn btn-primary" href=crearjuego>Crear Juego</button>
          </div>
-</form>
+
 
 {% endblock %}
 {% block footer %}

@@ -20,17 +20,15 @@ def trivia(request):
     return render(request, 'home/trivia.html', { 'preguntas': preguntas})
 
 def crear_juego(request):
-    if request.method == 'POST':
-        form1 = CrearForm(data=request.POST)
-        if form1.is_valid():
+    #if request.method == 'POST':
+        #form1 = CrearForm(data=request.POST)
+        #if form1.is_valid():
             # log the user in
             #user = form.get_user()
-            form2 = JuegoForm()
-            return render(request, 'home/crearjuego.html', {'form':form})
-
-    else:
+    #else:
         #return render(request, 'home/crearjuego.html', {'form':form})
-        pass
+    form2 = JuegoForm()
+    return render(request, 'home/crearjuego.html', {'form':form})
 
 
 def jugadores(request, formacion_id):

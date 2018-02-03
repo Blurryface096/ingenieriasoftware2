@@ -24,8 +24,8 @@ def login_view(request):
             # log the user in
             user = form.get_user()
             login(request, user)
-            crear=CrearForm()
-            return redirect('home:index', {'crear': crear})
+            #crear=CrearForm()
+            return redirect('home:index')
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', { 'form': form})
