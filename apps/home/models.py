@@ -3,24 +3,26 @@ from django.forms import ModelForm
 
 # Create your models here.
 
-TITLE_CHOICES = (
-    ('Polla'),
-    ('Trivia'),
-    ('Equipo Ideal'),
+TIPO_JUEGOS = (
+    ('Polla','Polla'),
+    ('Trivia','Trivia'),
+    ('Equipo','Equipo Ideal'),
 )
 
 class Juego(models.Model):
 
     nombre = models.CharField(max_length=15)
     n_jugadores=models.PositiveIntegerField()
-    tipo=models.ModelChoiceField(queryset=TIPO_JUEGOS, empty_label='Trivia')
+    #tipo=ModelForm.ModelChoiceField(queryset=TIPO_JUEGOS, empty_label='Trivia')
+    tipo = models.CharField(max_length=15, choices=TIPO_JUEGOS)
 
     def __str__(self):
         return self.name
 
 class JuegoForm(ModelForm):
     class Meta:
-        model=Juego=['nombre', 'n_jugadores','tipo']
+        model=Juego
+        fields=['nombre', 'n_jugadores','tipo']
 
 
 class Preguntas(models.Model):
