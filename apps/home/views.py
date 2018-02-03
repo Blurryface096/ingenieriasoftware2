@@ -28,7 +28,7 @@ def crear_juego(request):
     #else:
         #return render(request, 'home/crearjuego.html', {'form':form})
     form2 = JuegoForm()
-    return render(request, 'home/crearjuego.html', {'form':form})
+    return render(request, 'home/crear_juego.html', {'form':form})
 
 
 def jugadores(request, formacion_id):
