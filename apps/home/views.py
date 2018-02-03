@@ -27,7 +27,7 @@ def crear_juego(request):
             #user = form.get_user()
     #else:
         #return render(request, 'home/crearjuego.html', {'form':form})
-    form2 = JuegoForm()
+    form = JuegoForm()
     return render(request, 'home/crear_juego.html', {'form':form})
 
 
