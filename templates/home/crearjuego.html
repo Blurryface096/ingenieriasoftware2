@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Crear Juego {% endblock %}
+{% block header %}
+{% endblock %}
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        {{ form.as_p }}
+      </div>
+      <div align="center">
+        <button class="btn" type="submit">Crear</button>
+      </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+  </div>
+</form>
+{% endblock %}
+{% block footer %}
+{% endblock %}

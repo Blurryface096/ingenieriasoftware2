@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from apps.home.models import Preguntas
 from django.contrib.auth.forms import UserCreationForm
+from apps.home.models import JuegoForm
+
 
 from django.contrib.auth.decorators import login_required
 
@@ -16,6 +18,10 @@ def home(request):
 def trivia(request):
     preguntas = Preguntas.objects.all()
     return render(request, 'home/trivia.html', { 'preguntas': preguntas})
+
+def crear_juego(request):
+    form = JuegoForm
+    return render(request, 'home/crearjuego.html', {'form':form})
 
 def jugadores(request, formacion_id):
     if request.method == 'POST':
@@ -111,7 +117,7 @@ def polla(request, username):
         user = Usuario.objects.get(username=username)
         fecha = datetime.datetime.now()
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
-        participacion = ParticipacionPolla(usuario=user, score=score, fecha=formatedDate)
+        participacion = ParticipacionPolla(usuario=user, score=score, fecha=formatedDate, juego=juego)
         participacion.save()
         return redirect('login:resultados', score)
     else:
