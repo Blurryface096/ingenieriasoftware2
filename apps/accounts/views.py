@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
+from apps.home.models import CrearForm
 
 # Create your views here.
 
@@ -23,7 +24,8 @@ def login_view(request):
             # log the user in
             user = form.get_user()
             login(request, user)
-            return redirect('home:index')
+            crear=CrearForm
+            return redirect('home:index', { 'crear': crear})
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', { 'form': form})

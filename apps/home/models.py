@@ -34,6 +34,12 @@ class JuegoForm(ModelForm):
         fields=['nombre', 'n_jugadores','tipo']
 
 
+class CrearForm(ModelForm):
+    class Meta:
+        pass
+
+
+
 class Preguntas(models.Model):
     pregunta = models.CharField(max_length = 500)
     opcion1 = models.CharField(max_length = 20)

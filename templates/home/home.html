@@ -29,8 +29,9 @@
          </div>
 
 <br>
-<form method="post">
+<form method="POST" action="">
     {% csrf_token %}
+    {{ crear }}
          <div>
            <button type="submit" name="juego"
              class="btn btn-primary">Crear Juego</button>

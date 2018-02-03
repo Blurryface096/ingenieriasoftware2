@@ -21,15 +21,16 @@ def trivia(request):
 
 def crear_juego(request):
     if request.method == 'POST':
-        #form = AuthenticationForm(data=request.POST)
-        #if form.is_valid():
+        form1 = CrearForm(data=request.POST)
+        if form1.is_valid():
             # log the user in
             #user = form.get_user()
-        form = JuegoForm
-        return render(request, 'home/crearjuego.html', {'form':form})
-    else:
-        pass
+            form2 = JuegoForm
+            return render(request, 'home/crearjuego.html', {'form':form})
 
+    else:
+        #return render(request, 'home/crearjuego.html', {'form':form})
+        pass
 
 
 def jugadores(request, formacion_id):
