@@ -25,7 +25,7 @@ def crear_juego(request):
         if form1.is_valid():
             # log the user in
             #user = form.get_user()
-            form2 = JuegoForm
+            form2 = JuegoForm()
             return render(request, 'home/crearjuego.html', {'form':form})
 
     else:
