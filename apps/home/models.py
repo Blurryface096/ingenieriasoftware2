@@ -9,6 +9,15 @@ TIPO_JUEGOS = (
     ('Equipo','Equipo Ideal'),
 )
 
+class Usuario(models.Model):
+    username = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
+    tipo = models.PositiveIntegerField()
+
+    def __str__(self):
+        return '{}'.format(self.username)
+
+
 class Juego(models.Model):
 
     nombre = models.CharField(max_length=15)
@@ -43,13 +52,6 @@ class Demarcacion(models.Model):
     def __str__(self):
         return '{}'.format(self.nombre)
 
-class Usuario(models.Model):
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
-    tipo = models.PositiveIntegerField()
-
-    def __str__(self):
-        return '{}'.format(self.username)
 
 
 
