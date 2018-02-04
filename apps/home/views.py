@@ -20,18 +20,6 @@ def trivia(request):
     return render(request, 'home/trivia.html', { 'preguntas': preguntas})
 
 def crear_juego(request):
-    #if request.method == 'POST':
-        #form1 = CrearForm(data=request.POST)
-        #if form1.is_valid():
-            # log the user in
-            #user = form.get_user()
-    #else:
-        #return render(request, 'home/crearjuego.html', {'form':form})
-    form = JuegoForm()
-    return render(request, 'home/crear_juego.html', {'form':form})
-
-
-def organizar_juego(request):
     if request.method=='POST':
         form=JuegoForm(request.POST,request.FILES)
         if form.is_valid():
