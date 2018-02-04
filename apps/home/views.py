@@ -39,8 +39,8 @@ def crear_juego(request):
             #    instance.invitados.add(User)
             instance.save()
             cadena='home:' + str(instance.tipo).lower()
-
-            return redirect(cadena(instance),instance)
+            return redirect('home:polla', instance)
+            #return redirect(cadena(instance),instance)
     else:
         form=JuegoForm()
     return render(request, 'home/crear_juego.html', {'form':form})
@@ -125,7 +125,8 @@ def jugadores(request, formacion_id):
 
 
 
-def polla(request, juego):
+def polla(request):
+    juego=request.GET['juego']
     partidos = Partido.objects.all().order_by('id')
     contexto = {'partidos' : partidos}
     if request.method == 'POST':
