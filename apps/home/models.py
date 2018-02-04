@@ -26,13 +26,15 @@ class Juego(models.Model):
     #tipo=ModelForm.ModelChoiceField(queryset=TIPO_JUEGOS, empty_label='Trivia')
     tipo = models.CharField(max_length=15, choices=TIPO_JUEGOS)
     organizador=models.ForeignKey(User,default=None, related_name='user', on_delete=models.CASCADE)
+    invitados=models.ManyToManyField(User)
+
     def __str__(self):
         return self.nombre
 
 class JuegoForm(ModelForm):
     class Meta:
         model=Juego
-        fields=['nombre', 'n_jugadores','tipo']
+        fields=['nombre', 'n_jugadores','tipo','invitados']
 
 
 class CrearForm(ModelForm):
