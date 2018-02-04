@@ -10,15 +10,6 @@ TIPO_JUEGOS = (
     ('Equipo','Equipo Ideal'),
 )
 
-class Usuario(models.Model):
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
-    tipo = models.PositiveIntegerField()
-
-    def __str__(self):
-        return '{}'.format(self.username)
-
-
 class Juego(models.Model):
 
     nombre = models.CharField(max_length=25)
@@ -104,9 +95,6 @@ class ParticipacionEquipoIdeal(models.Model):
     def __str__(self):
         return '{} / {}'.format(self.usuario, self.fecha)
 
-
-
-
 class Partido(models.Model):
     eq_local = models.ForeignKey(Equipo, related_name='equipo_local', on_delete=models.CASCADE)
     eq_visita = models.ForeignKey(Equipo, related_name='equipo_visita', on_delete=models.CASCADE)
@@ -117,10 +105,11 @@ class Partido(models.Model):
         return '{} vs {}'.format(self.eq_local, self.eq_visita)
 
 class ParticipacionPolla(models.Model):
-    usuario = models.ForeignKey(User,default=None, on_delete=models.CASCADE)
+    juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     score = models.IntegerField()
     fecha = models.DateTimeField()
-    juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
+
     def __str__(self):
         return '{} / {}'.format(self.usuario, self.fecha)
 
@@ -129,3 +118,12 @@ class Polla(models.Model):
     partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
     resultado = models.PositiveIntegerField()
     juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
+
+
+#class Usuario(models.Model):
+    #username = models.CharField(max_length=100)
+    #password = models.CharField(max_length=100)
+    #tipo = models.PositiveIntegerField()
+
+    #def __str__(self):
+        #return '{}'.format(self.username)
