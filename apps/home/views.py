@@ -146,3 +146,12 @@ def resultados(request, score):
     partidos = Partido.objects.all().order_by('id')
     contexto = {'score' : score, 'partidos' : partidos}
     return render(request, 'polla/resultados.html', contexto)
+
+def formaciones(request):
+    if request.method == 'POST':
+        formacion_id =  request.POST.__getitem__('formacion')
+        return redirect('equipoideal:jugadores', formacion_id)
+    else:
+        formaciones = Formaciones.objects.all()
+        contexto = {'formaciones' : formaciones}
+        return render(request, 'equipoideal/formacion.html', contexto)

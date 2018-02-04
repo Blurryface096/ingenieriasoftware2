@@ -23,7 +23,7 @@ urlpatterns = [
     #url(r'^polla/$',polla,name='polla'),
     #url(r'^polla/<int:Juego.id>/$',polla,name='polla'),
     path('polla/<int:Juego.id>/', polla, name='polla'),
-    url(r'^equipo$',jugadores,name='equipo'),
+    url(r'^equipo$',formaciones,name='equipo'),
     url(r'^crear_juego$',crear_juego,name='crear_juego'),
 
     path('jugadores/<int:formacion_id>', jugadores, name='jugadores'),
