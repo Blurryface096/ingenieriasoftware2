@@ -39,7 +39,7 @@ def crear_juego(request):
             #    instance.invitados.add(User)
             instance.save()
             cadena='home:' + str(instance.tipo).lower()
-            return redirect('home/polla.html', instance.id)
+            return redirect('polla', instance.id)
             #return redirect(cadena(instance),instance)
     else:
         form=JuegoForm()
