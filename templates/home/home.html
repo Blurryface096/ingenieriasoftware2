@@ -35,7 +35,7 @@
 <thead> <tr><th>Juego Creados</th><th>Creador</th><th>Invitados</th></tr> </thead>
 <tbody>
 {% for j in juego %}
-  <tr><td> {{ j.nombre }} ({{ j.tipo }} 1/{{ j.n_jugadores }})   </td> <td> {{ j.organizador }} </td> <td>
+  <tr><td> {{ j.id }}  {{ j.nombre }} ({{ j.tipo }} 1/{{ j.n_jugadores }})   </td> <td> {{ j.organizador }} </td> <td>
 {% for i in j.invitados.all %}
     {{ i.username }} ,
 {% endfor %}
