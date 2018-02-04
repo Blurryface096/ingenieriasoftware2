@@ -117,7 +117,7 @@ class Partido(models.Model):
         return '{} vs {}'.format(self.eq_local, self.eq_visita)
 
 class ParticipacionPolla(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User,default=None, on_delete=models.CASCADE)
     score = models.IntegerField()
     fecha = models.DateTimeField()
     juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
