@@ -10,6 +10,7 @@ from apps.home.views import crear_juego
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout_then_login
 from django.contrib.auth.models import User
+from apps.home.models import Juego
 
 from . import views
 app_name = 'home'
@@ -19,7 +20,7 @@ urlpatterns = [
     url(r'^trivia$',login_required(views.trivia),name='trivia'),
     url(r'^logout$',logout_then_login,name='logout'),
     #url(r'^accounts/', include('apps.accounts.urls')),
-    url(r'^polla<juego>$',polla,name='polla'),
+    url(r'^polla/<Juego:Juego>$',polla,name='polla'),
     url(r'^equipo$',jugadores,name='equipo'),
     url(r'^crear_juego$',crear_juego,name='crear_juego'),
 
