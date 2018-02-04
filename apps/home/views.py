@@ -5,8 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from apps.home.models import JuegoForm
 from apps.home.models import Juego
 from django.contrib.auth.models import User
-from django.contrib.auth.models import Partido
-
+from apps.home.models import Partido
 from django.contrib.auth.decorators import login_required
 
 
