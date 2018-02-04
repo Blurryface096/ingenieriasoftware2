@@ -4,6 +4,7 @@ from apps.home.models import Preguntas
 from django.contrib.auth.forms import UserCreationForm
 from apps.home.models import JuegoForm
 from apps.home.models import Juego
+from django.contrib.auth.models import User
 
 
 from django.contrib.auth.decorators import login_required
@@ -27,6 +28,8 @@ def crear_juego(request):
         if form.is_valid():
             instance=form.save(commit=False)
             instance.organizador=request.user
+            for User in instance.invitados['id']:
+                instance.invitados.add(User)
             instance.save()
             cadena='home:'+str(instance.tipo).lower()
 
