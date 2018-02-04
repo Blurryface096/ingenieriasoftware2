@@ -21,10 +21,10 @@ urlpatterns = [
     url(r'^trivia$',login_required(views.trivia),name='trivia'),
     url(r'^logout$',logout_then_login,name='logout'),
     #url(r'^accounts/', include('apps.accounts.urls')),
-    #url(r'^polla/$',polla,name='polla'),
+    url(r'^polla/$',polla,name='polla'),
     #url(r'^polla/<int:Juego.id>/$',polla,name='polla'),
     #path('polla/<int:Juego.id>/', polla, name='polla'),
-    path('polla/', polla, name='polla'),
+    #path('polla/', polla, name='polla'),
     url(r'^equipo$',formaciones,name='equipo'),
     url(r'^crear_juego$',crear_juego,name='crear_juego'),
 
