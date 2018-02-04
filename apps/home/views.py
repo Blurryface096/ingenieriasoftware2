@@ -15,6 +15,7 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='')
 def home(request):
     nombre=request.user.username
+    print(nombre)
     juego=Juego.objects.all()
     return render(request, 'home/home.html', { 'juego': juego, 'user':nombre})
 
