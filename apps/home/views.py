@@ -27,6 +27,7 @@ def crear_juego(request):
             instance.organizador=request.user
             instance.save()
             cadena='home:'+str(instance.tipo).lower()
+
             return redirect(cadena)
     else:
         form=JuegoForm()
