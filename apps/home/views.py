@@ -126,7 +126,7 @@ def jugadores(request, formacion_id):
 
 
 def polla(request):
-    juego=request.GET['juego']
+    juego=request.GET['juego',FALSE]
     partidos = Partido.objects.all().order_by('id')
     contexto = {'partidos' : partidos}
     if request.method == 'POST':
