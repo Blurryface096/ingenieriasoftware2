@@ -6,6 +6,7 @@ from apps.home.models import JuegoForm
 from apps.home.models import Juego
 from django.contrib.auth.models import User
 from apps.home.models import Partido
+from apps.home.models import ParticipacionPolla
 from django.contrib.auth.decorators import login_required
 
 
