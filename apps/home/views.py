@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from apps.home.models import JuegoForm
 from apps.home.models import Juego
 from apps.home.models import Jugador
+from apps.home.models import Demarcacion
 from django.contrib.auth.models import User
 from apps.home.models import Partido
 from apps.home.models import Formaciones
