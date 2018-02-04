@@ -32,10 +32,10 @@
 
 
 <table class='db-table3'>
-<thead> <tr><th>Juego Creados</th><th>Creador</th></tr> </thead>
+<thead> <tr><th>Juego Creados</th><th>Creador</th><th>Invitados</th></tr> </thead>
 <tbody>
 {% for j in juego %}
-  <tr><td> {{ j.nombre }} ({{ j.tipo }} 1/{{ j.n_jugadores }})   </td> <td> {{ j.organizador }} </td></tr>
+  <tr><td> {{ j.nombre }} ({{ j.tipo }} 1/{{ j.n_jugadores }})   </td> <td> {{ j.organizador }} </td> <td> {{ j.invitados }} </td></tr>
 {% endfor %}
 
   </tbody>
@@ -46,7 +46,7 @@
            <button name="juego" class="btn btn-primary" type="submit"><a href=crear_juego>Crear Juego</a></button>
          </div>
 
-
+<br>
 {% endblock %}
 {% block footer %}
 <h5>Lima, Peru 2018</h5>
