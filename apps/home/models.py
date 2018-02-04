@@ -93,7 +93,7 @@ class Formaciones(models.Model):
         return '{} - {} - {}'.format(self.cantidad_defensas, self.cantidad_centrocampistas, self.cantidad_delanteros)
 
 class ParticipacionEquipoIdeal(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User,default=None, on_delete=models.CASCADE)
     ataque = models.FloatField()
     defensa = models.FloatField()
     velocidad = models.FloatField()
