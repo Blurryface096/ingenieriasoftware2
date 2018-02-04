@@ -36,7 +36,7 @@
 <tbody>
 {% for j in juego %}
   <tr><td> {{ j.nombre }} ({{ j.tipo }} 1/{{ j.n_jugadores }})   </td> <td> {{ j.organizador }} </td> <td>
-{% for i in j.invitados %}
+{% for i in j.invitados.all %}
     {{ i.username }} ,
 {% endfor %}
   </td></tr>
