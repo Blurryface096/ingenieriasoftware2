@@ -9,7 +9,7 @@ from apps.home.models import Demarcacion
 from django.contrib.auth.models import User
 from apps.home.models import Partido
 from apps.home.models import Formaciones
-from apps.home.models import ParticipacionPolla
+from apps.home.models import ParticipacionPolla,ParticipacionEquipoIdeal
 from django.contrib.auth.decorators import login_required
 import datetime
 
@@ -38,18 +38,55 @@ def crear_juego(request):
             #for User in instance.invitados['invitados']:
             #    instance.invitados.add(User)
             instance.save()
-            cadena='home:' + str(instance.tipo).lower()
-            return redirect('polla/', instance.id)
+            namespace='home:polla'
+
+            #cadena='home:' + str(instance.tipo).lower()
+            if str(instance.tipo).lower()=='polla':
+                namespace='home:polla'
+            elif str(instance.tipo).lower()=='trivia':
+                namespace='home:trivia'
+            elif str(instance.tipo).lower()=='equipo':
+                namespace='home:equipo'
+            else:
+                namespace='home:polla'
+
+
+            return redirect(namespace, instance.id)
             #return redirect(cadena(instance),instance)
     else:
         form=JuegoForm()
     return render(request, 'home/crear_juego.html', {'form':form})
 
-def jugadores(request, formacion_id):
+
+def entrar_juego(request,juego):
+    id_jug=juego
+    #tipo_jug=tipo
+    tipo_jug=Juego.objects.get(id=id_jug).tipo.lower()
+    print(tipo_jug)
+    namespace='home:polla'
+
+
+    if tipo_jug=='polla':
+        namespace='home:polla'
+    elif tipo_jug=='trivia':
+        namespace='home:trivia'
+    elif tipo_jug=='equipo':
+        namespace='home:equipo'
+    else:
+        namespace='home:polla'
+    return redirect(namespace, id_jug)
+
+
+def jugadores(request, cadena):
+    division=cadena.split('&')
+
+    formacion_id=int(division[0])
+    jug_id=int(division[1])
+    juego=Juego.objects.get(id=jug_id)
     if request.method == 'POST':
         rawform = request.body
         params = str(rawform).split('&')
-        print(params)
+
         jugadores = []
         for i in range(0, len(params)):
             if 'jugador' in params[i]:
@@ -68,19 +105,25 @@ def jugadores(request, formacion_id):
             velocidad = velocidad + jugador.velocidad
 
         ataque_medio = round(ataque/11, 3)
-        print(ataque_medio)
+
         defensa_media = round(defensa/11, 3)
-        print(defensa_media)
+
         velocidad_media = round(velocidad/11, 3)
-        print(velocidad_media)
+
 
         total = round((ataque_medio + defensa_media + velocidad_media) / 3, 3)
-        print(total)
+
 
         contexto = {'ataque_medio' : ataque_medio,
         'defensa_media' : defensa_media,
         'velocidad_media' : velocidad_media,
         'total' : total }
+        user = request.user
+        fecha = datetime.datetime.now()
+        formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
+        participacion = ParticipacionEquipoIdeal(usuario=user, ataque=ataque_medio, defensa=defensa_media,
+        velocidad=velocidad_media,total=total, fecha=formatedDate, juego=juego)
+        participacion.save()
         return render(request, 'equipoideal/resultados.html', contexto)
     else:
         formacion = Formaciones.objects.get(id=formacion_id)
@@ -125,8 +168,9 @@ def jugadores(request, formacion_id):
 
 
 
-def polla(request):
-    juego=request.POST.get('juego')
+def polla(request, juego):
+    #juego=request.POST.get('juego')
+    juego=Juego.objects.get(id=juego)
     partidos = Partido.objects.all().order_by('id')
     contexto = {'partidos' : partidos}
     if request.method == 'POST':
@@ -142,20 +186,25 @@ def polla(request):
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
         participacion = ParticipacionPolla(usuario=user, score=score, fecha=formatedDate, juego=juego)
         participacion.save()
-        return redirect('login:resultados', score)
+        return redirect('home:resultados', score)
     else:
         return render(request, 'polla/polla.html', contexto)
 
 def resultados(request, score):
     partidos = Partido.objects.all().order_by('id')
     contexto = {'score' : score, 'partidos' : partidos}
+
     return render(request, 'polla/resultados.html', contexto)
 
-def formaciones(request):
+def formaciones(request, juego):
     if request.method == 'POST':
         formacion_id =  request.POST.__getitem__('formacion')
-        return redirect('home:jugadores', formacion_id)
+
+
+        cadena=str(formacion_id)+'&'+str(juego)
+        return redirect('home:jugadores', cadena)
     else:
+
         formaciones = Formaciones.objects.all()
         contexto = {'formaciones' : formaciones}
         return render(request, 'equipoideal/formacion.html', contexto)
