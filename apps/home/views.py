@@ -12,7 +12,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='')
 def home(request):
-    return render(request, 'home/home.html')
+    juego=Juego.objects.all()
+    return render(request, 'home/home.html', { 'juego': juego})
 
 @login_required(login_url='')
 def trivia(request):

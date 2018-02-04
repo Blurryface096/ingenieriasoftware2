@@ -31,16 +31,16 @@
 <br>
 
 
-<table>
-<thead> <tr><th>Juego Creados</th></tr> </thead>
+<table class='db.table'>
+<thead> <tr><th>Juego Creados</th><th>Creador</th></tr> </thead>
 <tbody>
-
-  <tr><td> Juego 1 </td></tr>
-
+{% for j in juego %}
+  <tr><td> {{ j.nombre } & '(' &  { j.tipo } & ' 1/' &  { j.n_jugadores } & ')'}   </td> <td> {{ j.organizador }} </td></tr>
+{% endfor %}
 
   </tbody>
 </table>
-
+<br>
 
          <div>
            <button name="juego" class="btn btn-primary" type="submit"><a href=crear_juego>Crear Juego</a></button>
