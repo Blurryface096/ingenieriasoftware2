@@ -26,7 +26,7 @@ def crear_juego(request):
     if request.method=='POST':
         form=JuegoForm(request.POST,request.FILES)
         if form.is_valid():
-            #instance=form.save(commit=False)
+            instance=form.save(commit=False)
             instance.organizador=request.user
             instance=form.save(commit=True)
 
