@@ -6,6 +6,7 @@ from apps.home.views import home
 from apps.home.views import trivia
 from apps.home.views import polla
 from apps.home.views import jugadores
+from apps.home.views import formaciones
 from apps.home.views import crear_juego
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout_then_login
