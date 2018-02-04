@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from apps.home.models import Preguntas
 from django.contrib.auth.forms import UserCreationForm
 from apps.home.models import JuegoForm
+from apps.home.models import Juego
 
 
 from django.contrib.auth.decorators import login_required
