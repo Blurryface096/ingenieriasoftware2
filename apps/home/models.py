@@ -106,7 +106,7 @@ class Partido(models.Model):
 
 class ParticipacionPolla(models.Model):
     juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     score = models.IntegerField()
     fecha = models.DateTimeField()
 
