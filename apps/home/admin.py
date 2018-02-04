@@ -4,3 +4,4 @@ from .models import Juego
 
 admin.site.register(Preguntas)
 admin.site.register(Juego)
+admin.site.register(Partido)
