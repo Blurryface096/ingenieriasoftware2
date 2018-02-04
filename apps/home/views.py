@@ -151,7 +151,7 @@ def resultados(request, score):
 def formaciones(request):
     if request.method == 'POST':
         formacion_id =  request.POST.__getitem__('formacion')
-        return redirect('equipoideal:jugadores', formacion_id)
+        return redirect('home:jugadores', formacion_id)
     else:
         formaciones = Formaciones.objects.all()
         contexto = {'formaciones' : formaciones}
