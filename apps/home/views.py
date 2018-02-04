@@ -26,10 +26,10 @@ def crear_juego(request):
     if request.method=='POST':
         form=JuegoForm(request.POST,request.FILES)
         if form.is_valid():
-            instance=form.save(commit=False)
+            instance=form.save(commit=True)
             instance.organizador=request.user
-            for User in instance.invitados['id']:
-                instance.invitados.add(User)
+            #for User in instance.invitados['invitados']:
+            #    instance.invitados.add(User)
             instance.save()
             cadena='home:'+str(instance.tipo).lower()
 
