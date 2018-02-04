@@ -27,7 +27,7 @@ class Juego(models.Model):
     tipo = models.CharField(max_length=15, choices=TIPO_JUEGOS)
     organizador=models.ForeignKey(User,default=None, related_name='user', on_delete=models.CASCADE)
     def __str__(self):
-        return self.name
+        return self.nombre
 
 class JuegoForm(ModelForm):
     class Meta:
