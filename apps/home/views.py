@@ -122,7 +122,7 @@ def jugadores(request, formacion_id):
 
 
 
-def polla(request, username):
+def polla(request):
     partidos = Partido.objects.all().order_by('id')
     contexto = {'partidos' : partidos}
     if request.method == 'POST':
@@ -133,7 +133,7 @@ def polla(request, username):
             i=form['a_partido_id={}'.format(x+1)]
             if i == str(partidos[x].resultado):
                 score = score + 1
-        user = Usuario.objects.get(username=username)
+        user = request.user
         fecha = datetime.datetime.now()
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
         participacion = ParticipacionPolla(usuario=user, score=score, fecha=formatedDate, juego=juego)
