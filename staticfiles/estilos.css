@@ -1,12 +1,12 @@
 body{
 	background: #FFFFFF;
-	color:#D70AB2;
+	color:#dd463e;
 	font-family: 'Arial', sans-serif;
 	font-size: 14px;
 }
 #container{
 	width: 60%;
-	background: #45E229;
+	background: #8cbd22;
 	margin: 20px auto;
 	overflow: auto;
 	padding: 25px;
@@ -33,7 +33,7 @@ footer{
 }
 input[type = 'submit']{
 	width: 60%;
-	background: #f06226;
+	background: #6a26f0;
 	border:0;
 	color: #fff;
 	padding: 10px 15px;
