@@ -37,7 +37,7 @@
 
 
 
-                            <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                            <form class="logout-link;waves-effect waves-light red" action="{% url 'accounts:logout' %}" method="post">
                                 {% csrf_token %}
                                 <button type="submit">Logout</button>
                             </form>

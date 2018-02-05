@@ -37,7 +37,7 @@
     {{ i.username }} ,
 {% endfor %}
   </td>
-<td>   <button name="juego" class="waves-effect waves-light btn red" type="submit"><a href={% url 'home:entrar_juego' juego=j.id %}>ENTRAR</a></button>   </td></tr>
+<td>   <button name="juego" class="waves-effect waves-light red" type="submit"><a href={% url 'home:entrar_juego' juego=j.id %}>ENTRAR</a></button>   </td></tr>
 {% endfor %}
 
   </tbody>
