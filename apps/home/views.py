@@ -209,4 +209,4 @@ def formaciones(request, juego):
         contexto = {'formaciones' : formaciones}
         return render(request, 'equipoideal/formacion.html', contexto)
 
-def obtener_puntuaciones(request, juego)
+#def obtener_puntuaciones(request, juego)
