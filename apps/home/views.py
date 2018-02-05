@@ -208,3 +208,5 @@ def formaciones(request, juego):
         formaciones = Formaciones.objects.all()
         contexto = {'formaciones' : formaciones}
         return render(request, 'equipoideal/formacion.html', contexto)
+
+def obtener_puntuaciones(request, juego)
