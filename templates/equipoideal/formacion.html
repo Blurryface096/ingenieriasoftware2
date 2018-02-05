@@ -4,7 +4,7 @@
 <div class="container">
   <form method="post">
     {% csrf_token %}
-    <div align="center">
+    <div class="input-field col s12" align="center">
       {% if formaciones %}
       <select multiple name="formacion">
         {% for formacion in formaciones %}
@@ -14,6 +14,7 @@
         {% endfor %}
       </select>
       {% endif %}
+       <label>Elegir Formación</label>
     </div>
     <div align="center">
         <button class="btn" type="submit">Siguiente!</button>
