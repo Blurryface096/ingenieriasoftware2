@@ -19,9 +19,9 @@
           <td>{{ partido.eq_visita }}</td>
           <td>{{ partido.fecha }}</td>
           <td>
-            <input type="radio" name="a_partido_id={{ partido.id }}" value="1"> Gana local<br>
-            <input type="radio" name="a_partido_id={{ partido.id }}" value="2"> Gana visita<br>
-            <input type="radio" name="a_partido_id={{ partido.id }}" value="3"> Empate
+            <input class="with-gap"  type="radio" name="a_partido_id={{ partido.id }}" value="1"> Gana local<br>
+            <input class="with-gap"  type="radio" name="a_partido_id={{ partido.id }}" value="2"> Gana visita<br>
+            <input class="with-gap"  type="radio" name="a_partido_id={{ partido.id }}" value="3"> Empate
           </td>
         </tr>
         {% endfor %}
