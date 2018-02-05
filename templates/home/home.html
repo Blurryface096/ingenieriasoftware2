@@ -28,7 +28,7 @@
 <br>
 
 
-<table class='db-table3'>
+<table class='highlight'>
 <thead> <tr><th>Juego Creados</th><th>Creador</th><th>Invitados</th><th>Unirse</th></tr> </thead>
 <tbody>
 {% for j in juego %}
@@ -37,7 +37,7 @@
     {{ i.username }} ,
 {% endfor %}
   </td>
-<td>   <button name="juego" class="btn btn-primary" type="submit"><a href={% url 'home:entrar_juego' juego=j.id %}>ENTRAR</a></button>   </td></tr>
+<td>   <button name="juego" class="waves-effect waves-light btn red" type="submit"><a href={% url 'home:entrar_juego' juego=j.id %}>ENTRAR</a></button>   </td></tr>
 {% endfor %}
 
   </tbody>
