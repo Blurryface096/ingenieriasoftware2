@@ -37,7 +37,7 @@
     {{ i.username }} ,
 {% endfor %}
   </td>
-<td>   <button name="juego" class="waves-effect waves-light purple darken-3 white-text" type="submit"><a href={% url 'home:entrar_juego' juego=j.id %}>ENTRAR</a></button>   </td></tr>
+<td>   <button name="juego" class="waves-effect waves-light purple darken-3" type="submit"><a class="white-text" href={% url 'home:entrar_juego' juego=j.id %}>ENTRAR</a></button>   </td></tr>
 {% endfor %}
 
   </tbody>
@@ -45,7 +45,7 @@
 <br>
 
          <div>
-           <button name="juego" class="waves-effect waves-light red white-text" type="submit"><a href=crear_juego >Crear Juego</a></button>
+           <button name="juego" class="waves-effect waves-light red" type="submit"><a class="white-text" href=crear_juego >Crear Juego</a></button>
          </div>
 
 <br>
