@@ -1,23 +1,7 @@
-
-function validacionLogin(estado){
-	alert('prueba');
-	if(estado == False ){
-		alert('login incorrecto');
-		return false;
-	}
-}
-function getName(){
-	login = document.getElementById("login").value;
-	alert("Hi, " + login);
-	return login;
-}
 function submitAnswers(answers){
-
 	var total = answers.length;
 	var score = 0;
 	var choice = []
-
-
 	//getting choices
 	/*
 	var q1 = document.forms["quizForm"]["q1"].value;
@@ -28,7 +12,6 @@ function submitAnswers(answers){
 */
 //new dynamic method 1
 	for(var i = 1; i <= total; i++){
-
 		choice[i] = document.forms["formPregunta"]["p"+i].value;
 	}
 
