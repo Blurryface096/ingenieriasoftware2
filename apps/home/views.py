@@ -249,6 +249,7 @@ def trivia_juego(request,juego):
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
         participacion = ParticipacionTrivia(usuario=user, score=score, fecha=formatedDate, juego=juego)
         participacion.save()
+        return redirect('home')
         #return redirect('home:resultadostrivia', score)
     else:
         return render(request, 'home/trivia.html', contexto)
