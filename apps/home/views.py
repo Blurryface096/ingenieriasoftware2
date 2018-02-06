@@ -177,9 +177,9 @@ def polla(request, juego):
         score = 0
         form = request.POST
         longitud = len(form)-1
-        for x in range(0, longitud):
-            i=form['a_partido_id={}'.format(x+1)]
-            if i == str(partidos[x].resultado):
+        for x in partidos:
+            i=form['a_partido_id={}'.format(partidos[x].id)]
+            if i == str(x.resultado):
                 score = score + 1
         user = request.user
         fecha = datetime.datetime.now()
