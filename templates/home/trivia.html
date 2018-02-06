@@ -29,7 +29,7 @@
 		<section>
 			<div id = "results"></div>
 			<form method="post" name = "formPregunta" onsubmit = "return submitAnswers(answers = [{% for p in preguntas %}'{{ p.respuesta }}',{% endfor %}])">
-
+				{% csrf_token %}
 
 			{% for p in preguntas %}
 				<h3> {{ p.id }}.  {{ p.pregunta }}</h3>
