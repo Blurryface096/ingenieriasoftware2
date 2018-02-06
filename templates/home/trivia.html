@@ -28,7 +28,7 @@
 
 		<section>
 			<div id = "results"></div>
-			<form name = "formPregunta" onsubmit = "return submitAnswers(answers = [{% for p in preguntas %}'{{ p.respuesta }}',{% endfor %}])">
+			<form method="post" name = "formPregunta" onsubmit = "return submitAnswers(answers = [{% for p in preguntas %}'{{ p.respuesta }}',{% endfor %}])">
 
 
 			{% for p in preguntas %}

@@ -237,10 +237,10 @@ def trivia_juego(request,juego):
         form = request.POST
         longitud = len(form)-1
 
-#Logica a corregir
+
         for x in range(0, longitud):
-            i=form['a_partido_id={}'.format(x+1)]
-            if i == str(partidos[x].resultado):
+            i=form['p={}'.format(x+1)]
+            if i == str(preguntas[x].respuesta):
                 score = score + 1
 
 
@@ -249,9 +249,9 @@ def trivia_juego(request,juego):
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
         participacion = ParticipacionTrivia(usuario=user, score=score, fecha=formatedDate, juego=juego)
         participacion.save()
-        return redirect('home:resultadostrivia', score)
+        #return redirect('home:resultadostrivia', score)
     else:
-        return render(request, 'trivia/trivia.html', contexto)
+        return render(request, 'home/trivia.html', contexto)
 
 def resultadostrivia(request, score):
     preguntas = Preguntas.objects.all().order_by('id')
