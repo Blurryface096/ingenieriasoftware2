@@ -1,6 +1,7 @@
 {% extends 'base/base.html' %}
 {% load staticfiles %}
 {% block content %}
+<br>
 		<div class="container">
 			<form action="{% url 'home:index' %}" method="post">
 					{% csrf_token %}
@@ -32,7 +33,7 @@
 			<br><br>
 		<!-- <a href="/home/trivia" class="button">Borrar respuestas</a> -->
 		</section>
-	
+
 	{% endblock %}
 	{% block footer %}
 	<h5>Lima, Peru 2018</h5>
