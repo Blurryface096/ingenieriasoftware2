@@ -2,7 +2,12 @@
 {% block title %} RESULTADOS {% endblock %}
 {% block content %}
 <div class="container">
-  <a href='home:index'> Volver </a>
+  <div class="container">
+              <form action="{% url 'home:index' %}" method="post">
+                  {% csrf_token %}
+                  <button class="btn-large waves-effect waves-red blue darken-1 amber lighten-5-text" type="submit">Volver</button>
+              </form>
+                </div>
 
 
 </div>
