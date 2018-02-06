@@ -1,8 +1,5 @@
 {% extends 'base/base.html' %}
 {% load staticfiles %}
-{% block header %}
-<h4>Universidad de Lima</h4>
-{% endblock %}
 {% block content %}
 		<div class="container">
 			<form action="{% url 'home:index' %}" method="post">
@@ -23,10 +20,10 @@
 
 			{% for p in preguntas %}
 				<h3> {{ p.id }}.  {{ p.pregunta }}</h3>
-				<input type = "radio" name = "p{{ p.id }}" value = "a" id = "p1a">   a. {{ p.opcion1 }}<br><br>
-				<input type = "radio" name = "p{{ p.id }}" value = "b" id = "p1b">   b. {{ p.opcion2 }}<br><br>
-				<input type = "radio" name = "p{{ p.id }}" value = "c" id = "p1c">   c. {{ p.opcion3 }}<br><br>
-				<input type = "radio" name = "p{{ p.id }}" value = "d" id = "p1d">   d. {{ p.opcion4 }}<br><br>
+				<input type = "radio" name = "p{{ p.id }}" value = "a" id = "p1a"><label for="p1a"> a. {{ p.opcion1 }}</label><br>
+				<input type = "radio" name = "p{{ p.id }}" value = "b" id = "p1b"><label for="p1b"> b. {{ p.opcion2 }}</label><br>
+				<input type = "radio" name = "p{{ p.id }}" value = "c" id = "p1c"><label for="p1c"> c. {{ p.opcion3 }}</label><br>
+				<input type = "radio" name = "p{{ p.id }}" value = "d" id = "p1d"><label for="p1d"> d. {{ p.opcion4 }}</label><br>
 			{% endfor %}
 
 				<br><br>
