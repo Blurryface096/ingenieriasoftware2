@@ -19,7 +19,8 @@ app_name = 'home'
 
 urlpatterns = [
     path('', login_required(home), name='index'),
-    url(r'^trivia$',login_required(views.trivia),name='trivia'),
+    #url(r'^trivia$',login_required(views.trivia),name='trivia'),
+    path('trivia/<int:juego>',login_required(views.trivia),name='trivia'),
     url(r'^logout$',logout_then_login,name='logout'),
     #url(r'^accounts/', include('apps.accounts.urls')),
     #url(r'^polla$',polla,name='polla'),
