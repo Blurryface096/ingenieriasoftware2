@@ -54,7 +54,7 @@
     {% csrf_token %}
     <div class="input-field col s12" align="center">
       {% if formaciones %}
-      <select multiple name="formacion">
+      <select name="formacion">
         {% for formacion in formaciones %}
         <option value={{formacion.id}}>{{formacion.cantidad_defensas}} -
           {{formacion.cantidad_centrocampistas}} -
