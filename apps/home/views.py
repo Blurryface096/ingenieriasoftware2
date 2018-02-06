@@ -209,4 +209,54 @@ def formaciones(request, juego):
         contexto = {'formaciones' : formaciones}
         return render(request, 'equipoideal/formacion.html', contexto)
 
+
+def preguntas(request, cadena):
+    if request.method == 'POST':
+        pregunta_id =  request.POST.__getitem__('pregunta')
+
+
+        cadena=str(pregunta_id)+'&'+str(juego)
+        return redirect('home:trivia_juego', cadena)
+    else:
+
+        Preguntas = Preguntas.objects.all()
+        contexto = {'Preguntas' : pregutnas}
+        return render(request, 'trivia/preguntas.html', contexto)
+
+
+
+
+
+def trivia_juego(request,juego):
+    juego=Juego.objects.get(id=juego)
+    preguntas=Preguntas.objects.all().order_by('id')
+    contexto = {'preguntas' : preguntas}
+
+    if request.method == 'POST':
+        score = 0
+        form = request.POST
+        longitud = len(form)-1
+
+#Logica a corregir
+        for x in range(0, longitud):
+            i=form['a_partido_id={}'.format(x+1)]
+            if i == str(partidos[x].resultado):
+                score = score + 1
+
+
+        user = request.user
+        fecha = datetime.datetime.now()
+        formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
+        participacion = ParticipacionTrivia(usuario=user, score=score, fecha=formatedDate, juego=juego)
+        participacion.save()
+        return redirect('home:resultadostrivia', score)
+    else:
+        return render(request, 'trivia/trivia.html', contexto)
+
+def resultadostrivia(request, score):
+    preguntas = Preguntas.objects.all().order_by('id')
+    contexto = {'score' : score, 'preguntas' : preguntas}
+
+    return render(request, 'polla/resultados.html', contexto)
+
 #def obtener_puntuaciones(request, juego)

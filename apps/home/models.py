@@ -119,6 +119,20 @@ class Polla(models.Model):
     resultado = models.PositiveIntegerField()
     juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
 
+class ParticipacionTrivia(models.Model):
+    juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User,default=None, on_delete=models.CASCADE)
+    score = models.IntegerField()
+    fecha = models.DateTimeField()
+
+
+    def __str__(self):
+        return '{} / {}'.format(self.usuario, self.fecha)
+
+class Trivia(models.Model):
+    participacion = models.ForeignKey(ParticipacionTrivia, on_delete=models.CASCADE)
+    preguntas=models.ManyToManyField(Preguntas)
+    juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
 
 #class Usuario(models.Model):
     #username = models.CharField(max_length=100)
