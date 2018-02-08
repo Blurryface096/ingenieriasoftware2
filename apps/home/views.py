@@ -260,4 +260,5 @@ def resultadostrivia(request, score):
 
     return render(request, 'polla/resultados.html', contexto)
 
+
 #def obtener_puntuaciones(request, juego)
