@@ -1,27 +1,15 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-	<title>Juego Trivia</title>
-	<link rel = "stylesheet" href ="{% static 'Css/estilos.css' %}"  >
-	<script src = "{% static 'js/trivia.js' %}" >
-
-	</script>
-
-	<nav>
-
-											<form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-													{% csrf_token %}
-													<button type="submit">Logout</button>
-											</form>
-
-					</nav>
-</head>
-<body>
-	<div id = "container">
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<br>
+		<div class="container">
+			<form action="{% url 'home:index' %}" method="post">
+					{% csrf_token %}
+					<button class="btn-large waves-effect waves-red blue darken-1 amber lighten-5-text" type="submit">Volver</button>
+			</form>
+		</div>
 		<header>
-			<a href="/home" class = "button">Volver</a>
+			<!--	<a href="/home" class = "button">Volver</a>  -->
 			<h1>Trivia</h1>
 			<p> ¡Pelea por ver quien sabe mas! <strong>El ganador se lleva 100 soles </strong></p>
 		</header>
@@ -33,22 +21,20 @@
 
 			{% for p in preguntas %}
 				<h3> {{ p.id }}.  {{ p.pregunta }}</h3>
-				<input type = "radio" name = "p{{ p.id }}" value = "a" id = "p1a">   a. {{ p.opcion1 }}<br><br>
-				<input type = "radio" name = "p{{ p.id }}" value = "b" id = "p1b">   b. {{ p.opcion2 }}<br><br>
-				<input type = "radio" name = "p{{ p.id }}" value = "c" id = "p1c">   c. {{ p.opcion3 }}<br><br>
-				<input type = "radio" name = "p{{ p.id }}" value = "d" id = "p1d">   d. {{ p.opcion4 }}<br><br>
+				<input type = "radio" name = "p{{ p.id }}" value = "a" id = "p{{ p.id }}a"><label for="p{{ p.id }}a"> a. {{ p.opcion1 }}</label><br>
+				<input type = "radio" name = "p{{ p.id }}" value = "b" id = "p{{ p.id }}b"><label for="p{{ p.id }}b"> b. {{ p.opcion2 }}</label><br>
+				<input type = "radio" name = "p{{ p.id }}" value = "c" id = "p{{ p.id }}c"><label for="p{{ p.id }}c"> c. {{ p.opcion3 }}</label><br>
+				<input type = "radio" name = "p{{ p.id }}" value = "d" id = "p{{ p.id }}d"><label for="p{{ p.id }}d"> d. {{ p.opcion4 }}</label><br>
 			{% endfor %}
 
 				<br><br>
 				<input type = "submit" value = "Submit Answer">
 			</form>
 			<br><br>
-		<a href="/home/trivia" class="button">Borrar respuestas</a>
+		<!-- <a href="/home/trivia" class="button">Borrar respuestas</a> -->
 		</section>
-		<footer>
-			<p>Lima, Peru 2018</p>
-		</footer>
-	</div>
 
-</body>
-</html>
+	{% endblock %}
+	{% block footer %}
+	<h5>Lima, Peru 2018</h5>
+	{% endblock %}
