@@ -53,7 +53,10 @@ class Demarcacion(models.Model):
         return '{}'.format(self.nombre)
 
 
-
+class Balance(modeosl.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    balance=models.FloatField(default=0.0)
+    tarjeta=models.CharField(max_length=20)
 
 class Equipo(models.Model):
     nombre = models.CharField(max_length=100)

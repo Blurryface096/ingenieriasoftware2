@@ -23,10 +23,10 @@
 
 
 <table class='highlight'>
-<thead> <tr><th>Juego Creados</th><th>Creador</th><th>Invitados</th><th>Unirse</th></tr> </thead>
+<thead> <tr><th>Juego Creados</th><th>Tipo de Juego</th><th>Creador</th><th>Invitados</th><th>Unirse</th></tr> </thead>
 <tbody>
 {% for j in juego %}
-  <tr><td>  {{ j.nombre }} ({{ j.tipo }} 1/{{ j.n_jugadores }})   </td> <td> {{ j.organizador }} </td> <td>
+  <tr><td>  {{ j.nombre }} ( 1/{{ j.n_jugadores }})   </td><td>{{ j.tipo }} </td> <td> {{ j.organizador }} </td> <td>
 {% for i in j.invitados.all %}
     {{ i.username }} ,
 {% endfor %}
