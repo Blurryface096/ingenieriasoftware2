@@ -22,10 +22,7 @@ def home(request):
     juego=Juego.objects.all()
     return render(request, 'home/home.html', { 'juego': juego, 'user':nombre})
 
-@login_required(login_url='')
-def trivia(request):
-    preguntas = Preguntas.objects.all()
-    return render(request, 'home/trivia.html', { 'preguntas': preguntas})
+
 
 def crear_juego(request):
     if request.method=='POST':
@@ -112,6 +109,7 @@ def jugadores(request, cadena):
 
 
         total = round((ataque_medio + defensa_media + velocidad_media) / 3, 3)
+
 
 
         contexto = {'ataque_medio' : ataque_medio,
@@ -249,8 +247,8 @@ def trivia_juego(request,juego):
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
         participacion = ParticipacionTrivia(usuario=user, score=score, fecha=formatedDate, juego=juego)
         participacion.save()
-        return redirect('home:index')
-        #return redirect('home:resultadostrivia', score)
+
+        return redirect('home:resultadostrivia', score)
     else:
         return render(request, 'home/trivia.html', contexto)
 
@@ -258,7 +256,7 @@ def resultadostrivia(request, score):
     preguntas = Preguntas.objects.all().order_by('id')
     contexto = {'score' : score, 'preguntas' : preguntas}
 
-    return render(request, 'polla/resultados.html', contexto)
+    return render(request, 'home/resultadostrivia.html', contexto)
 
 
 #def obtener_puntuaciones(request, juego)

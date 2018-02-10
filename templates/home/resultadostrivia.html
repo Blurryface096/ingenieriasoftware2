@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+{% block title %} RESULTADOS {% endblock %}
+{% block content %}
+<div class="container">
+  <div class="container">
+              <form action="{% url 'home:index' %}" method="post">
+                  {% csrf_token %}
+                  <button class="btn-large waves-effect waves-red blue darken-1 amber lighten-5-text" type="submit">Volver</button>
+              </form>
+                </div>
+
+
+</div>
+<div class="container">
+  <div align="center">
+    <h1>Su puntaje es: {{score}} de {{ preguntas|length }}</h1>
+  </div>
+  <br>
+  <h3>Resultados de trivia: </h3>
+  <table class="table">
+    <thead>
+      {% if preguntas %}
+      {% for pregunta in preguntas %}
+      <th>{{ pregunta.id }}Equipo Local</th>
+
+      {% endfor %}
+      {% endif %}
+    </thead>
+    <tbody>
+      {% if preguntas %}
+      {% for pregunta in preguntas %}
+      <tr>
+        <td>{{ pregunta.nombre }}</td>
+
+
+
+      </tr>
+      {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
