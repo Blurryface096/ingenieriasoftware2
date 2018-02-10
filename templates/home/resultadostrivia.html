@@ -21,13 +21,13 @@
     <thead>
       {% if preguntas %}
       {% for pregunta in preguntas %}
-      <th>{{ pregunta.id }}Equipo Local</th>
+      <th>{{ pregunta.id }}</th>
 
       {% endfor %}
       {% endif %}
     </thead>
     <tbody>
-      {% if preguntas %}
+
       {% for pregunta in preguntas %}
       <tr>
         <td>{{ pregunta.nombre }}</td>
@@ -36,7 +36,7 @@
 
       </tr>
       {% endfor %}
-      {% endif %}
+      
     </tbody>
   </table>
 </div>
