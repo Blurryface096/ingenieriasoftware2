@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from apps.home import views
-from apps.home.views import home,crear_juego, entrar_juego,trivia
+from apps.home.views import home,crear_juego, entrar_juego,trivia,resultadostrivia
 
 from apps.home.views import polla
 from apps.home.views import jugadores
@@ -36,5 +36,5 @@ urlpatterns = [
     path('jugadores/<str:cadena>', jugadores, name='jugadores'),
     #path('polla/<str:username>/', polla, name='polla'),
     path('resultados/<int:score>/', resultados, name='resultados'),
-    path('resultadostrivia/<int:score>/', resultados, name='resultadostrivia'),
+    path('resultadostrivia/<int:score>/', resultadostrivia, name='resultadostrivia'),
 ]
