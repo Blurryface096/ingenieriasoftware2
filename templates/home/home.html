@@ -9,7 +9,7 @@
 <div>
 <table class="table bordered"> <tbody> <tr><td> Bienvenido, </td></tr>
 
-  <tr><td style="font-size: 20px;" class="text-indigo darken-4 z-depth-4"> {{ user }}</td></tr>
+  <tr><td style="font-size: 20px;" class="text-indigo darken-4 z-depth-4"> {{ BalanceMonetario.objects.get(id=user.id) }}</td></tr>
   </tbody>
 
 
@@ -26,11 +26,11 @@
 
      </div>
   </div>
-  <div class="z-depth-4" width=5.0vw>
+  <div class="z-depth-4" style="width:35%">
   <div>
     <table class="table bordered"> <tbody> <tr><td> Saldo Disponible </td></tr>
 
-      <tr><td style="font-size: 2.0vw;" class="green accent-3"> 400.34</td></tr>
+      <tr><td style="font-size: 2.0vw;" class="text-green accent-3"> 400.34</td></tr>
       </tbody>
 
 
