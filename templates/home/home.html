@@ -6,6 +6,7 @@
 {% block content %}
 
 <div id="divCabecera">
+<div>
 <table class="table bordered"> <tbody> <tr><td> Bienvenido, </td></tr>
 
   <tr><td style="font-size: 20px;" class="text-indigo darken-4 z-depth-4"> {{ user }}</td></tr>
@@ -16,6 +17,13 @@
 
 
  </table>
+   </div>
+   <div>
+     <div>
+       <button name="balance" class="waves-effect waves-light red" type="submit"><a class="white-text" href={% url 'home:modificar_balance' %}>Estado de Cuenta</a></button>
+     </div>
+
+     </div>
   </div>
 
 <br>

@@ -60,7 +60,12 @@ class BalanceMonetario(models.Model):
     def __str__(self):
         return '{}:{}'.format(self.usuario.user,self.balance)
 
+class BalanceMonetarioForm(ModelForm):
+    class Meta:
+        model = BalanceMonetario
+        fields = ['balance', 'tarjeta']
 
+        
 class Equipo(models.Model):
     nombre = models.CharField(max_length=100)
     pais = models.CharField(max_length=100)

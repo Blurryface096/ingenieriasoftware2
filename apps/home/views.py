@@ -222,6 +222,21 @@ def preguntas(request, cadena):
         return render(request, 'trivia/preguntas.html', contexto)
 
 
+def modificar_balance(request):
+    if request.method=='POST':
+        form=BalanceMonetarioForm(request.POST,request.FILES)
+        if form.is_valid():
+            instance=form.save(commit=False)
+            instance.usuario=request.user
+            instance=form.save(commit=True)
+            instance.save()
+            namespace='home:index'
+
+            return redirect(namespace, instance.id)
+
+    else:
+        form=BalanceMonetarioForm()
+    return render(request, 'balance/cuenta.html', {'form':form})
 
 
 

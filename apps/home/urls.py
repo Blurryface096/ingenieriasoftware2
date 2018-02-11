@@ -31,7 +31,7 @@ urlpatterns = [
     #url(r'^equipo$',formaciones,name='equipo'),
     url(r'^crear_juego$',crear_juego,name='crear_juego'),
     #url(r'^entrar_juego/<int:juego>$',entrar_juego,name='entrar_juego'),
-
+    path('estado_cuenta',modificar_balance,name='modificar_balance'),
     path('entrar_juego/<int:juego>/',entrar_juego,name='entrar_juego'),
     path('jugadores/<str:cadena>', jugadores, name='jugadores'),
     #path('polla/<str:username>/', polla, name='polla'),

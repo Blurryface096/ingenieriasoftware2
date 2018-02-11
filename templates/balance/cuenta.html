@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ingenieria de software 2</title>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">-->
+<!--   <link rel = "stylesheet" href ="{% static 'Css/estilos.css' %}"  >-->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
+
+
+
+                <div class="container">
+                            <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                {% csrf_token %}
+                                <button class="btn red" type="submit">Logout</button>
+                            </form>
+                              </div>
+
+
+
+
+  </head>
+  <body>
+    <div class="container">
+<form method="post" action="{% url 'home:modificar_balance' %}">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        {{ form.as_p }}
+      </div>
+      <div align="center">
+        <button class="btn" type="submit">Modificar</button>
+      </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+  </div>
+</form>
+</div>
+</body>
+</html>
