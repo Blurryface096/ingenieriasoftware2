@@ -232,7 +232,7 @@ def modificar_balance(request):
             instance.save()
 
 
-            return redirect(request,'home:index')
+            return redirect('home:index')
 
     else:
         form=BalanceMonetarioForm()
