@@ -6,34 +6,57 @@
 {% block content %}
 
 <div id="divCabecera">
-<table class="table bordered"> <tbody> <tr><td> Bienvenido, </td></tr>
-
-  <tr><td style="font-size: 20px;" class="text-indigo darken-4 z-depth-4"> {{ user }}</td></tr>
-  </tbody>
-
-
-
-
-
- </table>
-  </div>
-
+  <h3>Bienvenido: <b>{{ user }}</b></h3>
+</div>
 <br>
-<br>
-
-
 <table class='highlight'>
-<thead> <tr><th>Juego Creados</th><th>Tipo de Juego</th><th>Creador</th><th>Invitados</th><th>Unirse</th></tr> </thead>
-<tbody>
-{% for j in juego %}
-  <tr><td>  {{ j.nombre }} ( 1/{{ j.n_jugadores }})   </td><td>{{ j.tipo }} </td> <td> {{ j.organizador }} </td> <td>
-{% for i in j.invitados.all %}
-    {{ i.username }} ,
-{% endfor %}
-  </td>
-<td>   <button name="juego" class="waves-effect waves-light purple darken-3" type="submit"><a class="white-text" href={% url 'home:entrar_juego' juego=j.id %}>ENTRAR</a></button>   </td></tr>
-{% endfor %}
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Tipo de Juego</th>
+      <th>Host</th>
+      <th>Invitados</th>
+      <th>Unirse</th>
+      <th>Puntuaciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for j in juego %}
+    <tr>
 
+      <td>{{ j.nombre }} ( {{ j.n }}/{{ j.n_jugadores }})</td>
+      <td>{{ j.tipo }} </td>
+      <td> {{ j.organizador }} </td>
+      <td>
+        {% for i in j.invitados.all %}
+          {{ i.username }} ,
+        {% endfor %}
+      </td>
+      {% if j.n < j.n_jugadores %}
+      <td>
+        <button name="juego" class="waves-effect waves-light purple darken-3"
+        type="submit">
+          <a class="white-text"
+            href={% url 'home:entrar_juego' juego=j.id %}>
+            Entrar
+          </a>
+        </button>
+      </td>
+      {% else %}
+      <td>
+        Cerrado
+      </td>
+      {% endif %}
+      <td> <button type="button"
+        class="waves-effect waves-light blue darken-3">
+          <a class="white-text"
+            href={% url 'home:puntuaciones' id_juego=j.id %}>
+            Posiciones
+          </a>
+        </button>
+      </td>
+    </tr>
+    {% endfor %}
   </tbody>
 </table>
 <br>

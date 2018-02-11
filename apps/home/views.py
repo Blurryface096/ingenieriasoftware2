@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from apps.home.models import Preguntas
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, User
 from apps.home.models import JuegoForm
 from apps.home.models import Juego
 from apps.home.models import Jugador
@@ -13,16 +13,17 @@ from apps.home.models import ParticipacionPolla,ParticipacionEquipoIdeal,Partici
 from django.contrib.auth.decorators import login_required
 import datetime
 
+
 # Create your views here.
 
 @login_required(login_url='')
 def home(request):
     nombre=request.user.username
-
-    juego=Juego.objects.all()
-    return render(request, 'home/home.html', { 'juego': juego, 'user':nombre})
-
-
+    juego=Juego.objects.filter(invitados=request.user)
+    juego2=Juego.objects.filter(privacidad='Publico')
+    print(juego2)
+    juego3=list(set(list(juego)+list(juego2)))
+    return render(request, 'home/home.html', { 'juego': juego3, 'user':nombre})
 
 def crear_juego(request):
     if request.method=='POST':
@@ -30,6 +31,8 @@ def crear_juego(request):
         if form.is_valid():
             instance=form.save(commit=False)
             instance.organizador=request.user
+            instance.estado='Abierto'
+            instance.n=0
             instance=form.save(commit=True)
 
             #for User in instance.invitados['invitados']:
@@ -120,8 +123,13 @@ def jugadores(request, cadena):
         fecha = datetime.datetime.now()
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
         participacion = ParticipacionEquipoIdeal(usuario=user, ataque=ataque_medio, defensa=defensa_media,
-        velocidad=velocidad_media,total=total, fecha=formatedDate, juego=juego)
+        velocidad=velocidad_media, score=total, fecha=formatedDate, juego=juego)
         participacion.save()
+        juego.n += 1
+        if juego.n >= juego.n_jugadores:
+            juego.estado='Cerrado'
+
+        juego.save()
         return render(request, 'equipoideal/resultados.html', contexto)
     else:
         formacion = Formaciones.objects.get(id=formacion_id)
@@ -184,6 +192,12 @@ def polla(request, juego):
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
         participacion = ParticipacionPolla(usuario=user, score=score, fecha=formatedDate, juego=juego)
         participacion.save()
+        juego.n += 1
+
+        if juego.n >= juego.n_jugadores:
+            juego.estado='Cerrado'
+
+        juego.save()
         return redirect('home:resultados', score)
     else:
         return render(request, 'polla/polla.html', contexto)
@@ -247,7 +261,11 @@ def trivia_juego(request,juego):
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
         participacion = ParticipacionTrivia(usuario=user, score=score, fecha=formatedDate, juego=juego)
         participacion.save()
+        juego.n += 1
+        if juego.n >= juego.n_jugadores:
+            juego.estado='Cerrado'
 
+        juego.save()
         return redirect('home:resultadostrivia', score)
     else:
         return render(request, 'home/trivia.html', contexto)
@@ -255,8 +273,20 @@ def trivia_juego(request,juego):
 def resultadostrivia(request, score):
     preguntas = Preguntas.objects.all().order_by('id')
     contexto = {'score' : score, 'preguntas' : preguntas}
-
     return render(request, 'home/resultadostrivia.html', contexto)
 
-
 #def obtener_puntuaciones(request, juego)
+def puntuaciones(request, id_juego):
+    if request.method == 'GET':
+        juego = Juego.objects.get(id=id_juego)
+        if juego.tipo == 'Polla':
+            participaciones = ParticipacionPolla.objects.filter(juego=juego).order_by('-score')
+
+        elif juego.tipo == 'Equipo':
+            participaciones = ParticipacionEquipoIdeal.objects.filter(juego=juego).order_by('-score')
+        else:
+            participaciones = ParticipacionTrivia.objects.filter(juego=juego).order_by('-score')
+        contexto = {'participaciones' : participaciones, 'titulo' : juego.nombre}
+        return render(request, 'home/posiciones.html', contexto)
+    else:
+        pass

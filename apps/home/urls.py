@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from apps.home import views
-from apps.home.views import home,crear_juego, entrar_juego,trivia_juego,resultadostrivia
+from apps.home.views import home,crear_juego, entrar_juego,trivia_juego,resultadostrivia, puntuaciones
 
 from apps.home.views import polla
 from apps.home.views import jugadores
@@ -33,8 +33,11 @@ urlpatterns = [
     #url(r'^entrar_juego/<int:juego>$',entrar_juego,name='entrar_juego'),
 
     path('entrar_juego/<int:juego>/',entrar_juego,name='entrar_juego'),
+
     path('jugadores/<str:cadena>', jugadores, name='jugadores'),
     #path('polla/<str:username>/', polla, name='polla'),
     path('resultados/<int:score>/', resultados, name='resultados'),
     path('resultadostrivia/<int:score>/', resultadostrivia, name='resultadostrivia'),
+
+    path('puntuaciones/<int:id_juego>/', puntuaciones, name='puntuaciones'),
 ]

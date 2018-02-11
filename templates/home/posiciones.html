@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+{% block title %} Posiciones{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="container">
+    <form action="{% url 'home:index' %}" method="post">
+      {% csrf_token %}
+      <button class="btn-large waves-effect waves-red blue darken-1 amber lighten-5-text" type="submit">Volver</button>
+    </form>
+  </div>
+  <h3>Titulo juego: {{ titulo }}</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Posicion</th>
+        <th>Usuario</th>
+        <th>Puntuacion</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for participacion in participaciones %}
+      <tr>
+        <th>{{ forloop.counter }}</th>
+        <td>{{ participacion.usuario }}</td>
+        <td>{{ participacion.score }}</td>
+        <td>{{ participacion.fecha }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+{% endblock %}

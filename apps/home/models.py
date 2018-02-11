@@ -10,14 +10,25 @@ TIPO_JUEGOS = (
     ('Equipo','Equipo Ideal'),
 )
 
-class Juego(models.Model):
+PRIVACIDAD = {
+    ('Publico', 'Publico'),
+    ('Privado', 'Privado'),
+}
 
+ESTADO = {
+    ('Abierto', 'Abierto'),
+    ('Cerrado', 'Cerrado'),
+}
+class Juego(models.Model):
     nombre = models.CharField(max_length=25)
     n_jugadores=models.PositiveIntegerField()
+    n=models.PositiveIntegerField(blank=True, null=True)
     #tipo=ModelForm.ModelChoiceField(queryset=TIPO_JUEGOS, empty_label='Trivia')
     tipo = models.CharField(max_length=15, choices=TIPO_JUEGOS)
     organizador=models.ForeignKey(User,default=None, related_name='user', on_delete=models.CASCADE)
     invitados=models.ManyToManyField(User)
+    privacidad=models.CharField(max_length=15, choices=PRIVACIDAD, blank=True, null=True)
+    estado=models.CharField(max_length=15, choices=ESTADO, blank=True, null=True)
 
     def __str__(self):
         return self.nombre
@@ -25,7 +36,7 @@ class Juego(models.Model):
 class JuegoForm(ModelForm):
     class Meta:
         model=Juego
-        fields=['nombre', 'n_jugadores','tipo','invitados']
+        fields=['nombre', 'n_jugadores','tipo','invitados','privacidad']
 
 
 class CrearForm(ModelForm):
@@ -94,7 +105,7 @@ class ParticipacionEquipoIdeal(models.Model):
     ataque = models.FloatField()
     defensa = models.FloatField()
     velocidad = models.FloatField()
-    total = models.FloatField()
+    score = models.FloatField()
     fecha = models.DateTimeField()
     juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
 
