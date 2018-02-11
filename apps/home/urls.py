@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from apps.home import views
-from apps.home.views import home,crear_juego, entrar_juego,trivia_juego,resultadostrivia
+from apps.home.views import home,crear_juego, entrar_juego,trivia_juego,resultadostrivia,modificar_balance
 
 from apps.home.views import polla
 from apps.home.views import jugadores
