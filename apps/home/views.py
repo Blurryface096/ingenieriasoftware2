@@ -228,7 +228,7 @@ def modificar_balance(request):
         if form.is_valid():
             instance=form.save(commit=False)
             instance.usuario=request.user
-            instance=form.save(commit=True,force_update=True)
+            instance=form.save(force_update=True,commit=True)
             instance.save()
 
 

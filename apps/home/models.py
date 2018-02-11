@@ -54,7 +54,7 @@ class Demarcacion(models.Model):
 
 
 class BalanceMonetario(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE,primary_key=True)
     balance=models.FloatField(default=0.0)
     tarjeta=models.CharField(max_length=20)
     def __str__(self):
@@ -65,7 +65,7 @@ class BalanceMonetarioForm(ModelForm):
         model = BalanceMonetario
         fields = ['balance', 'tarjeta']
 
-        
+
 class Equipo(models.Model):
     nombre = models.CharField(max_length=100)
     pais = models.CharField(max_length=100)
