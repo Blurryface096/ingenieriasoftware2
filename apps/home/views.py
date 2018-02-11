@@ -230,9 +230,9 @@ def modificar_balance(request):
             instance.usuario=request.user
             instance=form.save(commit=True)
             instance.save()
-            namespace='home:index'
 
-            return redirect(namespace, instance.id)
+
+            return redirect(request,'home:index')
 
     else:
         form=BalanceMonetarioForm()
