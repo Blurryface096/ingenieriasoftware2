@@ -18,7 +18,7 @@ import datetime
 @login_required(login_url='')
 def home(request):
     nombre=request.user.username
-    balance=BalanceMonetario.objects.get(usuario=request.user.username).balance
+    balance=BalanceMonetario.objects.get(usuario=request.user.id).balance
     juego=Juego.objects.all()
     return render(request, 'home/home.html', { 'juego': juego, 'user':nombre,'balance':balance})
 
