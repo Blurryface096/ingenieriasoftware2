@@ -58,7 +58,7 @@ class BalanceMonetario(models.Model):
     balance=models.FloatField(default=0.0)
     tarjeta=models.CharField(max_length=20)
     def __str__(self):
-        return '{}:{}/{}'.format(self.usuario,self.balance)
+        return '{}:{}'.format(self.usuario,self.balance)
 
 class BalanceMonetarioForm(ModelForm):
     class Meta:
