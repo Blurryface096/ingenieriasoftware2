@@ -278,7 +278,7 @@ def trivia_juego(request,juego):
 
 
         for x in preguntas:
-            i=form['p{}'.format(x.id+1)]
+            i=form['p{}'.format(x.id)]
             if i == str(x.respuesta):
                 score = score + 1
 
