@@ -121,7 +121,8 @@ def jugadores(request, cadena):
         contexto = {'ataque_medio' : ataque_medio,
         'defensa_media' : defensa_media,
         'velocidad_media' : velocidad_media,
-        'total' : total }
+        'total' : total,
+        'juego':juego }
         user = request.user
         fecha = datetime.datetime.now()
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
@@ -133,6 +134,7 @@ def jugadores(request, cadena):
         if juego.n >= juego.n_jugadores:
             juego.estado='Cerrado'
         juego.save()
+
         return render(request, 'equipoideal/resultados.html', contexto)
     else:
         formacion = Formaciones.objects.get(id=formacion_id)
@@ -199,13 +201,20 @@ def polla(request, juego):
         if juego.n >= juego.n_jugadores:
             juego.estado='Cerrado'
         juego.save()
-        return redirect('home:resultados', score)
+        cadena=str(score)+'&'+str(juego.id)
+        return redirect('home:resultados', cadena)
     else:
         return render(request, 'polla/polla.html', contexto)
 
-def resultados(request, score):
+def resultados(request, cadena):
+    preguntas = Preguntas.objects.all().order_by('id')
+    division=cadena.split('&')
+
+    score=int(division[0])
+    jug_id=int(division[1])
+    juego=Juego.objects.get(id=jug_id)
     partidos = Partido.objects.all().order_by('id')
-    contexto = {'score' : score, 'partidos' : partidos}
+    contexto = {'score' : score, 'partidos' : partidos,'juego':juego}
 
     return render(request, 'polla/resultados.html', contexto)
 
