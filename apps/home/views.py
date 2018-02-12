@@ -222,7 +222,7 @@ def polla(request, juego):
         if juego.n >= juego.n_jugadores:
             participaciones=ParticipacionPolla.objects.filter(juego=juego)
             max=0
-
+            ganadores=[]
             for i in participaciones:
                 if i.score>max:
                     max=i.score
