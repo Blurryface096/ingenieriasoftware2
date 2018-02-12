@@ -56,7 +56,7 @@ def crear_juego(request):
                 return redirect('home:index')
 
             if request.user!=instance.invitados:
-                instance.invitados.append(request.user)
+                instance.invitados.add(request.user)
             instance.save()
             #for User in instance.invitados['invitados']:
             #    instance.invitados.add(User)
