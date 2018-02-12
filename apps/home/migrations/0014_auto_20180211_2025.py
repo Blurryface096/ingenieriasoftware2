@@ -10,19 +10,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='juego',
-            name='estado',
-            field=models.CharField(blank=True, choices=[('Abierto', 'Abierto'), ('Cerrado', 'Cerrado')], max_length=15, null=True),
-        ),
-        migrations.AddField(
-            model_name='juego',
-            name='n',
-            field=models.PositiveIntegerField(blank=True, null=True),
-        ),
-        migrations.AddField(
-            model_name='juego',
-            name='privacidad',
-            field=models.CharField(blank=True, choices=[('Privado', 'Privado'), ('Publico', 'Publico')], max_length=15, null=True),
-        ),
+    
     ]

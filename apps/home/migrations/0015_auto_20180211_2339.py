@@ -10,9 +10,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='juego',
-            name='estado',
-            field=models.CharField(blank=True, choices=[('Cerrado', 'Cerrado'), ('Abierto', 'Abierto')], max_length=15, null=True),
-        ),
+        
     ]

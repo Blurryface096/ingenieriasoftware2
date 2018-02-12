@@ -68,7 +68,7 @@ def entrar_juego(request,juego):
     id_jug=juego
     #tipo_jug=tipo
     tipo_jug=Juego.objects.get(id=id_jug).tipo.lower()
-    juego=Juego.objects.get(id=jug_id)
+    juego=Juego.objects.get(id=id_jug)
     print(tipo_jug)
     namespace='home:polla'
 
