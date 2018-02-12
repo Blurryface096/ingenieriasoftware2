@@ -11,6 +11,8 @@ def signup_view(request):
          if form.is_valid():
              user = form.save()
              #  log the user in
+             balancemonetario = BalanceMonetario(usuario=user, balance=0,tarjeta='0')
+             balancemonetario.save()
              login(request, user)
              return redirect('accounts:login')
     else:

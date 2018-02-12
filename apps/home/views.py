@@ -44,8 +44,8 @@ def crear_juego(request):
             instance.pozo=instance.costo*instance.n_jugadores
 
             objetobalance=BalanceMonetario.objects.get(usuario=request.user)
-            if objetobalance and objetobalance.balance>juego.costo:
-                objetobalance.balance=objetobalance.balance-juego.costo
+            if objetobalance and objetobalance.balance>instance.costo:
+                objetobalance.balance=objetobalance.balance-instance.costo
                 objetobalance.save()
                 instance=form.save(commit=True)
                 instance.save()
@@ -220,6 +220,19 @@ def polla(request, juego):
         participacion.save()
         juego.n += 1
         if juego.n >= juego.n_jugadores:
+            participacinones=ParticipacionPolla.objects.filter(juego=juego)
+            max=0
+
+            for i in participaciones:
+                if i.score>max:
+                    max=i.score
+            for i in participaciones:
+                if i.score==max:
+                    ganadores.append(i.usuario)
+            for j in ganadores:
+                balancemonetario=BalanceMonetario.objects.get(usuario=j)
+                balancemonetario.balance=balancemonetario.balance+juego.pozo/len(ganadores)
+                balancemonetario.save()
             juego.estado='Cerrado'
         juego.save()
         cadena=str(score)+'&'+str(juego.id)
@@ -299,7 +312,7 @@ def modificar_balance(request):
 def trivia_juego(request,juego):
     juego=Juego.objects.get(id=juego)
     preguntas=Preguntas.objects.all().order_by('id')
-    contexto = {'preguntas' : preguntas}
+    contexto = {'preguntas' : preguntas,'juego':juego}
 
     if request.method == 'POST':
         score = 0
