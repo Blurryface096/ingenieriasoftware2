@@ -12,6 +12,7 @@ from apps.home.models import Formaciones
 from apps.home.models import ParticipacionPolla,ParticipacionEquipoIdeal,ParticipacionTrivia,BalanceMonetarioForm,BalanceMonetario
 from django.contrib.auth.decorators import login_required
 import datetime
+import random
 
 # Create your views here.
 
@@ -19,8 +20,10 @@ import datetime
 def home(request):
     nombre=request.user.username
     balance=BalanceMonetario.objects.get(usuario=request.user).balance
-    juego=Juego.objects.all()
-    return render(request, 'home/home.html', { 'juego': juego, 'user':nombre,'balance':balance})
+    juego=Juego.objects.filter(invitados=request.user)
+    juego2=Juego.objects.filter(privacidad='Publico')
+    listajuego=list(set(list(juego)+list(juego2)))
+    return render(request, 'home/home.html', { 'juego': listajuego, 'user':nombre,'balance':balance})
 
 
 
@@ -30,6 +33,8 @@ def crear_juego(request):
         if form.is_valid():
             instance=form.save(commit=False)
             instance.organizador=request.user
+            instance.estado='Abierto'
+            instance.n=0
             instance=form.save(commit=True)
 
             #for User in instance.invitados['invitados']:
@@ -122,6 +127,11 @@ def jugadores(request, cadena):
         participacion = ParticipacionEquipoIdeal(usuario=user, ataque=ataque_medio, defensa=defensa_media,
         velocidad=velocidad_media,total=total, fecha=formatedDate, juego=juego)
         participacion.save()
+
+        juego.n += 1
+        if juego.n >= juego.n_jugadores:
+            juego.estado='Cerrado'
+        juego.save()
         return render(request, 'equipoideal/resultados.html', contexto)
     else:
         formacion = Formaciones.objects.get(id=formacion_id)
@@ -184,6 +194,10 @@ def polla(request, juego):
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
         participacion = ParticipacionPolla(usuario=user, score=score, fecha=formatedDate, juego=juego)
         participacion.save()
+        juego.n += 1
+        if juego.n >= juego.n_jugadores:
+            juego.estado='Cerrado'
+        juego.save()
         return redirect('home:resultados', score)
     else:
         return render(request, 'polla/polla.html', contexto)
@@ -217,8 +231,19 @@ def preguntas(request, cadena):
         return redirect('home:trivia_juego', cadena)
     else:
 
-        Preguntas = Preguntas.objects.all()
-        contexto = {'Preguntas' : pregutnas}
+        listapreg = Preguntas.objects.all()
+        if len(listapreg)>10:
+            while len(preguntas)<10:
+                for i in listapreg:
+                    num=random.randrange(1,3)
+                    if num==2:
+                        preguntas.append(i)
+                        listapreg.remove(i)
+                    if len(preguntas)==10:
+                        break
+        else:
+            preguntas=listapreg
+        contexto = {'Preguntas' : preguntas}
         return render(request, 'trivia/preguntas.html', contexto)
 
 
@@ -262,6 +287,10 @@ def trivia_juego(request,juego):
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
         participacion = ParticipacionTrivia(usuario=user, score=score, fecha=formatedDate, juego=juego)
         participacion.save()
+        juego.n += 1
+        if juego.n >= juego.n_jugadores:
+            juego.estado='Cerrado'
+        juego.save()
 
         return redirect('home:resultadostrivia', score)
     else:
@@ -274,4 +303,17 @@ def resultadostrivia(request, score):
     return render(request, 'home/resultadostrivia.html', contexto)
 
 
-#def obtener_puntuaciones(request, juego)
+def puntuaciones(request, id_juego):
+    if request.method == 'GET':
+        juego = Juego.objects.get(id=id_juego)
+        if juego.tipo == 'Polla':
+            participaciones = ParticipacionPolla.objects.filter(juego=juego).order_by('-score')
+
+        elif juego.tipo == 'Equipo':
+            participaciones = ParticipacionEquipoIdeal.objects.filter(juego=juego).order_by('-score')
+        else:
+            participaciones = ParticipacionTrivia.objects.filter(juego=juego).order_by('-score')
+        contexto = {'participaciones' : participaciones, 'titulo' : juego.nombre}
+        return render(request, 'home/posiciones.html', contexto)
+    else:
+        pass

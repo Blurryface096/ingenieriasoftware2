@@ -10,14 +10,26 @@ TIPO_JUEGOS = (
     ('Equipo','Equipo Ideal'),
 )
 
+PRIVACIDAD = {
+    ('Publico', 'Publico'),
+    ('Privado', 'Privado'),
+}
+
+ESTADO = {
+    ('Abierto', 'Abierto'),
+    ('Cerrado', 'Cerrado'),
+}
 class Juego(models.Model):
 
     nombre = models.CharField(max_length=25)
     n_jugadores=models.PositiveIntegerField()
+    n=models.PositiveIntegerField(blank=True, null=True)
     #tipo=ModelForm.ModelChoiceField(queryset=TIPO_JUEGOS, empty_label='Trivia')
     tipo = models.CharField(max_length=15, choices=TIPO_JUEGOS)
     organizador=models.ForeignKey(User,default=None, related_name='user', on_delete=models.CASCADE)
     invitados=models.ManyToManyField(User)
+    privacidad=models.CharField(max_length=15, choices=PRIVACIDAD, blank=True, null=True)
+    estado=models.CharField(max_length=15, choices=ESTADO, blank=True, null=True)
 
     def __str__(self):
         return self.nombre
