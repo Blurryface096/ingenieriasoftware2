@@ -37,7 +37,7 @@ class Juego(models.Model):
 class JuegoForm(ModelForm):
     class Meta:
         model=Juego
-        fields=['nombre', 'n_jugadores','tipo','invitados']
+        fields=['nombre', 'n_jugadores','tipo','privacidad','invitados']
 
 
 class CrearForm(ModelForm):
