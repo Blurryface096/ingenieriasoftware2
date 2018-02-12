@@ -44,7 +44,7 @@ def crear_juego(request):
             instance.pozo=instance.costo*instance.n_jugadores
 
             objetobalance=BalanceMonetario.objects.get(usuario=request.user)
-            if objetobalance and objetobalance.balance>instance.costo:
+            if objetobalance and objetobalance.balance>=instance.costo:
                 objetobalance.balance=objetobalance.balance-instance.costo
                 objetobalance.save()
                 instance=form.save(commit=True)
@@ -94,7 +94,7 @@ def entrar_juego(request,juego):
     else:
         namespace='home:polla'
     objetobalance=BalanceMonetario.objects.get(usuario=request.user)
-    if objetobalance and objetobalance.balance>juego.costo:
+    if objetobalance and objetobalance.balance>=juego.costo:
         objetobalance.balance=objetobalance.balance-juego.costo
         objetobalance.save()
         return redirect(namespace, id_jug)
