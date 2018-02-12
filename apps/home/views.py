@@ -87,7 +87,7 @@ def entrar_juego(request,juego):
         BalanceMonetario.objects.get(usuario=request.user).save()
         return redirect(namespace, id_jug)
     else:
-        return redirect(home:index)
+        return redirect('home:index')
 
 def jugadores(request, cadena):
     division=cadena.split('&')
