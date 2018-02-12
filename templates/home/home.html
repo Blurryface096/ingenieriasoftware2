@@ -26,7 +26,8 @@
 
      </div>
   </div>
-  <div class="z-depth-4" style="width:35%">
+  <div style="overflow:hidden;">
+  <div class="z-depth-4" style="width:35%;float:left;">
   <div>
     <table class="table bordered"> <tbody> <tr><td> Saldo Disponible </td></tr>
 
@@ -39,16 +40,19 @@
 
      </table>
        </div>
-       <div style="overflow:hidden;">
-     <div style="float:left;">
+
+     <div >
        <button name="balance" class="waves-effect waves-light red" type="submit"><a class="white-text" href={% url 'home:modificar_balance' %}>Estado de Cuenta</a></button>
-     </div>
-     <div style="float:left;">
-       <button name="balance" class="waves-effect waves-light red" type="submit"><a class="white-text" href={% url 'home:modificar_balance' %}>Estado de Cuenta</a></button>
-     </div>
+
 
      </div>
-  </div>
+
+
+</div>
+<div style="float:right;">
+  <button name="balance" class="waves-effect waves-light red" type="submit"><a class="white-text" href={% url 'home:modificar_balance' %}>Estado de Cuenta</a></button>
+</div>
+</div>
 <br>
 <br>
 
