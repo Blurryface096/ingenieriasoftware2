@@ -157,7 +157,7 @@ def jugadores(request, cadena):
             max=0
             ganadores=[]
             for i in participaciones:
-                if i.total>max:
+                if i.score>max:
                     max=i.score
             for i in participaciones:
                 if i.score==max:
