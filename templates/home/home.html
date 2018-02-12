@@ -53,7 +53,7 @@
 {% for j in juego %}
   <tr><td>  {{ j.nombre }} ( 1/{{ j.n_jugadores }})   </td><td>{{ j.tipo }} </td> <td> {{ j.organizador }} </td> <td>
 {% for i in j.invitados.all %}
-    {% k=k+1 %}
+    { k=k+1 }
     {% if k==len(j.invitados.all) %}
       {{ i.username }}
     {% else %}
