@@ -83,7 +83,7 @@ def entrar_juego(request,juego):
         namespace='home:polla'
     objetobalance=BalanceMonetario.objects.get(usuario=request.user)
     if objetobalance.balance>juego.costo:
-        objetobalance.balance=BalanceMonetario.objetobalance.balance-juego.costo
+        objetobalance.balance=objetobalance.balance-juego.costo
         objetobalance.save()
         return redirect(namespace, id_jug)
     else:
