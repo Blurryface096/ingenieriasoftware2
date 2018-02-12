@@ -24,7 +24,7 @@ def home(request):
     juego=Juego.objects.filter(invitados=request.user)
     juego2=Juego.objects.filter(privacidad='Publico')
     listajuego=list(set(list(juego)+list(juego2)))
-    return render(request, 'home/home.html', { 'juego': listajuego, 'user':nombre,'balance':balance},'k':k)
+    return render(request, 'home/home.html', { 'juego': listajuego, 'user':nombre,'balance':balance,'k':k})
 
 
 
