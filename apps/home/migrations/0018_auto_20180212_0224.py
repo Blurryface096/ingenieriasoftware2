@@ -10,10 +10,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RenameField(
+        migrations.RemoveField(
             model_name='participacionequipoideal',
-            old_name='total',
-            new_name='score',
+            name='total',
         ),
 
     ]
