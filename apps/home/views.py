@@ -41,12 +41,16 @@ def crear_juego(request):
             instance.organizador=request.user
             instance.estado='Abierto'
             instance.n=0
+            if request.user not in instance.invitados:
+                instance.invitados.append(request.user)
+
             instance.pozo=instance.costo*instance.n_jugadores
 
             objetobalance=BalanceMonetario.objects.get(usuario=request.user)
             if objetobalance and objetobalance.balance>=instance.costo:
                 objetobalance.balance=objetobalance.balance-instance.costo
                 objetobalance.save()
+
                 instance=form.save(commit=True)
                 instance.save()
             else:
