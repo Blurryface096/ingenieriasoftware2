@@ -23,7 +23,10 @@ def home(request):
     balance=BalanceMonetario.objects.get(usuario=request.user).balance
     juego=Juego.objects.filter(invitados=request.user)
     juego2=Juego.objects.filter(privacidad='Publico')
-
+    if balance:
+        balance=balance
+    else:
+        balance=0
 
     listajuego=list(set(list(juego)+list(juego2)))
     return render(request, 'home/home.html', { 'juego': listajuego, 'user':nombre,'balance':balance})
@@ -39,11 +42,20 @@ def crear_juego(request):
             instance.estado='Abierto'
             instance.n=0
             instance.pozo=instance.costo*instance.n_jugadores
-            instance=form.save(commit=True)
+
+            objetobalance=BalanceMonetario.objects.get(usuario=request.user)
+            if objetobalance and objetobalance.balance>juego.costo:
+                objetobalance.balance=objetobalance.balance-juego.costo
+                objetobalance.save()
+                instance=form.save(commit=True)
+                instance.save()
+            else:
+                return redirect('home:index')
+
 
             #for User in instance.invitados['invitados']:
             #    instance.invitados.add(User)
-            instance.save()
+
             namespace='home:polla'
 
             #cadena='home:' + str(instance.tipo).lower()
@@ -82,7 +94,7 @@ def entrar_juego(request,juego):
     else:
         namespace='home:polla'
     objetobalance=BalanceMonetario.objects.get(usuario=request.user)
-    if objetobalance.balance>juego.costo:
+    if objetobalance and objetobalance.balance>juego.costo:
         objetobalance.balance=objetobalance.balance-juego.costo
         objetobalance.save()
         return redirect(namespace, id_jug)
