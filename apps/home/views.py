@@ -160,7 +160,7 @@ def jugadores(request, cadena):
                 if i.total>max:
                     max=i.total
             for i in participaciones:
-                if i.score==max:
+                if i.total==max:
                     ganadores.append(i.usuario)
             for j in ganadores:
                 balancemonetario=BalanceMonetario.objects.get(usuario=j)
