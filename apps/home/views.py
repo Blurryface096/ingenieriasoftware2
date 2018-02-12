@@ -148,7 +148,7 @@ def jugadores(request, cadena):
         fecha = datetime.datetime.now()
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
         participacion = ParticipacionEquipoIdeal(usuario=user, ataque=ataque_medio, defensa=defensa_media,
-        velocidad=velocidad_media,score=total, fecha=formatedDate, juego=juego)
+        velocidad=velocidad_media,score=score, fecha=formatedDate, juego=juego)
         participacion.save()
 
         juego.n += 1
