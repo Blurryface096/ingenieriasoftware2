@@ -30,14 +30,15 @@ class Juego(models.Model):
     invitados=models.ManyToManyField(User)
     privacidad=models.CharField(max_length=15, choices=PRIVACIDAD, blank=True, null=True)
     estado=models.CharField(max_length=15, choices=ESTADO, blank=True, null=True)
-
+    costo=models.FloatField(default=0.0)
+    pozo=models.FloatField(default=0.0)
     def __str__(self):
         return self.nombre
 
 class JuegoForm(ModelForm):
     class Meta:
         model=Juego
-        fields=['nombre', 'n_jugadores','tipo','privacidad','invitados']
+        fields=['nombre', 'n_jugadores','tipo','costo','privacidad','invitados']
 
 
 class CrearForm(ModelForm):

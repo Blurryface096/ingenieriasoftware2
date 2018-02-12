@@ -19,12 +19,14 @@ import random
 @login_required(login_url='')
 def home(request):
     nombre=request.user.username
-    k="static 'img/c2.png'"
+
     balance=BalanceMonetario.objects.get(usuario=request.user).balance
     juego=Juego.objects.filter(invitados=request.user)
     juego2=Juego.objects.filter(privacidad='Publico')
+
+
     listajuego=list(set(list(juego)+list(juego2)))
-    return render(request, 'home/home.html', { 'juego': listajuego, 'user':nombre,'balance':balance,'k':k})
+    return render(request, 'home/home.html', { 'juego': listajuego, 'user':nombre,'balance':balance})
 
 
 
@@ -36,6 +38,7 @@ def crear_juego(request):
             instance.organizador=request.user
             instance.estado='Abierto'
             instance.n=0
+            instance.pozo=instance.costo*instance.n_jugadores
             instance=form.save(commit=True)
 
             #for User in instance.invitados['invitados']:
@@ -65,6 +68,7 @@ def entrar_juego(request,juego):
     id_jug=juego
     #tipo_jug=tipo
     tipo_jug=Juego.objects.get(id=id_jug).tipo.lower()
+    juego=Juego.objects.get(id=jug_id)
     print(tipo_jug)
     namespace='home:polla'
 
@@ -77,8 +81,13 @@ def entrar_juego(request,juego):
         namespace='home:equipo'
     else:
         namespace='home:polla'
-    return redirect(namespace, id_jug)
 
+    if BalanceMonetario.objects.get(usuario=request.user).balance>juego.costo:
+        BalanceMonetario.objects.get(usuario=request.user).balance=BalanceMonetario.objects.get(usuario=request.user).balance-juego.costo
+        BalanceMonetario.objects.get(usuario=request.user).save()
+        return redirect(namespace, id_jug)
+    else:
+        return redirect(home:index)
 
 def jugadores(request, cadena):
     division=cadena.split('&')
