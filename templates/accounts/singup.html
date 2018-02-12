@@ -4,6 +4,6 @@
     <form class="site-form" action="{% url 'accounts:signup' %}" method="post">
         {% csrf_token %}
         {{ form }}
-        <input type="submit" value="Signup">
+        <input class="btn-large waves-effect waves-red red darken-2 red darken-4-text red pulse" type="submit" value="Signup">
     </form>
 {% endblock %}
