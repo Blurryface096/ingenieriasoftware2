@@ -153,12 +153,12 @@ def jugadores(request, cadena):
 
         juego.n += 1
         if juego.n >= juego.n_jugadores:
-            participaciones=ParticipacionPolla.objects.filter(juego=juego)
+            participaciones=ParticipacionEquipoIdeal.objects.filter(juego=juego)
             max=0
             ganadores=[]
             for i in participaciones:
-                if i.score>max:
-                    max=i.score
+                if i.total>max:
+                    max=i.total
             for i in participaciones:
                 if i.score==max:
                     ganadores.append(i.usuario)
@@ -346,7 +346,7 @@ def trivia_juego(request,juego):
         participacion.save()
         juego.n += 1
         if juego.n >= juego.n_jugadores:
-            participaciones=ParticipacionPolla.objects.filter(juego=juego)
+            participaciones=ParticipacionTrivia.objects.filter(juego=juego)
             max=0
             ganadores=[]
             for i in participaciones:

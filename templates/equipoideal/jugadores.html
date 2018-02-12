@@ -11,6 +11,7 @@
   <!--  <link rel = "stylesheet" href ="{% static 'Css/estilos.css' %}"  > -->
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
+  </head>
     <div>
         <table class="db-table3">
             <thead>
@@ -39,14 +40,14 @@
                 <div class="container">
                             <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                                 {% csrf_token %}
-                                <button class="btn-large waves-effect waves-red red darken-4 red lighten-5-text" type="submit">Logout</button>
+                                <button class="btn btn-secondary" type="submit">Logout</button>
                             </form>
                               </div>
 
 
 
 
-  </head>
+
   <body>
     <div class="container">
 
