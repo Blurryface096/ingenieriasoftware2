@@ -19,12 +19,12 @@ import random
 @login_required(login_url='')
 def home(request):
     nombre=request.user.username
-
+    k=2
     balance=BalanceMonetario.objects.get(usuario=request.user).balance
     juego=Juego.objects.filter(invitados=request.user)
     juego2=Juego.objects.filter(privacidad='Publico')
     listajuego=list(set(list(juego)+list(juego2)))
-    return render(request, 'home/home.html', { 'juego': listajuego, 'user':nombre,'balance':balance})
+    return render(request, 'home/home.html', { 'juego': listajuego, 'user':nombre,'balance':balance},'k':k)
 
 
 
