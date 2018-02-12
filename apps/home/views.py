@@ -41,7 +41,7 @@ def crear_juego(request):
             instance.organizador=request.user
             instance.estado='Abierto'
             instance.n=0
-            if request.user not in instance.invitados:
+            if request.user!=instance.invitados:
                 instance.invitados.append(request.user)
 
             instance.pozo=instance.costo*instance.n_jugadores
