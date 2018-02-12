@@ -220,7 +220,7 @@ def polla(request, juego):
         participacion.save()
         juego.n += 1
         if juego.n >= juego.n_jugadores:
-            participacinones=ParticipacionPolla.objects.filter(juego=juego)
+            participaciones=ParticipacionPolla.objects.filter(juego=juego)
             max=0
 
             for i in participaciones:
