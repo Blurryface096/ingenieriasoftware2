@@ -19,7 +19,7 @@ import random
 @login_required(login_url='')
 def home(request):
     nombre=request.user.username
-    k="{% static 'img/c2.png' %}"
+    k="static 'img/c2.png'"
     balance=BalanceMonetario.objects.get(usuario=request.user).balance
     juego=Juego.objects.filter(invitados=request.user)
     juego2=Juego.objects.filter(privacidad='Publico')
