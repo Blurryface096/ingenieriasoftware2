@@ -36,6 +36,6 @@ urlpatterns = [
     path('jugadores/<str:cadena>', jugadores, name='jugadores'),
     #path('polla/<str:username>/', polla, name='polla'),
     path('resultados/<int:score>/', resultados, name='resultados'),
-    path('resultadostrivia/<int:score>/', resultadostrivia, name='resultadostrivia'),
+    path('resultadostrivia/<str:cadena>/', resultadostrivia, name='resultadostrivia'),
     path('puntuaciones/<int:id_juego>/', puntuaciones, name='puntuaciones'),
 ]
