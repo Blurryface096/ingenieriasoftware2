@@ -112,7 +112,7 @@ class ParticipacionEquipoIdeal(models.Model):
     ataque = models.FloatField()
     defensa = models.FloatField()
     velocidad = models.FloatField()
-    total = models.FloatField()
+    score = models.FloatField()
     fecha = models.DateTimeField()
     juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
 

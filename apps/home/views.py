@@ -135,20 +135,20 @@ def jugadores(request, cadena):
         velocidad_media = round(velocidad/11, 3)
 
 
-        total = round((ataque_medio + defensa_media + velocidad_media) / 3, 3)
+        score = round((ataque_medio + defensa_media + velocidad_media) / 3, 3)
 
 
 
         contexto = {'ataque_medio' : ataque_medio,
         'defensa_media' : defensa_media,
         'velocidad_media' : velocidad_media,
-        'total' : total,
+        'total' : score,
         'juego':juego }
         user = request.user
         fecha = datetime.datetime.now()
         formatedDate = fecha.strftime("%Y-%m-%d %H:%M:%S")
         participacion = ParticipacionEquipoIdeal(usuario=user, ataque=ataque_medio, defensa=defensa_media,
-        velocidad=velocidad_media,total=total, fecha=formatedDate, juego=juego)
+        velocidad=velocidad_media,score=total, fecha=formatedDate, juego=juego)
         participacion.save()
 
         juego.n += 1
@@ -158,9 +158,9 @@ def jugadores(request, cadena):
             ganadores=[]
             for i in participaciones:
                 if i.total>max:
-                    max=i.total
+                    max=i.score
             for i in participaciones:
-                if i.total==max:
+                if i.score==max:
                     ganadores.append(i.usuario)
             for j in ganadores:
                 balancemonetario=BalanceMonetario.objects.get(usuario=j)
