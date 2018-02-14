@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+{% block title %} POLLA {% endblock %}
+{% block content %}
+<div class="container">
+  <form method="post">
+    {% csrf_token %}
+    <table class="table">
+      <thead>
+        <th>Equipo Local</th>
+        <th>Equipo Visita</th>
+        <th>Fecha Partido</th>
+        <th>Quien gana?</th>
+      </thead>
+      <tbody>
+        {% if partidos %}
+        {% for partido in partidos %}
+        <tr>
+          <td>{{ partido.eq_local }}</td>
+          <td>{{ partido.eq_visita }}</td>
+          <td>{{ partido.fecha }}</td>
+          <td>
+            <input class="with-gap"  type="radio" name="a_partido_id={{ partido.id }}" value="1" id="{{ partido.id }}&rd1">  <label for="{{ partido.id }}&rd1">Gana local</label><br>
+            <input class="with-gap"  type="radio" name="a_partido_id={{ partido.id }}" value="2" id="{{ partido.id }}&rd2"> <label for="{{ partido.id }}&rd2">Gana visita</label><br>
+            <input class="with-gap"  type="radio" name="a_partido_id={{ partido.id }}" value="3" id="{{ partido.id }}&rd3"> <label for="{{ partido.id }}&rd3">Empate</label>
+          </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+      </tbody>
+    </table>
+    <div align="center">
+        <button class="btn" type="submit">Enviar Polla</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Elige tu Formación!!{% endblock %}</title>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+<!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">-->
+  <!--  <link rel = "stylesheet" href ="{% static 'Css/estilos.css' %}"  > -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
+  </head>
+    <div>
+        <table class="db-table3">
+            <thead>
+                <tr>
+
+
+
+                    <th style="width: 500px; height: 6px;background-color: #fd0000;">
+                        <h1><span align="center" class="white-text text-darken-2" style="background-color: #fd0000;color:#ffffff;">Guachita</span></h1>
+                    </th>
+                    <th align="center" style="width: 500px; height: 6px; background-color:#ffffff">
+                      <img src="{% static 'img/fifa.jpg' %}" alt="Fifa" />
+                  </th>
+                    <th  align="center" style="width: 500px; height: 6px;background-color: #fd0000">
+                        <p style="color:#ffffff;" class="white-text text-darken-2">Ingenieria de Software 2</p>
+                        <p style="color:#ffffff;" class="white-text text-darken-2">Grupo 4</p>
+                    </th>
+
+                </tr>
+            </thead>
+        </table>
+
+    </div>
+<br>
+<br>
+
+                <div class="container">
+                            <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                {% csrf_token %}
+                                <button class="btn btn-secondary" type="submit">Logout</button>
+                            </form>
+                              </div>
+
+
+
+
+
+  <body>
+
+<div class="container">
+  <form method="post">
+    {% csrf_token %}
+    <div class="input-field col s12" align="center">
+      {% if formaciones %}
+      <select name="formacion">
+        {% for formacion in formaciones %}
+        <option value={{formacion.id}}>{{formacion.cantidad_defensas}} -
+          {{formacion.cantidad_centrocampistas}} -
+          {{formacion.cantidad_delanteros}}</option>
+        {% endfor %}
+      </select>
+      {% endif %}
+       <label>Elegir Formación</label>
+    </div>
+    <div align="center">
+        <button class="btn btn-success" type="submit">Siguiente!</button>
+    </div>
+  </form>
+</div>
+
+
+</body>
+</html>

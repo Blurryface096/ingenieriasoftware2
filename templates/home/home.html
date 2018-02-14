@@ -1,31 +1,107 @@
 {% extends 'base/base.html' %}
-{% load static %}
-
+{% load staticfiles %}
 {% block header %}
-
-<link rel="stylesheet" href="{% static 'Css/estilos.css' %}"  />
 <h4>Universidad de Lima</h4>
 {% endblock %}
 {% block content %}
 
 <div id="divCabecera">
-<table class='table-sesion'> <tbody> <tr><td> Bienvenido, </td></tr>
+<div>
+<table class="table bordered"> <tbody> <tr><td> Bienvenido, </td></tr>
 
-  <tr><td> admin1</td></tr>
+  <tr><td style="font-size: 20px;" class="text-indigo darken-4 z-depth-4"> {{user}} </td></tr>
   </tbody>
 
 
-<thead> <tr><th><a href=/ >Cerrar Sesión</a> </th></tr> </thead>
+
 
 
  </table>
-  </div>
+   </div>
+   <br>
+   <br>
 
-  <div id="divCategoria">
-       <ul class="menuH">
-<li><a href=trivia>Trivia</a> </li>
-<li><a href=polla>Polla</a> </li>
+   <div>
+
+
+     </div>
+  </div>
+  <div >
+  <div class="z-depth-4" style="width:35%;float:left;">
+  <div>
+    <table class="table bordered"> <tbody> <tr><td> Saldo Disponible </td></tr>
+
+      <tr><td style="font-size: 2.0vw;" class="text-green accent-3"> S/.{{ balance }}</td></tr>
+      </tbody>
+
+
+
+
+
+     </table>
+       </div>
+
+     <div >
+  <button name="balance" class="waves-effect waves-light red" type="submit"><a class="white-text" href={% url 'home:modificar_balance' %}>Estado de Cuenta</a></button>
+
+
+     </div>
+
+
+</div>
+<div style="float:right;padding-right: 2vw;">
+  <a href={% url 'home:index' %}>  <img style="height:5hw;widht: 5vw;" src="{% static 'img/c2.png'%}" alt="notifcaciones" /> </a>
+</div>
+</div>
+<br>
+<br>
+
+
+<table class='highlight'>
+<thead> <tr><th>Juego Creados</th><th>Tipo de Juego</th><th>Creador</th><th>Costo</th><th>Invitados</th><th>Unirse</th><th>Puntuaciones</th></tr> </thead>
+<tbody>
+{% for j in juego %}
+  <tr><td>  {{ j.nombre }} ( {{j.n}}/{{ j.n_jugadores }})   </td><td>{{ j.tipo }} </td> <td> {{ j.organizador }} </td><td> S/.{{ j.costo }} </td> <td>
+{% for i in j.invitados.all %}
+
+| {{ i.username }} |
+
+{% endfor %}
+{% if j.n < j.n_jugadores %}
+<td>
+  <button name="juego" class="waves-effect waves-light purple darken-3"
+  type="submit">
+    <a class="white-text"
+      href={% url 'home:entrar_juego' juego=j.id %}>
+      Entrar
+    </a>
+  </button>
+</td>
+{% else %}
+<td>
+  Cerrado
+</td>
+{% endif %}
+<td> <button type="button"
+  class="waves-effect waves-light blue darken-3">
+    <a class="white-text"
+      href={% url 'home:puntuaciones' id_juego=j.id %}>
+      Posiciones
+    </a>
+  </button>
+</td>
+</tr>
+{% endfor %}
+
+  </tbody>
+</table>
+<br>
+
+         <div>
+           <button name="juego" class="waves-effect waves-light red" type="submit"><a class="white-text" href={% url 'home:crear_juego' %}>Crear Juego</a></button>
          </div>
+
+<br>
 {% endblock %}
 {% block footer %}
 <h5>Lima, Peru 2018</h5>
