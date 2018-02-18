@@ -50,14 +50,14 @@
 
 </div>
 <div style="float:right;padding-right: 2vw;">
-  <a href={% url 'home:index' %}>  <img style="height:5hw;widht: 5vw;" src="{% static 'img/c2.png'%}" alt="notifcaciones" /> </a>
+  <a href={% url 'home:index' %}>  <img style="height:50px;width:50px;" src="{% static 'img/c2.png'%}" alt="notifcaciones" /> </a>
 </div>
 </div>
 <br>
 <br>
 
 
-<table class='highlight'>
+<table class='highlight bordered'>
 <thead> <tr><th>Juego Creados</th><th>Tipo de Juego</th><th>Creador</th><th>Costo</th><th>Invitados</th><th>Unirse</th><th>Puntuaciones</th></tr> </thead>
 <tbody>
 {% for j in juego %}
@@ -102,7 +102,7 @@
 <br>
 
          <div>
-           <button name="juego" class="waves-effect waves-light red" type="submit"><a class="white-text" href={% url 'home:crear_juego' %}>Crear Juego</a></button>
+           <a class="white-text" href={% url 'home:crear_juego' %}><button name="juego" class="waves-effect waves-light red" type="submit"> Crear Juego </button></a>
          </div>
 
 <br>
