@@ -55,20 +55,21 @@
 {% endfor %}
 {% if j.n < j.n_jugadores %}
 <td>
-  <a href={% url 'home:descartar' id_juego=j.id %}>  <img style="height:75px;width:75px;" src="{% static 'img/equis.png'%}" alt="descartar" /> </a>
+  <button name="juego" class="waves-effect waves-light purple darken-3"
+  type="submit">
+    <a class="white-text"
+      href={% url 'home:entrar_juego' juego=j.id %}>
+      Entrar
+    </a>
+  </button>
 </td>
 {% else %}
 <td>
   Cerrado
 </td>
 {% endif %}
-<td> <button type="button"
-  class="waves-effect waves-light blue darken-3">
-    <a class="white-text"
-      href={% url 'home:puntuaciones' id_juego=j.id %}>
-      Posiciones
-    </a>
-  </button>
+<td>
+  <a href={% url 'home:descartar' id_juego=j.id %}>  <img style="height:63px;width:63px;" src="{% static 'img/equis.png'%}" alt="descartar" /> </a>
 </td>
 </tr>
 {% endfor %}
