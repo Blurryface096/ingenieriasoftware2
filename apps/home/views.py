@@ -22,6 +22,7 @@ from django.conf import settings
 def home(request):
     nombre=request.user.username
 
+    k=3
     balance=BalanceMonetario.objects.get(usuario=request.user).balance
     juego=Juego.objects.filter(invitados=request.user)
     juego2=Juego.objects.filter(privacidad='Publico')
@@ -31,7 +32,7 @@ def home(request):
         balance=0
 
     listajuego=list(set(list(juego)+list(juego2)))
-    return render(request, 'home/home.html', { 'juego': listajuego, 'user':nombre,'balance':balance})
+    return render(request, 'home/home.html', { 'juego': listajuego, 'user':nombre,'balance':balance, 'k':k})
 
 def notificaciones(request):
     nombre=request.user.username
