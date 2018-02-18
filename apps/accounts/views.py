@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from apps.home.models import CrearForm
+from django.http import HttpResponse
 from django.template import RequestContext
 from django.contrib import messages
 from django.conf import settings
@@ -32,8 +33,8 @@ def login_view(request):
             login(request, user)
             #crear=CrearForm()
             messages.success(request, "Login Correcto")
-            return HttpResponseRedirect('home:index')
-            #return redirect('home:index')
+
+            return redirect('home:index')
         else:
             messages.add_message(request, settings.DELETE_MESSAGE,"Credenciales Incorrectas")
     else:
