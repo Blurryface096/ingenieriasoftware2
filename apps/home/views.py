@@ -41,18 +41,23 @@ def crear_juego(request):
             instance.organizador=request.user
             instance.estado='Abierto'
             instance.n=0
+
+
             instance.pozo=instance.costo*instance.n_jugadores
 
             objetobalance=BalanceMonetario.objects.get(usuario=request.user)
-            if objetobalance and objetobalance.balance>instance.costo:
+            if objetobalance and objetobalance.balance>=instance.costo:
                 objetobalance.balance=objetobalance.balance-instance.costo
                 objetobalance.save()
+
                 instance=form.save(commit=True)
                 instance.save()
             else:
                 return redirect('home:index')
 
-
+            if request.user!=instance.invitados:
+                instance.invitados.add(request.user)
+            instance.save()
             #for User in instance.invitados['invitados']:
             #    instance.invitados.add(User)
 
@@ -94,7 +99,7 @@ def entrar_juego(request,juego):
     else:
         namespace='home:polla'
     objetobalance=BalanceMonetario.objects.get(usuario=request.user)
-    if objetobalance and objetobalance.balance>juego.costo:
+    if objetobalance and objetobalance.balance>=juego.costo:
         objetobalance.balance=objetobalance.balance-juego.costo
         objetobalance.save()
         return redirect(namespace, id_jug)
@@ -142,7 +147,7 @@ def jugadores(request, cadena):
         contexto = {'ataque_medio' : ataque_medio,
         'defensa_media' : defensa_media,
         'velocidad_media' : velocidad_media,
-        'total' : score,
+        'score' : score,
         'juego':juego }
         user = request.user
         fecha = datetime.datetime.now()
@@ -157,7 +162,7 @@ def jugadores(request, cadena):
             max=0
             ganadores=[]
             for i in participaciones:
-                if i.total>max:
+                if i.score>max:
                     max=i.score
             for i in participaciones:
                 if i.score==max:
