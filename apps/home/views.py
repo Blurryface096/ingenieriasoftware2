@@ -36,11 +36,10 @@ def notificaciones(request):
 
 
     juego=Juego.objects.filter(invitados=request.user)
-    juego2=Juego.objects.filter(privacidad='Publico')
 
 
-    listajuego=list(set(list(juego)+list(juego2)))
-    return render(request, 'home/notificaciones.html', { 'juego': listajuego, 'user':nombre})
+
+    return render(request, 'home/notificaciones.html', { 'juego': juego, 'user':nombre})
 
 def crear_juego(request):
     if request.method=='POST':
@@ -414,6 +413,6 @@ def descartar(request, id_juego):
         juego = Juego.objects.get(id=id_juego)
         juego.invitados.remove(request.user)
 
-        return render(request, 'home/notificaciones.html')
+        notificaciones(request)
     else:
         pass
