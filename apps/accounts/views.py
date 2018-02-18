@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from apps.home.models import CrearForm
+from django.template import RequestContext
+from django.contrib import messages
 
 # Create your views here.
 
@@ -15,7 +17,7 @@ def signup_view(request):
              balancemonetario.save()
              login(request, user)
              return redirect('accounts:login')
-         
+
     else:
         form = UserCreationForm()
     return render(request, 'accounts/singup.html', { 'form': form})
