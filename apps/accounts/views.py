@@ -15,8 +15,7 @@ def signup_view(request):
              balancemonetario.save()
              login(request, user)
              return redirect('accounts:login')
-         else:
-             messages.add_message(request, settings.DELETE_MESSAGE,"Credenciales Incorrectas")
+         
     else:
         form = UserCreationForm()
     return render(request, 'accounts/singup.html', { 'form': form})
@@ -30,6 +29,8 @@ def login_view(request):
             login(request, user)
             #crear=CrearForm()
             return redirect('home:index')
+        else:
+            messages.add_message(request, settings.DELETE_MESSAGE,"Credenciales Incorrectas")
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', { 'form': form})
