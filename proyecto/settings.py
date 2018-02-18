@@ -69,7 +69,17 @@ MIDDLEWARE_CLASSES = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
+DELETE_MESSAGE=50
 
+MESSAGE_TAGS={
+DELETE_MESSAGE:'deleted',
+}
+
+TEMPLATE_CONTEXT_PROCESSORS={
+'django.contrib.auth.context_processors.auth',
+'django.core.context_processors.request'
+'django.contrib.messages.context_processors.messages'
+}
 ROOT_URLCONF = 'proyecto.urls'
 
 TEMPLATES = [

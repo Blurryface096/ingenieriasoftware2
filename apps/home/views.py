@@ -13,6 +13,8 @@ from apps.home.models import ParticipacionPolla,ParticipacionEquipoIdeal,Partici
 from django.contrib.auth.decorators import login_required
 import datetime
 import random
+from django.template import RequestContext
+from django.contrib import messages
 
 # Create your views here.
 
@@ -415,7 +417,7 @@ def descartar(request, id_juego):
         juego.save()
         nombre=request.user.username
         juego=Juego.objects.filter(invitados=request.user)
-        
+
         return render(request, 'home/notificaciones.html', { 'juego': juego, 'user':nombre})
     else:
         pass
