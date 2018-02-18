@@ -412,7 +412,10 @@ def descartar(request, id_juego):
     if request.method == 'GET':
         juego = Juego.objects.get(id=id_juego)
         juego.invitados.remove(request.user)
-
-        notificaciones(request)
+        juego.save()
+        nombre=request.user.username
+        juego=Juego.objects.filter(invitados=request.user)
+        
+        return render(request, 'home/notificaciones.html', { 'juego': juego, 'user':nombre})
     else:
         pass
