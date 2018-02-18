@@ -22,11 +22,13 @@ from django.conf import settings
 def home(request):
     nombre=request.user.username
 
-    k=3
+
     #cadena="{% static 'img/c" +  str(k)  + ".png' %}"
-    cadena="/static/img/c"+ str(k)+".png"
+
     balance=BalanceMonetario.objects.get(usuario=request.user).balance
     juego=Juego.objects.filter(invitados=request.user)
+    k=len(juego)
+    cadena="/static/img/c"+ str(k)+".png"
     juego2=Juego.objects.filter(privacidad='Publico')
     if balance:
         balance=balance
