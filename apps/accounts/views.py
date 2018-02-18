@@ -16,6 +16,7 @@ def signup_view(request):
              balancemonetario = BalanceMonetario(usuario=user, balance=0,tarjeta='0')
              balancemonetario.save()
              login(request, user)
+
              return redirect('accounts:login')
 
     else:
@@ -31,7 +32,8 @@ def login_view(request):
             login(request, user)
             #crear=CrearForm()
             messages.success(request, "Login Correcto")
-            return redirect('home:index')
+            return HttpResponseRedirect('home:index')
+            #return redirect('home:index')
         else:
             messages.add_message(request, settings.DELETE_MESSAGE,"Credenciales Incorrectas")
     else:
