@@ -15,7 +15,7 @@ import datetime
 import random
 from django.template import RequestContext
 from django.contrib import messages
-
+from django.conf import settings
 # Create your views here.
 
 
