@@ -16,7 +16,7 @@ import random
 
 # Create your views here.
 
-@login_required(login_url='')
+
 def home(request):
     nombre=request.user.username
 
@@ -31,7 +31,16 @@ def home(request):
     listajuego=list(set(list(juego)+list(juego2)))
     return render(request, 'home/home.html', { 'juego': listajuego, 'user':nombre,'balance':balance})
 
+def notificaciones(request):
+    nombre=request.user.username
 
+
+    juego=Juego.objects.filter(invitados=request.user)
+    juego2=Juego.objects.filter(privacidad='Publico')
+
+
+    listajuego=list(set(list(juego)+list(juego2)))
+    return render(request, 'home/notificaciones.html', { 'juego': listajuego, 'user':nombre})
 
 def crear_juego(request):
     if request.method=='POST':
@@ -396,5 +405,15 @@ def puntuaciones(request, id_juego):
             participaciones = ParticipacionTrivia.objects.filter(juego=juego).order_by('-score')
         contexto = {'participaciones' : participaciones, 'titulo' : juego.nombre}
         return render(request, 'home/posiciones.html', contexto)
+    else:
+        pass
+
+
+def descartar(request, id_juego):
+    if request.method == 'GET':
+        juego = Juego.objects.get(id=id_juego)
+        juego.invitados.remove(request.user)
+
+        return render(request, 'home/notificaciones.html')
     else:
         pass

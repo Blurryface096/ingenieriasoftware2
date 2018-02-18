@@ -7,7 +7,7 @@
 
 <div id="divCabecera">
 <div>
-<table class="table bordered"> <tbody> <tr><td> Bienvenido, </td></tr>
+<table class="table bordered"> <tbody> <tr><td> Juegos a los que fuiste invitado:</td></tr>
 
   <tr><td style="font-size: 20px;" class="text-indigo darken-4 z-depth-4"> {{user}} </td></tr>
   </tbody>
@@ -26,39 +26,21 @@
 
      </div>
   </div>
-  <div >
-  <div class="z-depth-4" style="width:35%;float:left;">
-  <div>
-    <table class="table bordered"> <tbody> <tr><td> Saldo Disponible </td></tr>
 
-      <tr><td style="font-size: 2.0vw;" class="text-green accent-3"> S/.{{ balance }}</td></tr>
-      </tbody>
-
-
+  <div class="container">
+              <form class="logout-link" action="{% url 'home:index' %}" method="post">
+                  {% csrf_token %}
+                  <button class="btn btn-success" type="submit">Volver</button>
+              </form>
+                </div>
 
 
-
-     </table>
-       </div>
-
-     <div >
-  <button name="balance" class="waves-effect waves-light red" type="submit"><a class="white-text" href={% url 'home:modificar_balance' %}>Estado de Cuenta</a></button>
-
-
-     </div>
-
-
-</div>
-<div style="float:right;padding-right: 2vw;">
-  <a href={% url 'home:notificaciones' %}>  <img style="height:150px;width:150px;" src="{% static 'img/c2.png'%}" alt="notifcaciones" /> </a>
-</div>
-</div>
 <br>
 <br>
 
 
 <table class='highlight bordered'>
-<thead> <tr><th>Juego Creados</th><th>Tipo de Juego</th><th>Creador</th><th>Costo</th><th>Invitados</th><th>Unirse</th><th>Puntuaciones</th></tr> </thead>
+<thead> <tr><th>Juego Creados</th><th>Tipo de Juego</th><th>Creador</th><th>Costo</th><th>Invitados</th><th>Unirse</th><th>Descartar</th></tr> </thead>
 <tbody>
 {% for j in juego %}
   <tr><td>  {{ j.nombre }} ( {{j.n}}/{{ j.n_jugadores }})   </td><td>{{ j.tipo }} </td> <td> {{ j.organizador }} </td><td> S/.{{ j.costo }} </td> <td>
@@ -73,13 +55,7 @@
 {% endfor %}
 {% if j.n < j.n_jugadores %}
 <td>
-  <button name="juego" class="waves-effect waves-light purple darken-3"
-  type="submit">
-    <a class="white-text"
-      href={% url 'home:entrar_juego' juego=j.id %}>
-      Entrar
-    </a>
-  </button>
+  <a href={% url 'home:descartar' id_juego=j.id %}>  <img style="height:75px;width:75px;" src="{% static 'img/equis.png'%}" alt="descartar" /> </a>
 </td>
 {% else %}
 <td>
