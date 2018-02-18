@@ -64,7 +64,11 @@
   <tr><td>  {{ j.nombre }} ( {{j.n}}/{{ j.n_jugadores }})   </td><td>{{ j.tipo }} </td> <td> {{ j.organizador }} </td><td> S/.{{ j.costo }} </td> <td>
 {% for i in j.invitados.all %}
 
-| {{ i.username }} |
+
+<div class="chip">
+    <img src="{% static 'img/football.png' %}" alt="Contact Person">
+    {{ i.username }}
+  </div>
 
 {% endfor %}
 {% if j.n < j.n_jugadores %}
