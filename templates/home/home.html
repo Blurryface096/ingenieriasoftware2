@@ -106,14 +106,18 @@
          </div>
 {% if request.user.is_superuser %}
          <div style="float:right;padding-right: 2vw;">
-           <a href={% url 'home:notificaciones' %}>  <img style="height:150px;width:150px;" src=" {% static 'img/analitica.png' %}" alt="analitica" /> </a>
+           <a href={% url 'home:notificaciones' %}>  <img style="height:150px;width:150px;" src=" {% static 'img/analitycs.png' %}" alt="analitica" /> </a>
            <p> Analítica </p>
          </div>
 
          {% endif %}
 </div>
 <br>
+<br>
+<br>
 {% endblock %}
 {% block footer %}
+
+
 <h5>Lima, Peru 2018</h5>
 {% endblock %}
