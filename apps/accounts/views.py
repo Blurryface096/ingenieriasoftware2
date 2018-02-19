@@ -37,7 +37,7 @@ def login_view(request):
             return redirect('home:index')
 
         else:
-            messages.add_message(request, settings.DELETE_MESSAGE,"Credenciales Incorrectas")
+            messages.error(request, "Credenciales Incorrectas")
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', { 'form': form})
