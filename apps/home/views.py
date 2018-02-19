@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from apps.home.models import Preguntas
 from django.contrib.auth.forms import UserCreationForm
 from apps.home.models import JuegoForm
