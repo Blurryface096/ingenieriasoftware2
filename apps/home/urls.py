@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from apps.home import views
-from apps.home.views import home,crear_juego, entrar_juego,trivia_juego,resultadostrivia,modificar_balance,puntuaciones,notificaciones,descartar
+from apps.home.views import home,crear_juego, entrar_juego,trivia_juego,resultadostrivia,modificar_balance,puntuaciones,notificaciones,descartar,analitica
 
 from apps.home.views import polla
 from apps.home.views import jugadores
@@ -40,4 +40,5 @@ urlpatterns = [
     path('puntuaciones/<int:id_juego>/', puntuaciones, name='puntuaciones'),
     path('descartar/<int:id_juego>/', descartar, name='descartar'),
     path('notificaciones', notificaciones, name='notificaciones'),
+    path('analitica', analitica, name='notificaciones'),
 ]
