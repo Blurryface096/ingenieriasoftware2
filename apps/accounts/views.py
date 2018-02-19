@@ -34,8 +34,8 @@ def login_view(request):
             #crear=CrearForm()
             messages.success(request, "Login Correcto")
 
-            #return redirect('home:index')
-            return HttpResponseRedirect('home:index')
+            return redirect('home:index')
+
         else:
             messages.add_message(request, settings.DELETE_MESSAGE,"Credenciales Incorrectas")
     else:
