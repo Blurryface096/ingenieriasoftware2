@@ -40,5 +40,5 @@ urlpatterns = [
     path('puntuaciones/<int:id_juego>/', puntuaciones, name='puntuaciones'),
     path('descartar/<int:id_juego>/', descartar, name='descartar'),
     path('notificaciones', notificaciones, name='notificaciones'),
-    path('analitica', analitica, name='notificaciones'),
+    path('analitica', analitica, name='analitica'),
 ]
