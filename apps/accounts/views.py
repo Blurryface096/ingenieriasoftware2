@@ -18,6 +18,7 @@ def signup_view(request):
              balancemonetario.save()
              login(request, user)
 
+             messages.cuess(request, "Usuario creado")
              return redirect('accounts:login')
 
     else:

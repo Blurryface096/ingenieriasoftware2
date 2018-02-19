@@ -29,7 +29,10 @@ def home(request):
     balance=BalanceMonetario.objects.get(usuario=request.user).balance
     juego=Juego.objects.filter(invitados=request.user)
     k=len(juego)
-    cadena="/static/img/c"+ str(k)+".png"
+    if k<=9:
+        cadena="/static/img/c"+ str(k)+".png"
+    else:
+        cadena="/static/img/c10.png"
     juego2=Juego.objects.filter(privacidad='Publico')
     if balance:
         balance=balance
@@ -334,7 +337,7 @@ def modificar_balance(request):
             instance=form.save(commit=True)
             instance.save()
 
-
+            messages.success(request, "Cantidad Agregada")
             return redirect('home:index')
 
     else:
