@@ -143,12 +143,11 @@ LANGUAGE_CODE = 'es-pe'
 TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
-
-USE_L10N = True
+USE_L10N=False
 
 USE_TZ = True
 
-
+DECIMAL_SEPARATOR='Default'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
