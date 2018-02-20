@@ -45,7 +45,7 @@
        </div>
 
      <div >
-  <button name="balance" class="waves-effect waves-light red" type="submit"><a class="white-text" href={% url 'home:modificar_balance' %}>Estado de Cuenta</a></button>
+  <button name="balance" class="waves-effect waves-light red btn-large" type="submit"><a class="white-text" href={% url 'home:modificar_balance' %}>Estado de Cuenta</a></button>
 
 
      </div>
@@ -116,12 +116,12 @@
          </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <div class="center-align">
-            <a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ayuda" href={% url 'home:ayuda' %}> <img style="height:63px;width:63px;" src=" {% static 'img/interrogacion.png' %}" onmouseover="this.src='/static/img/interrogacion2.png';" onmouseout="this.src='/static/img/interrogacion.png';" alt="ayuda" title="Ayuda" /> </a> 
+            <a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ayuda" href={% url 'home:ayuda' %}> <img style="height:63px;width:63px;" src=" {% static 'img/interrogacion.png' %}" onmouseover="this.src='/static/img/interrogacion2.png';" onmouseout="this.src='/static/img/interrogacion.png';" alt="ayuda" title="Ayuda" /> </a>
          </div>
 {% if request.user.is_superuser %}
          <div style="float:right;padding-right: 2vw;">
            <a href={% url 'home:analitica' %}>  <img style="height:150px;width:150px;" src=" {% static 'img/analytics.png' %}" alt="analitica" /> </a>
-           <p> Analítica </p>
+           <p class="flow-text"> Analítica </p>
          </div>
 
          {% endif %}
