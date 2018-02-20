@@ -364,7 +364,7 @@ def trivia_juego(request,juego):
                 num=random.randrange(1,3)
                 if num==2:
                     preguntas.append(i)
-                    listapreg.remove(i)
+                    listapreg.pop(i)
                 if len(preguntas)==10:
                     break
     else:
