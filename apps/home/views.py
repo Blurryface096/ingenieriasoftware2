@@ -369,6 +369,7 @@ def trivia_juego(request,juego):
                     break
     else:
         preguntas=listapreg
+
     contexto = {'preguntas' : preguntas,'juego':juego}
 
     if request.method == 'POST':
