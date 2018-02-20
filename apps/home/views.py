@@ -322,7 +322,7 @@ def preguntas(request, cadena):
                 for i in listapreg:
                     num=random.randrange(1,3)
                     if num==2:
-                        preguntas.append(i)
+                        preguntas.add(i)
                         listapreg.remove(i)
                     if len(preguntas)==10:
                         break
@@ -352,7 +352,19 @@ def modificar_balance(request):
 
 def trivia_juego(request,juego):
     juego=Juego.objects.get(id=juego)
-    preguntas=Preguntas.objects.all().order_by('id')
+    listapreg=Preguntas.objects.all().order_by('id')
+    
+    if len(listapreg)>10:
+        while len(preguntas)<10:
+            for i in listapreg:
+                num=random.randrange(1,3)
+                if num==2:
+                    preguntas.add(i)
+                    listapreg.remove(i)
+                if len(preguntas)==10:
+                    break
+    else:
+        preguntas=listapreg
     contexto = {'preguntas' : preguntas,'juego':juego}
 
     if request.method == 'POST':
