@@ -116,7 +116,7 @@
          </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <div class="center-align">
-          <img style="height:63px;width:63px;" src=" {% static 'img/interrogacion.png' %}" onmouseover="this.src='/static/img/interrogacion2.png';" onmouseout="this.src='/static/img/interrogacion.png';" alt="ayuda" title="Ayuda" >  <a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ayuda" href={% url 'home:ayuda' %}>  </a> </img>
+            <a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ayuda" href={% url 'home:ayuda' %}> <img style="height:63px;width:63px;" src=" {% static 'img/interrogacion.png' %}" onmouseover="this.src='/static/img/interrogacion2.png';" onmouseout="this.src='/static/img/interrogacion.png';" alt="ayuda" title="Ayuda" /> </a> 
          </div>
 {% if request.user.is_superuser %}
          <div style="float:right;padding-right: 2vw;">
