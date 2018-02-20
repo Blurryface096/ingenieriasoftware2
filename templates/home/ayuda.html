@@ -6,7 +6,7 @@
 {% block content %}
   <br>
 <div id="divCabecera">
-<div>
+
   <div class="container">
               <form class="logout-link" action="{% url 'home:index' %}" method="post">
                   {% csrf_token %}
@@ -16,26 +16,27 @@
 
                 <br>
                   <br>
-<h2 class="flow-text"> Ayuda </h2>
+                  <div class="card-panel indigo darken-4 text-white">
+<h2 style="color:#ffffff;"> Ayuda </h2>
 <br>
-<h3 class="flow-text"> Cómo Jugar </h3>
+<h3 style="color:#ffffff;"> Cómo Jugar </h3>
 
-<p class="flow-text">  ¡Para jugar basta unirse a una sala y empezar a demostrar tus habilidades! Puedes jugar con amigos o con cualquier usuario de la aplicación.
+<p style="color:#ffffff;" class="flow-text">  ¡Para jugar basta unirse a una sala y empezar a demostrar tus habilidades! Puedes jugar con amigos o con cualquier usuario de la aplicación.
 Para entrar a una sala solo basta hacer click en "Entrar" en el lobby de la pantalla principal. Presionando sobre la campana de notificaciones puedes ver los juegos a los que haz sido invitado.
 También puedes elegir crear un nuevo juego, donde podrás elegir el monto de entrada, el tipo de juego y los jugadores invitados. Hay 3 modalidades de juego, Polla, Trivia y Equipo Ideal.
 Todos los juegos pueden jugarse gratis o en modo apuesta. ¡A jugar!</p>
 
 <br>
-<h4 class="flow-text pulse"> Polla </h4>
+<h4 style="color:#ffffff;" > Polla </h4>
 
-<p class="flow-text"> El juego polla es una apuesta. ¡Mira quien de tus amigos conoce más el deporte! Se apostarán sobre el resultado de los partidos que se jugarán.
+<p style="color:#ffffff;" class="flow-text"> El juego polla es una apuesta. ¡Mira quien de tus amigos conoce más el deporte! Se apostarán sobre el resultado de los partidos que se jugarán.
 El jugador que tenga más aciertos ganará.</p>
 
-<h4 class="flow-text pulse"> Equipo Ideal </h4>
-<p class="flow-text"> ¿Tienes a tu formación ideal en mente? ¡Ponla a prueba con Equipo Ideal! ¡Elige los jugadores que compondrán tu equipo ganador y comparalo con el de tus amigos para ver quien tuvo la mejor composición!</p>
+<h4 style="color:#ffffff;"> Equipo Ideal </h4>
+<p style="color:#ffffff;" class="flow-text"> ¿Tienes a tu formación ideal en mente? ¡Ponla a prueba con Equipo Ideal! ¡Elige los jugadores que compondrán tu equipo ganador y comparalo con el de tus amigos para ver quien tuvo la mejor composición!</p>
 
-<h4 class="flow-text pulse"> Trivia </h4>
-<p class="flow-text"> ¿Quién es el más sabelotodo? ¡Pon a prueba tus conocimientos con Trivia! Desde las preguntas más inusuales hasta las más difíciles.
+<h4 style="color:#ffffff;"> Trivia </h4>
+<p style="color:#ffffff;" class="flow-text"> ¿Quién es el más sabelotodo? ¡Pon a prueba tus conocimientos con Trivia! Desde las preguntas más inusuales hasta las más difíciles.
 Compite por ver quién es el más fanático del fútbol.</p>
 
 
