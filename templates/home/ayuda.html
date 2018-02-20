@@ -4,17 +4,40 @@
 <h4>Universidad de Lima</h4>
 {% endblock %}
 {% block content %}
-
+  <br>
 <div id="divCabecera">
 <div>
-<h1> Ayuda </h1>
-
   <div class="container">
               <form class="logout-link" action="{% url 'home:index' %}" method="post">
                   {% csrf_token %}
                   <button class="btn btn-success" type="submit">Volver</button>
               </form>
                 </div>
+
+                <br>
+                  <br>
+<h2> Ayuda </h2>
+<br>
+<h3> Cómo Jugar </h3>
+
+<p>  ¡Para jugar basta unirse a una sala y empezar a demostrar tus habilidades! Puedes jugar con amigos o con cualquier usuario de la aplicación.
+Para entrar a una sala solo basta hacer click en "Entrar" en el lobby de la pantalla principal. Presionando sobre la campana de notificaciones puedes ver los juegos a los que haz sido invitado.
+También puedes elegir crear un nuevo juego, donde podrás elegir el monto de entrada, el tipo de juego y los jugadores invitados. Hay 3 modalidades de juego, Polla, Trivia y Equipo Ideal.
+Todos los juegos pueden jugarse gratis o en modo apuesta. ¡A jugar!</p>
+
+<br>
+<h4> Polla </h4>
+
+<p> El juego polla es una apuesta. ¡Mira quien de tus amigos conoce más el deporte! Se apostarán sobre el resultado de los partidos que se jugarán.
+El jugador que tenga más aciertos ganará.</p>
+
+<h4> Equipo Ideal </h4>
+<p> ¿Tienes a tu formación ideal en mente? ¡Ponla a prueba con Equipo Ideal! ¡Elige los jugadores que compondrán tu equipo ganador y comparalo con el de tus amigos para ver quien tuvo la mejor composición!</p>
+
+<h4> Trivia </h4>
+<p> ¿Quién es el más sabelotodo? ¡Pon a prueba tus conocimientos con Trivia! Desde las preguntas más inusuales hasta las más difíciles.
+Compite por ver quién es el más fanático del fútbol.</p>
+
 
 
 
