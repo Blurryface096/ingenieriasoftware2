@@ -21,6 +21,9 @@ from django.conf import settings
 def analitica(request):
     return render(request, 'home/analytics.html')
 
+def ayuda(request):
+    return render(request, 'home/ayuda.html')
+
 def home(request):
     nombre=request.user.username
 

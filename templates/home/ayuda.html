@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block header %}
+<h4>Universidad de Lima</h4>
+{% endblock %}
+{% block content %}
+
+<div id="divCabecera">
+<div>
+<table class="table bordered"> <tbody> <tr><td> Ayuda </td></tr>
+
+  <div class="container">
+              <form class="logout-link" action="{% url 'home:index' %}" method="post">
+                  {% csrf_token %}
+                  <button class="btn btn-success" type="submit">Volver</button>
+              </form>
+                </div>
+
+
+
+
+
+</div>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}
+{% block footer %}
+
+
+<h5>Lima, Peru 2018</h5>
+{% endblock %}
