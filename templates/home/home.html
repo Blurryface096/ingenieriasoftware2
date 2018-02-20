@@ -4,6 +4,9 @@
 <h4>Universidad de Lima</h4>
 {% endblock %}
 {% block content %}
+<script> $(document).ready(function(){
+   $('.tooltipped').tooltip({delay: 50});
+ }); </script>
 
 <div id="divCabecera">
 <div>
@@ -113,7 +116,7 @@
          </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <div class="center-align">
-           <a class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Ayuda" href={% url 'home:ayuda' %}>  <img style="height:63px;width:63px;" src=" {% static 'img/interrogacion.png' %}" onmouseover="this.src='/static/img/interrogacion2.png';" onmouseout="this.src='/static/img/interrogacion.png';" alt="ayuda" title="Ayuda" /> </a>
+           <a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ayuda" href={% url 'home:ayuda' %}>  <img style="height:63px;width:63px;" src=" {% static 'img/interrogacion.png' %}" onmouseover="this.src='/static/img/interrogacion2.png';" onmouseout="this.src='/static/img/interrogacion.png';" alt="ayuda" title="Ayuda" /> </a>
          </div>
 {% if request.user.is_superuser %}
          <div style="float:right;padding-right: 2vw;">
