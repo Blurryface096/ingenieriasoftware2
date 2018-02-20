@@ -1,7 +1,9 @@
 {% extends 'base/base0.html' %}
 
 {% block content %}
-    <h1>Log in</h1>
+  <div  <h1>Log in</h1> <div class="center-align">
+     <img style="height:100px;width:150px;" src=" {% static 'img/login.jpg' %}" onmouseover="this.src='/static/img/login2.jpg';" onmouseout="this.src='/static/img/login.jpg';" alt="login" />
+    </div>  </div>
     <form class="site-form" action="{% url 'accounts:login' %}" method="post">
         {% csrf_token %}
         {{ form }}
