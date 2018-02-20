@@ -352,23 +352,8 @@ def modificar_balance(request):
 
 def trivia_juego(request,juego):
     juego=Juego.objects.get(id=juego)
-
-    temp=Preguntas.objects.all().order_by('id')
-    listapreg=[]
-    for k in temp:
-        listapreg.append(k)
-    preguntas=[]
-    if len(listapreg)>10:
-        while len(preguntas)<10:
-            for i in listapreg:
-                num=random.randrange(1,3)
-                if num==2:
-                    preguntas.append(i)
-                    listapreg.pop(i)
-                if len(preguntas)==10:
-                    break
-    else:
-        preguntas=listapreg
+    preguntas=Preguntas.objects.all().order_by('?')[:10]
+    
 
     contexto = {'preguntas' : preguntas,'juego':juego}
 
