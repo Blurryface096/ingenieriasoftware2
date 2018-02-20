@@ -1,7 +1,10 @@
 {% extends 'base/base0.html' %}
 {% load staticfiles %}
 {% block content %}
-    <h1>Signup</h1>
+ <div class="row">
+   <div class="col s7 push-s5">  <h1>Signup</h1>  </div>
+  <div class="col s6 offset-s6">
+     <img style="height:200px;width:300px;" src=" {% static 'img/singup.jpg' %}"  alt="signup" /></div> </div>
     <form class="site-form" action="{% url 'accounts:signup' %}" method="post">
         {% csrf_token %}
         {{ form }}

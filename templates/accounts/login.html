@@ -5,6 +5,7 @@
   <div>  <h1 style="width:35%;" class="left-align">Log in</h1>
      <img class="right-align" style="height:200px;width:300px;" src=" {% static 'img/login.jpg' %}" onmouseover="this.src='/static/img/login2.jpg';" onmouseout="this.src='/static/img/login.jpg';" alt="login" />
      </div>
+     <br>
     <form class="site-form" action="{% url 'accounts:login' %}" method="post">
         {% csrf_token %}
         {{ form }}
