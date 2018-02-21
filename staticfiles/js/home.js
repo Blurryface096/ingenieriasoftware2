@@ -13,7 +13,7 @@ function enviar_evento() {
     'Tipo ': 'Click',
   	'URL_Actual ': document.URL,
   	'URL_Destino ': document.referrer,
-    'Browser':navigator.appName,
+    'Browser':navigator.appVersion,
     'Modo Online':navigator.onLine,
   	'Plataforma': navigator.platform,
   	'Language': navigator.language,
