@@ -9,7 +9,7 @@ app.controller('reporte1', function($scope,$http) {
         url : BASE_URL + "getReport/",
     }).then(function mySuccess(response) {
         console.log(response.data);
-        $scope.eventos = response.data;
+        $scope.eventos = response.data.collection;
     }, function myError(response) {
         alert("TODO NO OK :(");
     });
