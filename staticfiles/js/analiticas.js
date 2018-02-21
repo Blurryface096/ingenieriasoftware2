@@ -8,7 +8,8 @@ app.controller('reporte1', function($scope,$http) {
         method : "POST",
         url : BASE_URL + "getReport/",
     }).then(function mySuccess(response) {
-        $scope.eventos = response.data;
+        console.log(response.data);
+        $scope.eventos = response.data.json_report;
     }, function myError(response) {
         alert("TODO NO OK :(");
     });

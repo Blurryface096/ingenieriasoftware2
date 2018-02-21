@@ -42,7 +42,7 @@ var accion=document.getElementById('GuardarEvento').getAttribute('name');
     data: "data=" + JSON.stringify(data),
     async: false,
     success: function (data) {
-      alert("TODO OK :P");
+      //alert(" OK :P");
       }
   });
 };
