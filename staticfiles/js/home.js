@@ -3,7 +3,7 @@ var f = new Date();
 fecha=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()
 hora=f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
 
-tiempoactual=hora +" "fecha
+tiempoactual=hora +" "+fecha
 
 
 function enviar_evento() {
