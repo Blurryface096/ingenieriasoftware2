@@ -19,10 +19,11 @@ if(browser == undefined){
 browser='Chrome'
 }
 function enviar_evento() {
-//var accion=document["GuardarEvento"].value;
+var accion=document.getElementById('GuardarEvento').value;
+
   data={
-  	//'Tipo ': accion,
-    'Tipo ': 'Click',
+  	'Tipo ': accion,
+    //'Tipo ': 'Click',
   	'URL_Actual ': document.URL,
   	'URL_Destino ': document.referrer,
     'Browser': browser,
