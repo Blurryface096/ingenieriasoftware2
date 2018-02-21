@@ -7,10 +7,17 @@ var version1=navigator.appVersion;
 var division=version1.split(",");
 var browser=division[1];
 if(browser == undefined){
-  browser=division[0];
+  var division=version1.split(";");
+  browser=division[1];
+    if(browser == undefined){
+      browser='Firefox'
+    }else{
+        browser='Internet Explorer'
+      }
+
+}else{
+browser='Chrome'
 }
-
-
 function enviar_evento() {
 //var accion=document["GuardarEvento"].value;
   data={
