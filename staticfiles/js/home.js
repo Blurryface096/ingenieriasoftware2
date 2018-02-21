@@ -5,9 +5,9 @@ hora=f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
 var version1=navigator.appVersion;
 
 var division=version1.split(",");
-var browser=division[2];
+var browser=division[1];
 
-aler(version1)
+
 
 function enviar_evento() {
 //var accion=document["GuardarEvento"].value;
@@ -24,7 +24,7 @@ function enviar_evento() {
     'Hora':hora
   }
 
-alert(division[1]);
+
 
   $.ajax({
     type: "POST",
