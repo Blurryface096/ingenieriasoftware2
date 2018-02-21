@@ -16,7 +16,7 @@ function enviar_evento() {
     'Tipo ': 'Click',
   	'URL_Actual ': document.URL,
   	'URL_Destino ': document.referrer,
-    'Browser': browser
+    'Browser': browser,
     'Modo Online':navigator.onLine,
   	'Plataforma': navigator.platform,
   	'Language': navigator.language,
