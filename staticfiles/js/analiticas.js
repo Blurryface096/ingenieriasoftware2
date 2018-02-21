@@ -6,8 +6,12 @@ app.controller('reporte1', function($scope, $http) {
         method : "POST",
         url : BASE_URL + "getReport/",
     }).then(function mySuccess(response) {
-        console.log(response.data.collection);
-        $scope.eventos = response.data.collection;
+        var even = []
+        for (var i = 0; i < reponse.data.collection.length; i++) {
+          console.log(reponse.data.collection[i])
+          even.append(reponse.data.collection[i])
+        }
+        $scope.eventos = even
     }, function myError(response) {
         alert("TODO NO OK :(");
     });
