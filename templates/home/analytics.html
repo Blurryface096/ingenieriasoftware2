@@ -22,8 +22,7 @@
           </tr>
         </thead>
         <tbody>
-          {% load djng_tags %}
-          {% angularjs %}
+          {% verbatim %}
           <tr ng-repeat="ev in eventos">
             <td>{{index}}</td>
             <td>{{ ev.Tipo }}</td>
@@ -35,7 +34,7 @@
             <td>{{ ev.Fecha }}</td>
             <td>{{ ev.Hora }}</td>
           </tr>
-          {% endangularjs %}
+          {% endverbatim %}
         </tbody>
       </table>
     </div>
