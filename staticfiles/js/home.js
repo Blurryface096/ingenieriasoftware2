@@ -24,7 +24,7 @@ function enviar_evento() {
     'Hora':hora
   }
 
-
+alert(browser);
 
   $.ajax({
     type: "POST",
