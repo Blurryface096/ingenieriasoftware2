@@ -7,7 +7,7 @@ tiempoactual=hora +" "+fecha
 
 
 function enviar_evento() {
-accion= document.["GuardarEvento"].value;
+accion= document['GuardarEvento'].value;
   data={
   	'Tipo ': accion,
   	'URL_Actual ': document.referrer,
