@@ -1,8 +1,8 @@
 BASE_URL="https://guachita-analytics.herokuapp.com/";
-alert("LEYO EL JS");
 
 
-$( "#crear_juego" ).click(function() {
+
+function enviar_evento() {
 alert("DETECTÓ EL CLICK");
   data={
   	'Tipo ': 'click',
