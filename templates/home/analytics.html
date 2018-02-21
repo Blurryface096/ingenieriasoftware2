@@ -1,48 +1,43 @@
-
 {% load staticfiles %}
-{% block header %}
-<h4>Universidad de Lima</h4>
-{% endblock %}
-
-
-<script src="{% static 'js/plotly-latest.min.js' %}"></script>
-<script src="{% static 'js/angular.min.js' %}"></script>
-
-
-<div ng-app="analiticas" ng-controller="reporte1">
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Tipo</th>
-        <th>Browser</th>
-        <th>Url Actual</th>
-        <th>Url Destino</th>
-        <th>Plataforma</th>
-        <th>Lenguaje</th>
-        <th>Fecha</th>
-        <th>Hora</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="ev in eventos">
-        <td>{{index}}</td>
-        <td>{{ ev.Tipo }}</td>
-        <td>{{ ev.Browser }}</td>
-        <td>{{ ev.URL_Actual }}</td>
-        <td>{{ ev.URL_Destino }}</td>
-        <td>{{ ev.Plataforma }}</td>
-        <td>{{ ev.Language }}</td>
-        <td>{{ ev.Fecha }}</td>
-        <td>{{ ev.Hora }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<script src="{% static 'js/analiticas.js' %}"></script>
-
-            {% block footer %}
-
-
-            <h5>Lima, Peru 2018</h5>
-            {% endblock %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div ng-app="analiticas" ng-controller="reporte1">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Tipo</th>
+            <th>Browser</th>
+            <th>Url Actual</th>
+            <th>Url Destino</th>
+            <th>Plataforma</th>
+            <th>Lenguaje</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="ev in eventos">
+            <td>{{index}}</td>
+            <td>{{ ev.Tipo }}</td>
+            <td>{{ ev.Browser }}</td>
+            <td>{{ ev.URL_Actual }}</td>
+            <td>{{ ev.URL_Destino }}</td>
+            <td>{{ ev.Plataforma }}</td>
+            <td>{{ ev.Language }}</td>
+            <td>{{ ev.Fecha }}</td>
+            <td>{{ ev.Hora }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="{% static 'js/plotly-latest.min.js' %}"></script>
+    <script src="{% static 'js/angular.min.js' %}"></script>
+    <script src="{% static 'js/analiticas.js' %}"></script>
+  </body>
+</html>
