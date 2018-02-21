@@ -19,7 +19,7 @@ if(browser == undefined){
 browser='Chrome'
 }
 function enviar_evento() {
-var accion=document.getElementById('GuardarEvento').tagName;
+var accion=document.getElementsByName('GuardarEvento').id;
 
   data={
   	'Tipo ': accion,
