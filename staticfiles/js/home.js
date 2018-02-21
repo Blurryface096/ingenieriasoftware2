@@ -13,7 +13,7 @@ function enviar_evento() {
     'Tipo ': 'Click',
   	'URL_Actual ': document.URL,
   	'URL_Destino ': document.referrer,
-    'Browser':navigator.appVersion,
+    'Browser': String(navigator.appVersion),
     'Modo Online':navigator.onLine,
   	'Plataforma': navigator.platform,
   	'Language': navigator.language,
@@ -21,7 +21,7 @@ function enviar_evento() {
     'Hora':hora
   }
 
-alert(data);
+
 console.log(data);
 
   $.ajax({
