@@ -9,7 +9,7 @@
     <form class="site-form" action="{% url 'accounts:login' %}" method="post">
         {% csrf_token %}
         {{ form }}
-        <input class="btn-large waves-effect waves-red red darken-2 red darken-4-text red pulse" type="submit" value="Login" />
+        <input onclick="enviar_evento()" name="GuardarEvento" class="btn-large waves-effect waves-red red darken-2 red darken-4-text red pulse" type="submit" value="Login" />
     </form>
     <p>¿No tienes una cuenta? <a href="{% url 'accounts:signup' %}">Regístrate</a></p>
 {% endblock %}
