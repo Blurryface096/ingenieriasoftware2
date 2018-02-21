@@ -9,7 +9,7 @@ app.controller('reporte1', function($scope, $http) {
         var even = []
         for (var i = 0; i < response.data.collection.length; i++) {
           console.log(response.data.collection[i])
-          even.append(response.data.collection[i])
+          even.push(response.data.collection[i])
         }
         $scope.eventos = even
     }, function myError(response) {
