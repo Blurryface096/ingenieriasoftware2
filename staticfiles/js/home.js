@@ -1,13 +1,13 @@
 BASE_URL="https://guachita-analytics.herokuapp.com/";
 var f = new Date();
-fecha=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()
+fecha=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
 hora=f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
 
-tiempoactual=hora +" "+fecha
+tiempoactual=hora +" "+fecha;
 
 
 function enviar_evento() {
-accion= document['GuardarEvento'].value;
+accion=document['GuardarEvento'].value;
   data={
   	'Tipo ': accion,
   	'URL_Actual ': document.referrer,
@@ -21,6 +21,8 @@ accion= document['GuardarEvento'].value;
     'Fecha':fecha,
     'Hora':hora
   }
+
+  console.log(data);
 
   $.ajax({
     type: "POST",
