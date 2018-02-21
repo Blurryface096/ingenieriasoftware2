@@ -7,9 +7,9 @@ app.controller('reporte1', function($scope, $http) {
         url : BASE_URL + "getReport/",
     }).then(function mySuccess(response) {
         var even = []
-        for (var i = 0; i < reponse.data.collection.length; i++) {
-          console.log(reponse.data.collection[i])
-          even.append(reponse.data.collection[i])
+        for (var i = 0; i < response.data.collection.length; i++) {
+          console.log(response.data.collection[i])
+          even.append(response.data.collection[i])
         }
         $scope.eventos = even
     }, function myError(response) {
