@@ -4,10 +4,33 @@
 <html>
 <head>
               <script src="{% static 'js/plotly-latest.min.js' %}"></script>
+              <script src="{% static 'js/analiticas.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
 
 
 </head>
   <body>
+<div ng-app="analiticas" ng-controller="reporte1">
+<table>
+  <thead>
+    <tr><th>Tipo</th><th>Browser</th><th>Url Actual</th><th>Url Destino</th><th>Plataforma</th><th>Lenguaje</th><th>Fecha</th><th>Hora</th></tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="e in eventos">
+
+      <td>  {{ e.Tipo    }}   </td>
+      <td>  {{ e.Browser   }}   </td>
+      <td>  {{ e.URL_Actual   }}   </td>
+      <td>  {{ e.URL_Destino   }}   </td>
+      <td>  {{ e.Plataforma   }}   </td>
+      <td>  {{ e.Language   }}   </td>
+      <td>  {{ e.Fecha   }}   </td>
+      <td>  {{ e.Hora   }}   </td>
+    </tr>
+  </tbody>
+</table>
+  </div>
     <div id="myDiv"></div>
             <script>
             function normal() {
