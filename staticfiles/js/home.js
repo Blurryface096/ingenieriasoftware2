@@ -23,7 +23,6 @@ accion= document['GuardarEvento'].value;
   }
 
   $.ajax({
-    alert("entró al ajax");
     type: "POST",
     url: BASE_URL + "sendEvent/",
     data: "data=" + JSON.stringify(data),
