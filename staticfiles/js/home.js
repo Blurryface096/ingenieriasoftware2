@@ -1,9 +1,9 @@
-BASE_URL="https://guachita-analytics.herokuapp.com/"
-alert("LEYO EL JS")
+BASE_URL="https://guachita-analytics.herokuapp.com/";
+alert("LEYO EL JS");
 
 
 $( "#crear_juego" ).click(function() {
-alert("DETECTÓ EL CLICK")
+alert("DETECTÓ EL CLICK");
   data={
   	'Tipo ': “click”,
   	'URL_Actual ': “www.guachita.com”,
@@ -19,7 +19,7 @@ alert("DETECTÓ EL CLICK")
     data: "data=" + JSON.stringify(data),
     async: false,
     success: function (data) {
-      alert("TODO OK :P")
+      alert("TODO OK :P");
       }
   });
 });
