@@ -22,10 +22,10 @@ function enviar_evento() {
 var accion=document.getElementById('GuardarEvento').getAttribute('name');
 
   data={
-  	'Tipo ': accion,
+  	'Tipo': accion,
     //'Tipo ': 'Click',
-  	'URL_Actual ': document.URL,
-  	'URL_Destino ': document.referrer,
+  	'URL_Actual': document.URL,
+  	'URL_Destino': document.referrer,
     'Browser': browser,
     'Modo Online':navigator.onLine,
   	'Plataforma': navigator.platform,
