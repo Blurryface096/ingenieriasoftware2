@@ -4,7 +4,7 @@ fecha=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
 hora=f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
 var version=navigator.appVersion;
 
-var division[]=version.split(",");
+var division=version.split(",");
 var browser=division[2];
 
 
