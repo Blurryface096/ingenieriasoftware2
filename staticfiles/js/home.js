@@ -7,9 +7,10 @@ hora=f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
 
 
 function enviar_evento() {
-var accion=document["GuardarEvento"].value;
+//var accion=document["GuardarEvento"].value;
   data={
-  	'Tipo ': accion,
+  	//'Tipo ': accion,
+    'Tipo ': 'Click',
   	'URL_Actual ': document.referrer,
   	'URL_Destino ': document.URL,
     'Tipo Brower':navigator.appCodeName,
