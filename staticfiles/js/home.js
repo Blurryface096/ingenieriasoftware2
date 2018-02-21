@@ -5,12 +5,12 @@ alert("LEYO EL JS")
 $( "#crear_juego" ).click(function() {
 alert("DETECTÓ EL CLICK")
   data={
-  	Tipo : “click”,
-  	URL_Actual : “www.guachita.com”,
-  	URL_Destino : “www.guachita.com/home”,
-  	Browser : “Mozilla”,
-  	Plataforma: “Win32”,
-  	Language: “en-US”,
+  	'Tipo ': “click”,
+  	'URL_Actual ': “www.guachita.com”,
+  	'URL_Destino ': “www.guachita.com/home”,
+  	'Browser' : “Mozilla”,
+  	'Plataforma': “Win32”,
+  	'Language': “en-US”,
   }
 
   $.ajax({
