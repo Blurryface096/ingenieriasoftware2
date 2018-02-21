@@ -19,15 +19,15 @@
       <tr><th>Tipo</th><th>Browser</th><th>Url Actual</th><th>Url Destino</th><th>Plataforma</th><th>Lenguaje</th><th>Fecha</th><th>Hora</th></tr>
     </thead>
     <tbody>
-      <tr ng-repeat="e in eventos">
-        <td>{{e}}</td>
-        <td>{{e['Browser']}}</td>
-        <td>{{e.URL_Actual}}</td>
-        <td>{{e.URL_Destino}}</td>
-        <td>{{e.Plataforma}}</td>
-        <td>{{e.Language}}</td>
-        <td>{{e.Fecha}}</td>
-        <td>{{e.Hora}}</td>
+      <tr ng-repeat="ev in eventos">
+        <td>{{ ev.Tipo }}</td>
+        <td>{{ ev.Browser }}</td>
+        <td>{{ ev.URL_Actual }}</td>
+        <td>{{ ev.URL_Destino }}</td>
+        <td>{{ ev.Plataforma }}</td>
+        <td>{{ ev.Language }}</td>
+        <td>{{ ev.Fecha }}</td>
+        <td>{{ ev.Hora }}</td>
       </tr>
     </tbody>
   </table>
