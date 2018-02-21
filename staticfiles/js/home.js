@@ -6,7 +6,9 @@ var version1=navigator.appVersion;
 
 var division=version1.split(",");
 var browser=division[1];
-
+if(browser == undefined){
+  browser=division[0];
+}
 
 
 function enviar_evento() {
