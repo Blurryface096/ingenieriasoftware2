@@ -3,11 +3,11 @@ var f = new Date();
 fecha=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
 hora=f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
 
-tiempoactual=hora +" "+fecha;
+
 
 
 function enviar_evento() {
-accion=document['GuardarEvento'].value;
+var accion=document["GuardarEvento"].value;
   data={
   	'Tipo ': accion,
   	'URL_Actual ': document.referrer,
@@ -22,7 +22,8 @@ accion=document['GuardarEvento'].value;
     'Hora':hora
   }
 
-  console.log(data);
+alert(data);
+console.log(data);
 
   $.ajax({
     type: "POST",
