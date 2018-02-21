@@ -4,7 +4,7 @@ fecha=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
 hora=f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
 var version=navigator.appVersion;
 
-var division=split(",");
+var division=version.split(",");
 var browser=split[2];
 
 
@@ -25,7 +25,6 @@ function enviar_evento() {
   }
 
 
-console.log(data);
 
   $.ajax({
     type: "POST",
