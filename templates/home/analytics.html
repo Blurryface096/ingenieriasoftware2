@@ -8,6 +8,14 @@
               <script src="{% static 'js/plotly-latest.min.js' %}"></script>
               <script src="{% static 'js/angular.min.js' %}"></script>
               <script src="{% static 'js/analiticas.js' %}"></script>
+              <div class="container">
+                          <form action="{% url 'home:index' %}" method="post">
+                              {% csrf_token %}
+                              <button class="btn-large waves-effect waves-red blue darken-1 amber lighten-5-text" type="submit">Volver</button>
+                          </form>
+                            </div>
+                            <br>
+                            <br>
 
 <div ng-app="analiticas" ng-controller="reporte1">
 

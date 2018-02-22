@@ -1,4 +1,5 @@
 from apps.home.funciones import obtener_score,obtener_cadena,obtener_namespace
+from time import time
 
 def probar_score():
     ataque=15
@@ -35,13 +36,16 @@ def probar_namespace():
         print("OBTENER NAMESPACE FALLANDO")
 
 def main():
-    print("-----------INICIO DE PRUEBA UNITARIA----------")
+    tiempo_inicial = time()
+    
+    print("-----------INICIO DE PRUEBAS UNITARIAS----------")
     print("")
     probar_score()
     probar_cadena()
     probar_namespace()
-    
-
+    tiempo_final = time()
+    print("")
+    print("Terminó ejecución de pruebas unitarias en {} segundos".format(tiempo_final-tiempo_inicial))
 
 if __name__=='__main__':
     main()
