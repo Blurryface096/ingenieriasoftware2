@@ -10,7 +10,7 @@ from apps.home.models import Demarcacion
 from django.contrib.auth.models import User
 from apps.home.models import Partido
 from apps.home.models import Formaciones
-from apps.home.models import ParticipacionPolla,ParticipacionEquipoIdeal,ParticipacionTrivia,BalanceMonetarioForm,BalanceMonetario
+from apps.home.models import ParticipacionPolla,ParticipacionEquipoIdeal,ParticipacionTrivia,BalanceMonetarioForm,BalanceMonetario,PreguntasTrivia
 from django.contrib.auth.decorators import login_required
 import datetime
 import random

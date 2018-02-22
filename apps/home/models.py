@@ -21,9 +21,7 @@ ESTADO = {
     ('Cerrado', 'Cerrado'),
 }
 
-class PreguntasTrivia(models.Model):
-    juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
-    preguntas_juego=models.ManyToManyField(Preguntas)
+
 
 
 class Juego(models.Model):
@@ -168,6 +166,10 @@ class Trivia(models.Model):
     participacion = models.ForeignKey(ParticipacionTrivia, on_delete=models.CASCADE)
     preguntas=models.ManyToManyField(Preguntas)
     juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
+
+class PreguntasTrivia(models.Model):
+    juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
+    preguntas_juego=models.ManyToManyField(Preguntas)
 
 #class Usuario(models.Model):
     #username = models.CharField(max_length=100)
