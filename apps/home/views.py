@@ -150,7 +150,7 @@ def entrar_juego(request,juego):
         objetos = ParticipacionTrivia.objects.filter(juego=juego)
     condicion=false
     for o in objetos:
-        if o.uuario==request.user:
+        if o.usuario==request.user:
             condicion=true
 
     if condicion:
