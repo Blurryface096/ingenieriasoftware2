@@ -27,13 +27,33 @@
 
                 </div>
 <div class="container">
-  <div align="center">
-    <h2>Resultados (minimo 0, maximo 15)</h3>
-    <h3>Promedio de Ataque: {{ ataque_medio }}</h3>
-    <h3>Promedio de Defensa: {{ defensa_media }}</h3>
-    <h3>Promedio de Velocidad: {{ velocidad_media }}</h3>
-    <h3>Promedio total: {{ score }}</h3>
-  </div>
+
+    <table>
+      <tbody>
+        <tr>
+          <th>Resultados (0-15)</th>
+
+        </tr>
+      <tr>
+        <th>Promedio de Ataque:</th>
+        <td>{{ ataque_medio }}</td>
+      </tr>
+      <tr>
+        <th>Promedio de Defensa:</th>
+        <td>{{ defensa_media }}</td>
+      </tr>
+      <tr>
+        <th>Promedio de Velocidad:</th>
+        <td> {{ velocidad_media }}</td>
+      </tr>
+      <tr>
+        <th>Promedio total:</th>
+        <td>{{ score }}</td>
+      </tr>
+      </tbody>
+    </table>
+    
+
 </div>
 
 
