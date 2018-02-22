@@ -97,7 +97,7 @@ def crear_juego(request):
             else:
                 namespace='home:polla'
 
-
+            preguntastriv=[]
             if namespace=='home:trivia':
                 temp=Preguntas.objects.all().order_by('id')
                 listapreg=[]
@@ -115,8 +115,8 @@ def crear_juego(request):
                                 break
                 else:
                     preguntas=listapreg
-                PreguntasTrivia = PreguntasTrivia(juego=instance, preguntas_juego=preguntas)
-                PreguntasTrivia.save()
+                preguntastriv = PreguntasTrivia(juego=instance, preguntas_juego=preguntas)
+                preguntastriv.save()
 
 
             return redirect(namespace, instance.id)
