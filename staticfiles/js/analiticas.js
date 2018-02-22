@@ -71,4 +71,13 @@ app.controller('reporte1', function($scope,$http) {
     }, function myError(response) {
         alert("TODO NO OK :(");
     });
+
+    $http({
+        method : "POST",
+        url : BASE_URL + "getVistasDiarias/",
+    }).then(function mySuccess(response) {
+      console.log(response.data.visitas)
+    }, function myError(response) {
+        alert("TODO NO OK :(");
+    });
 });
