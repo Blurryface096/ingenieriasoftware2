@@ -434,13 +434,13 @@ def trivia_juego(request,juego):
         return render(request, 'home/trivia.html', contexto)
 
 def resultadostrivia(request, cadena):
-    preguntas=PreguntasTrivia.objects.get(juego=juego).preguntas_juego.order_by('id')
+
     division=cadena.split('&')
 
     score=int(division[0])
     jug_id=int(division[1])
     juego=Juego.objects.get(id=jug_id)
-
+    preguntas=PreguntasTrivia.objects.get(juego=juego).preguntas_juego.order_by('id')
     contexto = {'score' : score, 'preguntas' : preguntas, 'juego':juego}
 
     return render(request, 'home/resultadostrivia.html', contexto)
