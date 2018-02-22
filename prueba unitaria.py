@@ -1,4 +1,4 @@
-from apps.home.funciones import obtener_score
+from apps.home.funciones import obtener_score,obtener_cadena
 
 def probar_score():
     ataque=15
@@ -12,10 +12,22 @@ def probar_score():
     else:
         print("OBTENER SCORE FALLANDO")
 
+def probar_cadena():
+    k=7
+    
+
+    cadena=obtener_cadena(k)
+
+    if cadena=="/static/img/c7.png":
+        print("OBTENER CADENA OK")
+    else:
+        print("OBTENER CADENA FALLANDO")
+
 def main():
     print("-----------INICIO DE PRUEBA UNITARIA----------")
     print("")
     probar_score()
+    probar_cadena()
     
 
 

@@ -17,7 +17,7 @@ import random
 from django.template import RequestContext
 from django.contrib import messages
 from django.conf import settings
-from apps.home.funciones import obtener_score
+from apps.home.funciones import obtener_score,obtener_cadena
 # Create your views here.
 
 
@@ -36,10 +36,8 @@ def home(request):
     balance=BalanceMonetario.objects.get(usuario=request.user).balance
     juego=Juego.objects.filter(invitados=request.user)
     k=len(juego)
-    if k<=9:
-        cadena="/static/img/c"+ str(k)+".png"
-    else:
-        cadena="/static/img/c10.png"
+    cadena=obtener_cadena(k)
+
     juego2=Juego.objects.filter(privacidad='Publico')
     if balance:
         balance=balance
