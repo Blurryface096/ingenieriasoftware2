@@ -15,5 +15,10 @@ class Migration(migrations.Migration):
             name='total',
             field=models.FloatField(),
         ),
+        migrations.RenameField(
+            model_name='participacionequipoideal',
+            old_name='total',
+            new_name='score',
+        ),
 
     ]

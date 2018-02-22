@@ -168,7 +168,7 @@ class Trivia(models.Model):
     juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
 
 class PreguntasTrivia(models.Model):
-    juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
+    juego=models.ForeignKey(Juego, on_delete=models.CASCADE,primary_key=True)
     preguntas_juego=models.ManyToManyField(Preguntas)
 
 #class Usuario(models.Model):
