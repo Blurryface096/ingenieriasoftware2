@@ -11,6 +11,7 @@ app.controller('reporte1', function($scope,$http) {
       chromes=0
       firefox=0
       safari=0
+      internet=0
 
       win=0
       linux=0
@@ -22,6 +23,8 @@ app.controller('reporte1', function($scope,$http) {
           chromes=chromes+1
         } else if (evento.Browser=='Firefox') {
           firefox=firefox+1
+        } else if (evento.Browser=='Internet Explorer') {
+          internet=internet+1
         } else {
           safari=safari+1
         }
@@ -34,10 +37,11 @@ app.controller('reporte1', function($scope,$http) {
           mac=mac+1
         }
       }
-      total = chromes + firefox + safari
+      total = chromes + firefox + safari + internet
       chr = chromes/total
       fire = firefox/total
       safa = safari/total
+      ie = internet/total
 
       total2=win+linux+mac
       w=win/total2
@@ -45,8 +49,8 @@ app.controller('reporte1', function($scope,$http) {
       m=mac/total2
 
       var data = [{
-        values: [chr, fire, safa],
-        labels: ['Chrome', 'Firefox', 'Otros'],
+        values: [chr, fire, safa, ie],
+        labels: ['Chrome', 'Firefox', 'Otros', 'Internet Explorer'],
         type: 'pie'
       }];
 
@@ -57,11 +61,11 @@ app.controller('reporte1', function($scope,$http) {
       }];
 
       var layout = {
-        title: 'Navegadores que usan nuestros visitantes',
+        title: 'Navegadores que usan nuestros visitantes.',
       };
 
       var layout2 = {
-        title: 'Plataformas desde las que se conectan nuestros visitantes', 
+        title: 'Plataformas desde las que se conectan nuestros visitantes.',
       };
       Plotly.newPlot('browsers', data, layout);
       Plotly.newPlot('plataformas', data2, layout2);
@@ -89,7 +93,7 @@ app.controller('reporte1', function($scope,$http) {
         }
       ];
       var layout = {
-        title: 'Cantidad de visitas por dia',
+        title: 'Cantidad de visitas por dia.',
       };
       Plotly.newPlot('visitas', data3, layout);
     }, function myError(response) {
