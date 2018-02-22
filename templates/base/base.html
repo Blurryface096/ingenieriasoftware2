@@ -20,7 +20,12 @@
           <script src="{% static 'js/nouislider.min.js' %}"></script>
           <script> $(document).ready(function(){
              $('.tooltipped').tooltip({delay: 50});
-           }); </script>
+           });
+
+           $(document).ready(function() {
+      $('select').material_select();
+    });
+  </script>
            <script src="{% static 'js/home.js' %}"></script>
 
     <div>
