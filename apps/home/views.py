@@ -77,6 +77,7 @@ def crear_juego(request):
                 instance=form.save(commit=True)
                 instance.save()
             else:
+                messages.success(request, "Not Enough Minerals")
                 return redirect('home:index')
 
             if request.user!=instance.invitados:
@@ -145,6 +146,7 @@ def entrar_juego(request,juego):
         objetobalance.save()
         return redirect(namespace, id_jug)
     else:
+        messages.success(request, "Not Enough Minerals")
         return redirect('home:index')
 
 def jugadores(request, cadena):
