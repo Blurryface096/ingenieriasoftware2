@@ -17,10 +17,9 @@ import random
 from django.template import RequestContext
 from django.contrib import messages
 from django.conf import settings
+from funciones import obtener_score
 # Create your views here.
-def obtener_score(ataque_medio,defensa_media,velocidad_media):
-    score=round((ataque_medio + defensa_media + velocidad_media) / 3, 3)
-    return score
+
 
 def analitica(request):
     return render(request, 'home/analytics.html')

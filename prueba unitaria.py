@@ -1,4 +1,4 @@
-from apps.home.views import obtener_score
+from apps.home.funciones import obtener_score
 
 def probar_score():
     ataque=15
@@ -14,7 +14,7 @@ def probar_score():
 
 def main():
     print("-----------INICIO DE PRUEBA UNITARIA----------")
-    print("/n")
+    print("")
     probar_score()
     
 
