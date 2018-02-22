@@ -7,7 +7,6 @@ app.controller('reporte1', function($scope,$http) {
         method : "POST",
         url : BASE_URL + "getReport/",
     }).then(function mySuccess(response) {
-      console.log(response.data)
       $scope.eventos = response.data.collection;
       chromes=0
       firefox=0
@@ -57,15 +56,9 @@ app.controller('reporte1', function($scope,$http) {
         type: 'pie'
       }];
 
-      var data3 = [{
-          x: ['2013-10-04 22:23:00', '2013-11-04 22:23:00', '2013-12-04 22:23:00'],
-          y: [1, 3, 6],
-          type: 'scatter'
-        }
-      ];
+
       Plotly.newPlot('browsers', data);
       Plotly.newPlot('plataformas', data2);
-      Plotly.newPlot('visitas', data3);
 
 
     }, function myError(response) {
@@ -76,7 +69,21 @@ app.controller('reporte1', function($scope,$http) {
         method : "POST",
         url : BASE_URL + "getVistasDiarias/",
     }).then(function mySuccess(response) {
-      console.log(response.data.visitas)
+      var raw = response.data.visitas
+      var x  = []
+      var y = []
+      for (var i = 0; i < raw.length; i++) {
+        r = raw[i]
+        x.push(r._id)
+        y.push(r.total)
+      }
+      var data3 = [{
+          x: x,
+          y: y,
+          type: 'scatter'
+        }
+      ];
+        Plotly.newPlot('visitas', data3);
     }, function myError(response) {
         alert("TODO NO OK :(");
     });
