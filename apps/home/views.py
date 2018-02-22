@@ -356,6 +356,7 @@ def preguntas(request, cadena):
 
 
 def modificar_balance(request):
+    balance=BalanceMonetario.objects.get(usuario=request.user).balance
     if request.method=='POST':
         form=BalanceMonetarioForm(request.POST,request.FILES)
         if form.is_valid():
@@ -369,7 +370,8 @@ def modificar_balance(request):
 
     else:
         form=BalanceMonetarioForm()
-    return render(request, 'balance/cuenta.html', {'form':form})
+    contexto = {'form' : form,'balance':balance}
+    return render(request, 'balance/cuenta.html', contexto)
 
 
 

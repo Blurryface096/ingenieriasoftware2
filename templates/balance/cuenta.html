@@ -20,29 +20,7 @@
 <br>
 
 
-			<div id="slider-range" class="noUi-target noUi-ltr noUi-horizontal">
-        <div class="noUi-base"><div class="noUi-connects"></div>
-        <div class="noUi-origin" style="transform: translate(-52.1341%, 0px); z-index: 4;">
-          <div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="100.0" aria-valuenow="47.9" aria-valuetext="5829.27"></div>
-        </div></div></div>
-<span class="example-val" id="slider-range-value">4000</span>
-<script> var rangeSlider = document.getElementById('slider-range');
 
-noUiSlider.create(rangeSlider, {
-	start: [ 4000 ],
-	range: {
-		'min': [  1 ],
-		'max': [ 10000 ]
-	}
-});
-
-
-var rangeSliderValueElement = document.getElementById('slider-range-value');
-
-rangeSlider.noUiSlider.on('update', function( values, handle ) {
-	rangeSliderValueElement.innerHTML = values[handle];
-});
-</script>
 
 
                               <br>
@@ -54,23 +32,22 @@ rangeSlider.noUiSlider.on('update', function( values, handle ) {
     <br>
         <br>
 
+        <h5>Saldo Actual: {{ balance }} </h5>
+
 <form method="post" action="{% url 'home:modificar_balance' %}">
   {% csrf_token %}
-  <div class="row">
-    <div class="col-md-3">
-    </div>
-    <div class="col-md-6">
-      <div class="row">
-        <p class="range-field">
+  <div class="container">
 
-    </p>
+
+
+
 
         {{ form.as_p }}
-      </div>
+
       <div align="center">
         <button class="btn btn-primary" type="submit">Modificar</button>
       </div>
-    </div>
+
     <div class="col-md-3">
     </div>
   </div>
