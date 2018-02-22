@@ -29,7 +29,7 @@
     </thead>
     <tbody>
       {% verbatim %}
-      <tr ng-repeat="ev in eventos | orderBy: '-Fecha, -Hora'">
+      <tr ng-repeat="ev in eventos | orderBy:['-Fecha','-Hora']">
         <td>{{ ev.Tipo }}</td>
         <td>{{ ev.Browser }}</td>
         <td>{{ ev.URL_Actual }}</td>
