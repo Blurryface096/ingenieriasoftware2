@@ -85,7 +85,7 @@ class BalanceMonetario(models.Model):
 class BalanceMonetarioForm(ModelForm):
     class Meta:
         model = BalanceMonetario
-        fields = ['balance', 'tarjeta']
+        fields = ['tarjeta']
 
 
 class Equipo(models.Model):
