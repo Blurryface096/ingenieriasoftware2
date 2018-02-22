@@ -20,6 +20,12 @@ ESTADO = {
     ('Abierto', 'Abierto'),
     ('Cerrado', 'Cerrado'),
 }
+
+class PreguntasTrivia(models.Model):
+    juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
+    preguntas_juego=models.ManyToManyField(Preguntas)
+
+
 class Juego(models.Model):
 
     nombre = models.CharField(max_length=25)

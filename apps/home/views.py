@@ -98,6 +98,27 @@ def crear_juego(request):
                 namespace='home:polla'
 
 
+            if namespace=='home:trivia':
+                temp=Preguntas.objects.all().order_by('id')
+                listapreg=[]
+                for k in temp:
+                    listapreg.append(k)
+                preguntas=[]
+                if len(listapreg)>10:
+                    while len(preguntas)<10:
+                        for i in listapreg:
+                            num=random.randrange(1,3)
+                            if num==2:
+                                preguntas.append(i)
+                                listapreg.remove(i)
+                            if len(preguntas)==10:
+                                break
+                else:
+                    preguntas=listapreg
+                PreguntasTrivia = PreguntasTrivia(juego=instance, preguntas_juego=preguntas)
+                PreguntasTrivia.save()
+
+
             return redirect(namespace, instance.id)
             #return redirect(cadena(instance),instance)
     else:
@@ -367,7 +388,7 @@ def trivia_juego(request,juego):
     else:
         preguntas=listapreg
 
-    preguntas=Preguntas.objects.all().order_by('id')
+    preguntas=PreguntasTrivia.objects.get(id=juego).preguntas_juego.order_by("id")
     contexto = {'preguntas' : preguntas,'juego':juego}
 
     if request.method == 'POST':
@@ -410,7 +431,7 @@ def trivia_juego(request,juego):
         return render(request, 'home/trivia.html', contexto)
 
 def resultadostrivia(request, cadena):
-    preguntas = Preguntas.objects.all().order_by('id')
+    preguntas=PreguntasTrivia.objects.get(id=juego).preguntas_juego.order_by("id")
     division=cadena.split('&')
 
     score=int(division[0])
