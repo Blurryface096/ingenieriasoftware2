@@ -17,7 +17,7 @@ import random
 from django.template import RequestContext
 from django.contrib import messages
 from django.conf import settings
-from funciones import obtener_score
+from apps.home.funciones import obtener_score
 # Create your views here.
 
 
