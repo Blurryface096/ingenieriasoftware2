@@ -148,10 +148,10 @@ def entrar_juego(request,juego):
         objetos = ParticipacionEquipoIdeal.objects.filter(juego=juego)
     else:
         objetos = ParticipacionTrivia.objects.filter(juego=juego)
-    condicion=false
+    condicion=False
     for o in objetos:
         if o.usuario==request.user:
-            condicion=true
+            condicion=True
 
     if condicion:
         messages.success(request, "Ya jugaste este juego")
