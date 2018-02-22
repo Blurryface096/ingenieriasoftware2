@@ -33,8 +33,6 @@ var accion=document.getElementById('GuardarEvento').getAttribute('name');
     'Fecha':fecha + ' ' + hora
   }
 
-
-
   $.ajax({
     type: "POST",
     url: BASE_URL + "sendEvent/",
