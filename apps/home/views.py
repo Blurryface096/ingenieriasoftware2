@@ -142,12 +142,12 @@ def entrar_juego(request,juego):
 
     objetos=[]
     if tipo_jug == 'Polla':
-        objetos = ParticipacionPolla.objects.filter(usuario=request.user)
+        objetos = ParticipacionPolla.objects.filter(usuario=request.user,juego=juego)
 
     elif tipo_jug == 'Equipo':
-        objetos = ParticipacionEquipoIdeal.objects.filter(usuario=request.user)
+        objetos = ParticipacionEquipoIdeal.objects.filter(usuario=request.user,juego=juego)
     else:
-        objetos = ParticipacionTrivia.objects.filter(usuario=request.user)
+        objetos = ParticipacionTrivia.objects.filter(usuario=request.user,juego=juego)
 
     if objetos:
         messages.success(request, "Ya jugaste este juego")
