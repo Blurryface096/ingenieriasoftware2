@@ -56,10 +56,15 @@ app.controller('reporte1', function($scope,$http) {
         type: 'pie'
       }];
 
+      var layout = {
+        title: 'Navegadores que usan nuestros visitantes',
+      };
 
-      Plotly.newPlot('browsers', data);
-      Plotly.newPlot('plataformas', data2);
-
+      var layout2 = {
+        title: 'Plataformas desde las que se conectan nuestros visitantes', 
+      };
+      Plotly.newPlot('browsers', data, layout);
+      Plotly.newPlot('plataformas', data2, layout2);
 
     }, function myError(response) {
         alert("TODO NO OK :(");
@@ -83,7 +88,10 @@ app.controller('reporte1', function($scope,$http) {
           type: 'scatter'
         }
       ];
-        Plotly.newPlot('visitas', data3);
+      var layout = {
+        title: 'Cantidad de visitas por dia',
+      };
+      Plotly.newPlot('visitas', data3, layout);
     }, function myError(response) {
         alert("TODO NO OK :(");
     });
