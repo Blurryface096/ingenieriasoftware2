@@ -1,6 +1,7 @@
 from django.db import models
 from django.forms import ModelForm
 from django.contrib.auth.models import User
+from django import forms
 
 # Create your models here.
 
@@ -39,6 +40,10 @@ class JuegoForm(ModelForm):
     class Meta:
         model=Juego
         fields=['nombre', 'n_jugadores','tipo','costo','privacidad','invitados']
+
+        widgets={'tipo':forms.Select(),
+        'privacidad':forms.Select()
+        }
 
 
 class CrearForm(ModelForm):
