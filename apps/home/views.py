@@ -17,7 +17,7 @@ import random
 from django.template import RequestContext
 from django.contrib import messages
 from django.conf import settings
-from apps.home.funciones import obtener_score,obtener_cadena
+from apps.home.funciones import obtener_score,obtener_cadena,obtener_namespace
 # Create your views here.
 
 
@@ -110,18 +110,11 @@ def entrar_juego(request,juego):
     #tipo_jug=tipo
     tipo_jug=Juego.objects.get(id=id_jug).tipo.lower()
     juego=Juego.objects.get(id=id_jug)
-    print(tipo_jug)
-    namespace='home:polla'
 
 
-    if tipo_jug=='polla':
-        namespace='home:polla'
-    elif tipo_jug=='trivia':
-        namespace='home:trivia'
-    elif tipo_jug=='equipo':
-        namespace='home:equipo'
-    else:
-        namespace='home:polla'
+
+    namespace=obtener_namespace(tipo_jug)
+
     objetobalance=BalanceMonetario.objects.get(usuario=request.user)
     if objetobalance and objetobalance.balance>=juego.costo:
         objetobalance.balance=objetobalance.balance-juego.costo

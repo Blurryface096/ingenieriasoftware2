@@ -1,4 +1,4 @@
-from apps.home.funciones import obtener_score,obtener_cadena
+from apps.home.funciones import obtener_score,obtener_cadena,obtener_namespace
 
 def probar_score():
     ataque=15
@@ -23,11 +23,23 @@ def probar_cadena():
     else:
         print("OBTENER CADENA FALLANDO")
 
+def probar_namespace():
+    tipo_jug="trivia"
+    
+
+    namespace=obtener_namespace(tipo_jug)
+
+    if namespace=="home:trivia":
+        print("OBTENER NAMESPACE OK")
+    else:
+        print("OBTENER NAMESPACE FALLANDO")
+
 def main():
     print("-----------INICIO DE PRUEBA UNITARIA----------")
     print("")
     probar_score()
     probar_cadena()
+    probar_namespace()
     
 
 

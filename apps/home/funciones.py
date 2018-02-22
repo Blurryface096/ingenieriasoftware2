@@ -8,3 +8,15 @@ def obtener_cadena(k):
     else:
         cadena="/static/img/c10.png"
     return cadena
+
+def obtener_namespace(tipo_jug):
+    namespace='home:polla'
+    if tipo_jug=='polla':
+        namespace='home:polla'
+    elif tipo_jug=='trivia':
+        namespace='home:trivia'
+    elif tipo_jug=='equipo':
+        namespace='home:equipo'
+    else:
+        namespace='home:polla'
+    return namespace
