@@ -17,7 +17,10 @@ import random
 from django.template import RequestContext
 from django.contrib import messages
 from django.conf import settings
+from apps.home.funciones import obtener_score,obtener_cadena,obtener_namespace
 # Create your views here.
+
+
 def analitica(request):
     return render(request, 'home/analytics.html')
 
@@ -33,10 +36,8 @@ def home(request):
     balance=BalanceMonetario.objects.get(usuario=request.user).balance
     juego=Juego.objects.filter(invitados=request.user)
     k=len(juego)
-    if k<=9:
-        cadena="/static/img/c"+ str(k)+".png"
-    else:
-        cadena="/static/img/c10.png"
+    cadena=obtener_cadena(k)
+
     juego2=Juego.objects.filter(privacidad='Publico')
     if balance:
         balance=balance
@@ -109,18 +110,11 @@ def entrar_juego(request,juego):
     #tipo_jug=tipo
     tipo_jug=Juego.objects.get(id=id_jug).tipo.lower()
     juego=Juego.objects.get(id=id_jug)
-    print(tipo_jug)
-    namespace='home:polla'
 
 
-    if tipo_jug=='polla':
-        namespace='home:polla'
-    elif tipo_jug=='trivia':
-        namespace='home:trivia'
-    elif tipo_jug=='equipo':
-        namespace='home:equipo'
-    else:
-        namespace='home:polla'
+
+    namespace=obtener_namespace(tipo_jug)
+
     objetobalance=BalanceMonetario.objects.get(usuario=request.user)
     if objetobalance and objetobalance.balance>=juego.costo:
         objetobalance.balance=objetobalance.balance-juego.costo
@@ -156,6 +150,8 @@ def jugadores(request, cadena):
             defensa = defensa + jugador.defensa
             velocidad = velocidad + jugador.velocidad
 
+
+
         ataque_medio = round(ataque/11, 3)
 
         defensa_media = round(defensa/11, 3)
@@ -163,7 +159,8 @@ def jugadores(request, cadena):
         velocidad_media = round(velocidad/11, 3)
 
 
-        score = round((ataque_medio + defensa_media + velocidad_media) / 3, 3)
+        score = obtener_score(ataque_medio,defensa_media,velocidad_media)
+
 
 
 
