@@ -17,7 +17,7 @@ import random
 from django.template import RequestContext
 from django.contrib import messages
 from django.conf import settings
-from apps.home.funciones import obtener_score,obtener_cadena,obtener_namespace,obtener_aleatorios
+from apps.home.funciones import obtener_score,obtener_cadena,obtener_namespace,obtener_aleatorios,obtener_secuencias
 # Create your views here.
 
 

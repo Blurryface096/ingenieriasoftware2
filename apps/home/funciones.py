@@ -40,3 +40,9 @@ def obtener_aleatorios(temp):
     else:
         preguntas=listapreg
     return preguntas
+
+def obtener_secuencias(num):
+    num=num*3.4
+    for i in range(3):
+        num=num/2
+    return num
