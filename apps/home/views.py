@@ -142,14 +142,18 @@ def entrar_juego(request,juego):
 
     objetos=[]
     if tipo_jug == 'Polla':
-        objetos = ParticipacionPolla.objects.filter(usuario=request.user).filter(juego=juego)
+        objetos = ParticipacionPolla.objects.filter(juego=juego)
 
     elif tipo_jug == 'Equipo':
-        objetos = ParticipacionEquipoIdeal.objects.filter(usuario=request.user).filter(juego=juego)
+        objetos = ParticipacionEquipoIdeal.objects.filter(juego=juego)
     else:
-        objetos = ParticipacionTrivia.objects.filter(usuario=request.user).filter(juego=juego)
+        objetos = ParticipacionTrivia.objects.filter(juego=juego)
+    condicion=false
+    for o in objetos:
+        if o.uuario==request.user:
+            condicion=true
 
-    if objetos:
+    if condicion:
         messages.success(request, "Ya jugaste este juego")
         return redirect('home:index')
     else:
