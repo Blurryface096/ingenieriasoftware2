@@ -360,7 +360,7 @@ def modificar_balance(request):
     if request.method=='POST':
         form=BalanceMonetarioForm(request.POST,request.FILES)
         if form.is_valid():
-            agregado=request.POST.get("agregar_cant")
+            agregado=float(request.POST.get("agregar_cant"))
             instance=form.save(commit=False)
             instance.usuario=request.user
             instance.balance=balance+agregado
