@@ -58,6 +58,7 @@ app.controller('reporte1', function($scope,$http) {
       }];
 
       Plotly.newPlot('browsers', data);
+      Plotly.newPlot('plataformas', data2);
 
 
     }, function myError(response) {
