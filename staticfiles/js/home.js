@@ -30,8 +30,7 @@ var accion=document.getElementById('GuardarEvento').getAttribute('name');
     'Modo Online':navigator.onLine,
   	'Plataforma': navigator.platform,
   	'Language': navigator.language,
-    'Fecha':fecha,
-    'Hora':hora
+    'Fecha':fecha + ' ' + hora
   }
 
 
