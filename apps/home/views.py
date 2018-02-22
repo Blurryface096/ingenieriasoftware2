@@ -139,19 +139,20 @@ def entrar_juego(request,juego):
 
 
     namespace=obtener_namespace(tipo_jug)
-
+    condicion=False
     objetos=[]
     if tipo_jug == 'Polla':
-        objetos = ParticipacionPolla.objects.filter(juego=juego)
+        objetos = ParticipacionPolla.objects.all()
 
     elif tipo_jug == 'Equipo':
-        objetos = ParticipacionEquipoIdeal.objects.filter(juego=juego)
+        objetos = ParticipacionEquipoIdeal.objects.all()
     else:
-        objetos = ParticipacionTrivia.objects.filter(juego=juego)
-    condicion=False
+        objetos = ParticipacionTrivia.objects.all()
+
     for o in objetos:
-        if o.usuario==request.user:
+        if o.usuario==request.user and o.juego==juego:
             condicion=True
+            break
 
     if condicion:
         messages.success(request, "Ya jugaste este juego")
