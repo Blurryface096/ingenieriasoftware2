@@ -1,4 +1,4 @@
-from apps.home.funciones import obtener_score,obtener_cadena,obtener_namespace
+from apps.home.funciones import obtener_score,obtener_cadena,obtener_namespace,obtener_aleatorios
 from time import time
 
 def probar_score():
@@ -34,6 +34,18 @@ def probar_namespace():
         print("OBTENER NAMESPACE OK")
     else:
         print("OBTENER NAMESPACE FALLANDO")
+        
+def probar_aleatorios():
+    temp=[1]*11
+    
+
+    preguntas=obtener_aleatorios(temp)
+
+    if len(preguntas)==10:
+        print("OBTENER ALEATORIOS OK")
+    else:
+        print("OBTENER ALEATORIOS FALLANDO")
+
 
 def main():
     tiempo_inicial = time()
@@ -43,6 +55,7 @@ def main():
     probar_score()
     probar_cadena()
     probar_namespace()
+    probar_aleatorios()
     tiempo_final = time()
     print("")
     print("Terminó ejecución de pruebas unitarias en {} segundos".format(tiempo_final-tiempo_inicial))

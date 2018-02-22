@@ -17,7 +17,7 @@ import random
 from django.template import RequestContext
 from django.contrib import messages
 from django.conf import settings
-from apps.home.funciones import obtener_score,obtener_cadena,obtener_namespace
+from apps.home.funciones import obtener_score,obtener_cadena,obtener_namespace,obtener_aleatorios
 # Create your views here.
 
 
@@ -101,21 +101,7 @@ def crear_juego(request):
             preguntastriv=[]
             if namespace=='home:trivia':
                 temp=Preguntas.objects.all().order_by('id')
-                listapreg=[]
-                for k in temp:
-                    listapreg.append(k)
-                preguntas=[]
-                if len(listapreg)>10:
-                    while len(preguntas)<10:
-                        for i in listapreg:
-                            num=random.randrange(1,3)
-                            if num==2:
-                                preguntas.append(i)
-                                listapreg.remove(i)
-                            if len(preguntas)==10:
-                                break
-                else:
-                    preguntas=listapreg
+                preguntas=obtener_aleatorios(temp)
                 preguntastriv = PreguntasTrivia(juego=instance)
                 for p in preguntas:
                     preguntastriv.preguntas_juego.add(p)

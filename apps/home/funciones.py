@@ -1,3 +1,5 @@
+import random
+
 def obtener_score(ataque_medio,defensa_media,velocidad_media):
     score=round((ataque_medio + defensa_media + velocidad_media) / 3, 3)
     return score
@@ -20,3 +22,21 @@ def obtener_namespace(tipo_jug):
     else:
         namespace='home:polla'
     return namespace
+
+def obtener_aleatorios(temp):
+    listapreg=[]
+    for k in temp:
+        listapreg.append(k)
+    preguntas=[]
+    if len(listapreg)>10:
+        while len(preguntas)<10:
+            for i in listapreg:
+                num=random.randrange(1,3)
+                if num==2:
+                    preguntas.append(i)
+                    listapreg.remove(i)
+                if len(preguntas)==10:
+                    break
+    else:
+        preguntas=listapreg
+    return preguntas
