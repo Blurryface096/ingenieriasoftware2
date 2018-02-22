@@ -1,6 +1,7 @@
 from django.db import models
 from django.forms import ModelForm
 from django.contrib.auth.models import User
+from django import forms
 
 # Create your models here.
 
@@ -19,6 +20,10 @@ ESTADO = {
     ('Abierto', 'Abierto'),
     ('Cerrado', 'Cerrado'),
 }
+
+
+
+
 class Juego(models.Model):
 
     nombre = models.CharField(max_length=25)
@@ -39,6 +44,10 @@ class JuegoForm(ModelForm):
     class Meta:
         model=Juego
         fields=['nombre', 'n_jugadores','tipo','costo','privacidad','invitados']
+
+        widgets={'tipo':forms.Select(),
+        'privacidad':forms.Select()
+        }
 
 
 class CrearForm(ModelForm):
@@ -76,7 +85,7 @@ class BalanceMonetario(models.Model):
 class BalanceMonetarioForm(ModelForm):
     class Meta:
         model = BalanceMonetario
-        fields = ['balance', 'tarjeta']
+        fields = ['tarjeta']
 
 
 class Equipo(models.Model):
@@ -157,6 +166,10 @@ class Trivia(models.Model):
     participacion = models.ForeignKey(ParticipacionTrivia, on_delete=models.CASCADE)
     preguntas=models.ManyToManyField(Preguntas)
     juego=models.ForeignKey(Juego, on_delete=models.CASCADE)
+
+class PreguntasTrivia(models.Model):
+    juego=models.ForeignKey(Juego, on_delete=models.CASCADE,primary_key=True)
+    preguntas_juego=models.ManyToManyField(Preguntas)
 
 #class Usuario(models.Model):
     #username = models.CharField(max_length=100)

@@ -7,7 +7,7 @@ from .models import Equipo
 from .models import Formaciones
 from .models import Jugador
 from .models import Demarcacion
-from .models import ParticipacionEquipoIdeal, ParticipacionTrivia,BalanceMonetario
+from .models import ParticipacionEquipoIdeal, ParticipacionTrivia,BalanceMonetario,PreguntasTrivia
 
 admin.site.register(Preguntas)
 admin.site.register(Juego)
@@ -20,3 +20,4 @@ admin.site.register(Demarcacion)
 admin.site.register(ParticipacionEquipoIdeal)
 admin.site.register(ParticipacionTrivia)
 admin.site.register(BalanceMonetario)
+admin.site.register(PreguntasTrivia)

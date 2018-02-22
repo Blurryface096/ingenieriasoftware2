@@ -8,11 +8,3 @@ class Migration(migrations.Migration):
     dependencies = [
         ('home', '0017_auto_20180212_0040'),
     ]
-
-    operations = [
-        migrations.RemoveField(
-            model_name='participacionequipoideal',
-            name='total',
-        ),
-
-    ]

@@ -4,6 +4,9 @@
 <h4>Universidad de Lima</h4>
 {% endblock %}
 {% block content %}
+<script> $(document).ready(function(){
+   $('.tooltipped').tooltip({delay: 50});
+ }); </script>
 
 <div id="divCabecera">
 <div>
@@ -42,7 +45,7 @@
        </div>
 
      <div >
-  <button name="balance" class="waves-effect waves-light red" type="submit"><a class="white-text" href={% url 'home:modificar_balance' %}>Estado de Cuenta</a></button>
+  <button name="balance" class="waves-effect waves-light red btn-large" type="submit"><a class="white-text" href={% url 'home:modificar_balance' %}>Estado de Cuenta</a></button>
 
 
      </div>
@@ -50,21 +53,32 @@
 
 </div>
 <div style="float:right;padding-right: 2vw;">
-  <a href={% url 'home:index' %}>  <img style="height:5hw;widht: 5vw;" src="{% static 'img/c2.png'%}" alt="notifcaciones" /> </a>
+  <a href={% url 'home:notificaciones' %}>  <img style="height:150px;width:150px;" src=" {{ cadena }} " alt="notifcaciones" /> </a>
 </div>
 </div>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
-<table class='highlight'>
+<table class='highlight bordered'>
 <thead> <tr><th>Juego Creados</th><th>Tipo de Juego</th><th>Creador</th><th>Costo</th><th>Invitados</th><th>Unirse</th><th>Puntuaciones</th></tr> </thead>
 <tbody>
 {% for j in juego %}
   <tr><td>  {{ j.nombre }} ( {{j.n}}/{{ j.n_jugadores }})   </td><td>{{ j.tipo }} </td> <td> {{ j.organizador }} </td><td> S/.{{ j.costo }} </td> <td>
 {% for i in j.invitados.all %}
 
-| {{ i.username }} |
+
+<div class="chip">
+    <img src="{% static 'img/football.png' %}" alt="Contact Person">
+    {{ i.username }}
+  </div>
 
 {% endfor %}
 {% if j.n < j.n_jugadores %}
@@ -96,13 +110,29 @@
   </tbody>
 </table>
 <br>
-
-         <div>
-           <button name="juego" class="waves-effect waves-light red" type="submit"><a class="white-text" href={% url 'home:crear_juego' %}>Crear Juego</a></button>
+     <div>
+         <div style="float:left;">
+           <a class="white-text" href={% url 'home:crear_juego' %} onclick="enviar_evento()" id="GuardarEvento" name="Crear" ><button name="juego" class="waves-effect waves-light red btn-large" type="submit"> Crear Juego </button></a>
+         </div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <div class="center-align">
+            <a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ayuda" href={% url 'home:ayuda' %}> <img style="height:63px;width:63px;" src=" {% static 'img/interrogacion.png' %}" onmouseover="this.src='/static/img/interrogacion2.png';" onmouseout="this.src='/static/img/interrogacion.png';" alt="ayuda" /> </a>
+         </div>
+{% if request.user.is_superuser %}
+         <div style="float:right;padding-right: 2vw;">
+           <a href={% url 'home:analitica' %}>  <img style="height:150px;width:150px;" src=" {% static 'img/analytics.png' %}" alt="analitica" /> </a>
+           <p class="flow-text"> Analítica </p>
          </div>
 
+         {% endif %}
+</div>
+<br>
+<br>
+<br>
 <br>
 {% endblock %}
 {% block footer %}
+
+
 <h5>Lima, Peru 2018</h5>
 {% endblock %}

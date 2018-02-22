@@ -1,0 +1,99 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block header %}
+<h4>Universidad de Lima</h4>
+{% endblock %}
+{% block content %}
+
+              <script src="{% static 'js/plotly-latest.min.js' %}"></script>
+              <script src="{% static 'js/angular.min.js' %}"></script>
+              <script src="{% static 'js/analiticas.js' %}"></script>
+              <div class="container">
+                          <form action="{% url 'home:index' %}" method="post">
+                              {% csrf_token %}
+                              <button class="btn-large waves-effect waves-red blue darken-1 amber lighten-5-text" type="submit">Volver</button>
+                          </form>
+                            </div>
+                            <br>
+                            <br>
+
+<div ng-app="analiticas" ng-controller="reporte1">
+
+  <div id="visitas">
+  </div>
+  <div class="row">
+    <div id="browsers">
+    </div>
+    <div id="plataformas">
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <div class="row" align="center">
+            Tipo
+            <input type="text" ng-model="search.Tipo">
+          </div>
+        </th>
+        <th>
+          <div class="row" align="center">
+            Browser
+            <input type="text" ng-model="search.Browser">
+          </div>
+        </th>
+        <th>
+          <div class="row" align="center">
+            URL_Actual
+            <input type="text" ng-model="search.URL_Actual">
+          </div>
+        </th>
+        <th>
+          <div class="row" align="center">
+            Url Destino
+            <input type="text" ng-model="search.URL_Destino">
+          </div>
+        </th>
+        <th>
+          <div class="row" align="center">
+            Plataforma
+            <input type="text" ng-model="search.Plataforma">
+          </div>
+        </th>
+        <th>
+          <div class="row" align="center">
+            Lenguaje
+            <input type="text" ng-model="search.Language">
+          </div>
+        </th>
+        <th>
+          <div class="row" align="center">
+            Fecha
+            <input type="text" ng-model="search.Fecha">
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% verbatim %}
+      <tr ng-repeat="ev in eventos | orderBy:'-Fecha'| filter:search:strict">
+        <td>{{ ev.Tipo }}</td>
+        <td>{{ ev.Browser }}</td>
+        <td>{{ ev.URL_Actual }}</td>
+        <td>{{ ev.URL_Destino }}</td>
+        <td>{{ ev.Plataforma }}</td>
+        <td>{{ ev.Language }}</td>
+        <td>{{ ev.Fecha }}</td>
+      {% endverbatim %}
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+            {% endblock %}
+            {% block footer %}
+
+
+            <h5>Lima, Peru 2018</h5>
+            {% endblock %}

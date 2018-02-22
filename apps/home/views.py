@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from apps.home.models import Preguntas
 from django.contrib.auth.forms import UserCreationForm
 from apps.home.models import JuegoForm
@@ -9,19 +10,34 @@ from apps.home.models import Demarcacion
 from django.contrib.auth.models import User
 from apps.home.models import Partido
 from apps.home.models import Formaciones
-from apps.home.models import ParticipacionPolla,ParticipacionEquipoIdeal,ParticipacionTrivia,BalanceMonetarioForm,BalanceMonetario
+from apps.home.models import ParticipacionPolla,ParticipacionEquipoIdeal,ParticipacionTrivia,BalanceMonetarioForm,BalanceMonetario,PreguntasTrivia
 from django.contrib.auth.decorators import login_required
 import datetime
 import random
-
+from django.template import RequestContext
+from django.contrib import messages
+from django.conf import settings
+from apps.home.funciones import obtener_score,obtener_cadena,obtener_namespace,obtener_aleatorios,obtener_secuencias
 # Create your views here.
 
-@login_required(login_url='')
+
+def analitica(request):
+    return render(request, 'home/analytics.html')
+
+def ayuda(request):
+    return render(request, 'home/ayuda.html')
+
 def home(request):
     nombre=request.user.username
 
+
+    #cadena="{% static 'img/c" +  str(k)  + ".png' %}"
+
     balance=BalanceMonetario.objects.get(usuario=request.user).balance
     juego=Juego.objects.filter(invitados=request.user)
+    k=len(juego)
+    cadena=obtener_cadena(k)
+
     juego2=Juego.objects.filter(privacidad='Publico')
     if balance:
         balance=balance
@@ -29,9 +45,17 @@ def home(request):
         balance=0
 
     listajuego=list(set(list(juego)+list(juego2)))
-    return render(request, 'home/home.html', { 'juego': listajuego, 'user':nombre,'balance':balance})
+    return render(request, 'home/home.html', { 'juego': listajuego, 'user':nombre,'balance':balance, 'cadena':cadena})
+
+def notificaciones(request):
+    nombre=request.user.username
 
 
+    juego=Juego.objects.filter(invitados=request.user)
+
+
+
+    return render(request, 'home/notificaciones.html', { 'juego': juego, 'user':nombre})
 
 def crear_juego(request):
     if request.method=='POST':
@@ -53,6 +77,7 @@ def crear_juego(request):
                 instance=form.save(commit=True)
                 instance.save()
             else:
+                messages.success(request, "Not Enough Minerals")
                 return redirect('home:index')
 
             if request.user!=instance.invitados:
@@ -73,6 +98,16 @@ def crear_juego(request):
             else:
                 namespace='home:polla'
 
+            preguntastriv=[]
+            if namespace=='home:trivia':
+                temp=Preguntas.objects.all().order_by('id')
+                preguntas=obtener_aleatorios(temp)
+                preguntastriv = PreguntasTrivia(juego=instance)
+                for p in preguntas:
+                    preguntastriv.preguntas_juego.add(p)
+
+                preguntastriv.save()
+
 
             return redirect(namespace, instance.id)
             #return redirect(cadena(instance),instance)
@@ -86,25 +121,37 @@ def entrar_juego(request,juego):
     #tipo_jug=tipo
     tipo_jug=Juego.objects.get(id=id_jug).tipo.lower()
     juego=Juego.objects.get(id=id_jug)
-    print(tipo_jug)
-    namespace='home:polla'
 
 
-    if tipo_jug=='polla':
-        namespace='home:polla'
-    elif tipo_jug=='trivia':
-        namespace='home:trivia'
-    elif tipo_jug=='equipo':
-        namespace='home:equipo'
+
+    namespace=obtener_namespace(tipo_jug)
+    condicion=False
+    objetos=[]
+    if tipo_jug == 'polla':
+        objetos = ParticipacionPolla.objects.all()
+
+    elif tipo_jug == 'equipo':
+        objetos = ParticipacionEquipoIdeal.objects.all()
     else:
-        namespace='home:polla'
-    objetobalance=BalanceMonetario.objects.get(usuario=request.user)
-    if objetobalance and objetobalance.balance>=juego.costo:
-        objetobalance.balance=objetobalance.balance-juego.costo
-        objetobalance.save()
-        return redirect(namespace, id_jug)
-    else:
+        objetos = ParticipacionTrivia.objects.all()
+
+    for o in objetos:
+        if o.usuario==request.user and o.juego==juego:
+            condicion=True
+            break
+
+    if condicion:
+        messages.success(request, "Ya jugaste este juego")
         return redirect('home:index')
+    else:
+        objetobalance=BalanceMonetario.objects.get(usuario=request.user)
+        if objetobalance and objetobalance.balance>=juego.costo:
+            objetobalance.balance=objetobalance.balance-juego.costo
+            objetobalance.save()
+            return redirect(namespace, id_jug)
+        else:
+            messages.success(request, "Not Enough Minerals")
+            return redirect('home:index')
 
 def jugadores(request, cadena):
     division=cadena.split('&')
@@ -133,6 +180,8 @@ def jugadores(request, cadena):
             defensa = defensa + jugador.defensa
             velocidad = velocidad + jugador.velocidad
 
+
+
         ataque_medio = round(ataque/11, 3)
 
         defensa_media = round(defensa/11, 3)
@@ -140,7 +189,8 @@ def jugadores(request, cadena):
         velocidad_media = round(velocidad/11, 3)
 
 
-        score = round((ataque_medio + defensa_media + velocidad_media) / 3, 3)
+        score = obtener_score(ataque_medio,defensa_media,velocidad_media)
+
 
 
 
@@ -299,7 +349,7 @@ def preguntas(request, cadena):
                 for i in listapreg:
                     num=random.randrange(1,3)
                     if num==2:
-                        preguntas.append(i)
+                        preguntas.add(i)
                         listapreg.remove(i)
                     if len(preguntas)==10:
                         break
@@ -310,26 +360,48 @@ def preguntas(request, cadena):
 
 
 def modificar_balance(request):
+    balance=BalanceMonetario.objects.get(usuario=request.user).balance
     if request.method=='POST':
         form=BalanceMonetarioForm(request.POST,request.FILES)
         if form.is_valid():
+            agregado=float(request.POST.get("agregar_cant"))
             instance=form.save(commit=False)
             instance.usuario=request.user
+            instance.balance=balance+agregado
             instance=form.save(commit=True)
             instance.save()
 
-
+            messages.success(request, "Cantidad Agregada")
             return redirect('home:index')
 
     else:
         form=BalanceMonetarioForm()
-    return render(request, 'balance/cuenta.html', {'form':form})
+    contexto = {'form' : form,'balance':balance}
+    return render(request, 'balance/cuenta.html', contexto)
 
 
 
 def trivia_juego(request,juego):
     juego=Juego.objects.get(id=juego)
-    preguntas=Preguntas.objects.all().order_by('id')
+    #Book.objects.all().order_by('?')[:10]
+    temp=Preguntas.objects.all().order_by('id')
+    listapreg=[]
+    for k in temp:
+        listapreg.append(k)
+    preguntas=[]
+    if len(listapreg)>10:
+        while len(preguntas)<10:
+            for i in listapreg:
+                num=random.randrange(1,3)
+                if num==2:
+                    preguntas.append(i)
+                    listapreg.remove(i)
+                if len(preguntas)==10:
+                    break
+    else:
+        preguntas=listapreg
+
+    preguntas=PreguntasTrivia.objects.get(juego=juego).preguntas_juego.order_by('id')
     contexto = {'preguntas' : preguntas,'juego':juego}
 
     if request.method == 'POST':
@@ -372,13 +444,13 @@ def trivia_juego(request,juego):
         return render(request, 'home/trivia.html', contexto)
 
 def resultadostrivia(request, cadena):
-    preguntas = Preguntas.objects.all().order_by('id')
+
     division=cadena.split('&')
 
     score=int(division[0])
     jug_id=int(division[1])
     juego=Juego.objects.get(id=jug_id)
-
+    preguntas=PreguntasTrivia.objects.get(juego=juego).preguntas_juego.order_by('id')
     contexto = {'score' : score, 'preguntas' : preguntas, 'juego':juego}
 
     return render(request, 'home/resultadostrivia.html', contexto)
@@ -396,5 +468,18 @@ def puntuaciones(request, id_juego):
             participaciones = ParticipacionTrivia.objects.filter(juego=juego).order_by('-score')
         contexto = {'participaciones' : participaciones, 'titulo' : juego.nombre}
         return render(request, 'home/posiciones.html', contexto)
+    else:
+        pass
+
+
+def descartar(request, id_juego):
+    if request.method == 'GET':
+        juego = Juego.objects.get(id=id_juego)
+        juego.invitados.remove(request.user)
+        juego.save()
+        nombre=request.user.username
+        juego=Juego.objects.filter(invitados=request.user)
+
+        return render(request, 'home/notificaciones.html', { 'juego': juego, 'user':nombre})
     else:
         pass

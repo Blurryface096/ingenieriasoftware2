@@ -1,0 +1,89 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block header %}
+<h4>Universidad de Lima</h4>
+{% endblock %}
+{% block content %}
+
+<div id="divCabecera">
+<div>
+<table class="table bordered"> <tbody> <tr><td> Juegos a los que fuiste invitado:</td></tr>
+
+  <tr><td style="font-size: 20px;" class="text-indigo darken-4 z-depth-4"> {{user}} </td></tr>
+  </tbody>
+
+
+
+
+
+ </table>
+   </div>
+   <br>
+   <br>
+
+   <div>
+
+
+     </div>
+  </div>
+
+  <div class="container">
+              <form class="logout-link" action="{% url 'home:index' %}" method="post">
+                  {% csrf_token %}
+                  <button class="btn btn-success" type="submit">Volver</button>
+              </form>
+                </div>
+
+
+<br>
+<br>
+
+
+<table class='highlight bordered'>
+<thead> <tr><th>Juego Creados</th><th>Tipo de Juego</th><th>Creador</th><th>Costo</th><th>Invitados</th><th>Unirse</th><th>Descartar</th></tr> </thead>
+<tbody>
+{% for j in juego %}
+  <tr><td>  {{ j.nombre }} ( {{j.n}}/{{ j.n_jugadores }})   </td><td>{{ j.tipo }} </td> <td> {{ j.organizador }} </td><td> S/.{{ j.costo }} </td> <td>
+{% for i in j.invitados.all %}
+
+
+<div class="chip">
+    <img src="{% static 'img/football.png' %}" alt="Contact Person">
+    {{ i.username }}
+  </div>
+
+{% endfor %}
+{% if j.n < j.n_jugadores %}
+<td>
+  <button name="juego" class="waves-effect waves-light purple darken-3"
+  type="submit">
+    <a class="white-text"
+      href={% url 'home:entrar_juego' juego=j.id %}>
+      Entrar
+    </a>
+  </button>
+</td>
+{% else %}
+<td>
+  Cerrado
+</td>
+{% endif %}
+<td>
+  <a href={% url 'home:descartar' id_juego=j.id %}>  <img style="height:52px;width:52px;" src="{% static 'img/equis.png'%}" alt="descartar" /> </a>
+</td>
+</tr>
+{% endfor %}
+
+  </tbody>
+</table>
+<br>
+
+         <div>
+           <a class="white-text" href={% url 'home:crear_juego' %}><button name="juego" class="waves-effect waves-light red btn-large" type="submit"> Crear Juego </button></a>
+         </div>
+
+<br>
+{% endblock %}
+{% block footer %}
+<h5>Lima, Peru 2018</h5>
+{% endblock %}

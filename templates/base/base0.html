@@ -10,7 +10,15 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <!--  <link rel = "stylesheet" href ="{% static 'Css/estilos.css' %}"  > -->
     <!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+         <script src="{% static 'js/nouislider.js' %}"></script>
+         <script src="{% static 'js/nouislider.min.js' %}"></script>
+         <script> $(document).ready(function(){
+            $('.tooltipped').tooltip({delay: 50});
+          }); </script>
+          <script src="{% static 'js/home.js' %}"></script>
     <div>
         <table class="db-table3">
             <thead>
@@ -19,14 +27,14 @@
 
 
                   <th style="width: 33.3%; height: 6px;background-color: #fd0000;">
-                      <h1><span align="center" class="white-text text-darken-2" style="background-color: #fd0000">Guachita</span></h1>
+                    <h1><div align="center" class="white-text text-darken-2" style="background-color: #fd0000;">Guachita</div></h1>
                   </th>
-                  <th align="center" style="width: 33.3%; height: 6px; background-color:#ffffff">
-                    <img src="{% static 'img/fifa.jpg' %}" alt="Fifa" />
+                  <th style="width: 33.3%; height: 6px; background-color:#ffffff">
+                    <div align="center" ><img src="{% static 'img/fifa.jpg' %}" alt="Fifa" /></div>
                 </th>
                   <th  align="center" style="width: 33.3%; height: 6px;background-color: #fd0000">
-                      <p class="white-text text-darken-2">Ingenieria de Software 2</p>
-                      <p class="white-text text-darken-2">Grupo 4</p>
+                    <div align="center" >  <p class="white-text text-darken-2" style="font-size:1.1vw;">Ingenieria de Software 2</p></div>
+                    <div align="center" >  <p class="white-text text-darken-2" style="font-size:1.1vw;" >Grupo 4</p></div>
                   </th>
 
                 </tr>
@@ -42,6 +50,14 @@
   </head>
   <body>
     <div class="container">
+      {% if messages %}
+      <ul class="messages">
+
+      {% for message in messages %}
+      <li {% if message.tags %} class=" cyan darken-4 card-panel" style="font-size:1.3vw; color:#ffffff;"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+      {% endif %}
       {% block header %}
       {% endblock %}
       {% block content %}

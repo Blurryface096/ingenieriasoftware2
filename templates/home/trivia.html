@@ -24,6 +24,7 @@
 				{% csrf_token %}
 
 			{% for p in preguntas %}
+
 				<h3> {{ p.id }}.  {{ p.pregunta }}</h3>
 				<input type = "radio" name = "p{{ p.id }}" value = "a" id = "p{{ p.id }}a"><label for="p{{ p.id }}a"> a. {{ p.opcion1 }}</label><br>
 				<input type = "radio" name = "p{{ p.id }}" value = "b" id = "p{{ p.id }}b"><label for="p{{ p.id }}b"> b. {{ p.opcion2 }}</label><br>
@@ -32,7 +33,7 @@
 			{% endfor %}
 
 				<br><br>
-				<input type = "submit" value = "Submit Answer">
+				<input class="btn waves-effect waves-light" type = "submit" value = "Ingresar Respuestas">
 			</form>
 			<br><br>
 		<!-- <a href="/home/trivia" class="button">Borrar respuestas</a> -->

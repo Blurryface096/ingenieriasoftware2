@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load staticfiles %}
 {% block title %} Posiciones{% endblock %}
 {% block content %}
 <div class="container">
@@ -29,6 +30,8 @@
       {% endfor %}
     </tbody>
   </table>
+
+  <img style="height:400px;width:600px;" src=" {% static 'img/puntuaciones.jpg' %}"  alt="puntuaciones" />
 </div>
 
 
