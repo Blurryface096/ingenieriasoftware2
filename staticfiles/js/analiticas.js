@@ -28,7 +28,7 @@ app.controller('reporte1', function($scope,$http) {
       safa = safari/total
       var data = [{
         values: [chr, fire, safa],
-        labels: ['Residential', 'Non-Residential', 'Utility'],
+        labels: ['Chrome', 'Firefox', 'Otros'],
         type: 'pie'
       }];
 
