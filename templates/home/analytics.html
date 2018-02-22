@@ -18,17 +18,24 @@
     <thead>
       <tr>
         <th>Tipo</th>
+        <input type="text" ng-model="search.Tipo">
         <th>Browser</th>
+        <input type="text" ng-model="search.Browser">
         <th>Url Actual</th>
+        <input type="text" ng-model="search.URL_Actual">
         <th>Url Destino</th>
+        <input type="text" ng-model="search.URL_Destino">
         <th>Plataforma</th>
+        <input type="text" ng-model="search.Plataforma">
         <th>Lenguaje</th>
+        <input type="text" ng-model="search.Language">
         <th>Fecha</th>
+        <input type="text" ng-model="search.Fecha">
       </tr>
     </thead>
     <tbody>
       {% verbatim %}
-      <tr ng-repeat="ev in eventos | orderBy:'-Fecha'">
+      <tr ng-repeat="ev in eventos | orderBy:'-Fecha'| filter:search:strict">
         <td>{{ ev.Tipo }}</td>
         <td>{{ ev.Browser }}</td>
         <td>{{ ev.URL_Actual }}</td>
