@@ -391,7 +391,7 @@ def trivia_juego(request,juego):
     else:
         preguntas=listapreg
 
-    preguntas=PreguntasTrivia.objects.get(id=juego).preguntas_juego.order_by("id")
+    preguntas=PreguntasTrivia.objects.get(id=juego).preguntas_juego
     contexto = {'preguntas' : preguntas,'juego':juego}
 
     if request.method == 'POST':
@@ -434,7 +434,7 @@ def trivia_juego(request,juego):
         return render(request, 'home/trivia.html', contexto)
 
 def resultadostrivia(request, cadena):
-    preguntas=PreguntasTrivia.objects.get(id=juego).preguntas_juego.order_by("id")
+    preguntas=PreguntasTrivia.objects.get(id=juego).preguntas_juego
     division=cadena.split('&')
 
     score=int(division[0])
