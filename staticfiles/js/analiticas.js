@@ -9,13 +9,16 @@ app.controller('reporte1', function($scope,$http) {
         var eventos = []
         for (var i = 0; i < response.data.collection.length; i++) {
           raw = response.data.collection[i]
+          console.log(raw)
           var d = Date.parse(raw.Fecha);
+          console.log(d)
           evento = {
             'Tipo' : raw.Tipo,
             'Browser' : raw.Browser,
             'URL_Actual' : raw.URL_Actual,
             'URL_Destino' : raw.URL_Destino,
             'Plataforma' : raw.Plataforma,
+            'Language' : raw.Language,
             'Fecha' : d,
           }
           eventos.push(evento)
