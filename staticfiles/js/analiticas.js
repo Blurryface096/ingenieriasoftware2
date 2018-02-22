@@ -9,7 +9,7 @@ app.controller('reporte1', function($scope,$http) {
         var eventos = []
         for (var i = 0; i < response.data.collection.length; i++) {
           raw = response.data.collection[i]
-          console.log(raw)
+          console.log(raw.Fecha)
           var d = Date.parse(raw.Fecha);
           console.log(d)
           evento = {
