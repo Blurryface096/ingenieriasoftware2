@@ -140,14 +140,27 @@ def entrar_juego(request,juego):
 
     namespace=obtener_namespace(tipo_jug)
 
-    objetobalance=BalanceMonetario.objects.get(usuario=request.user)
-    if objetobalance and objetobalance.balance>=juego.costo:
-        objetobalance.balance=objetobalance.balance-juego.costo
-        objetobalance.save()
-        return redirect(namespace, id_jug)
+    objetos=[]
+    if tipo_jug == 'Polla':
+        objetos = ParticipacionPolla.objects.filter(usuario=request.user)
+
+    elif tipo_jug == 'Equipo':
+        objetos = ParticipacionEquipoIdeal.objects.filter(usuario=request.user)
     else:
-        messages.success(request, "Not Enough Minerals")
+        objetos = ParticipacionTrivia.objects.filter(usuario=request.user)
+
+    if objetos:
+        messages.success(request, "Ya jugaste este juego")
         return redirect('home:index')
+    else:
+        objetobalance=BalanceMonetario.objects.get(usuario=request.user)
+        if objetobalance and objetobalance.balance>=juego.costo:
+            objetobalance.balance=objetobalance.balance-juego.costo
+            objetobalance.save()
+            return redirect(namespace, id_jug)
+        else:
+            messages.success(request, "Not Enough Minerals")
+            return redirect('home:index')
 
 def jugadores(request, cadena):
     division=cadena.split('&')
