@@ -18,6 +18,10 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.conf import settings
 # Create your views here.
+def obtener_score(ataque_medio,defensa_media,velocidad_media):
+    score=round((ataque_medio + defensa_media + velocidad_media) / 3, 3)
+    return score
+
 def analitica(request):
     return render(request, 'home/analytics.html')
 
@@ -156,6 +160,8 @@ def jugadores(request, cadena):
             defensa = defensa + jugador.defensa
             velocidad = velocidad + jugador.velocidad
 
+
+
         ataque_medio = round(ataque/11, 3)
 
         defensa_media = round(defensa/11, 3)
@@ -163,7 +169,8 @@ def jugadores(request, cadena):
         velocidad_media = round(velocidad/11, 3)
 
 
-        score = round((ataque_medio + defensa_media + velocidad_media) / 3, 3)
+        score = obtener_score(ataque_medio,defensa_media,velocidad_media)
+
 
 
 

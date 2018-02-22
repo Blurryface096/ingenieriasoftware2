@@ -1,5 +1,6 @@
 BASE_URL="https://guachita-analytics.herokuapp.com/";
 var f = new Date();
+fecha=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
 var version1=navigator.appVersion;
 
 var division=version1.split(",");
@@ -28,7 +29,8 @@ var accion=document.getElementById('GuardarEvento').getAttribute('name');
     'Modo Online':navigator.onLine,
   	'Plataforma': navigator.platform,
   	'Language': navigator.language,
-    'Fecha': f
+    'Fecha': f,
+    'Date': fecha
   }
 
   $.ajax({
