@@ -16,11 +16,20 @@
 <div ng-app="analiticas" ng-controller="reporte1">
   <table>
     <thead>
-      <tr><th>Tipo</th><th>Browser</th><th>Url Actual</th><th>Url Destino</th><th>Plataforma</th><th>Lenguaje</th><th>Fecha</th><th>Hora</th></tr>
+      <tr>
+        <th>Tipo</th>
+        <th>Browser</th>
+        <th>Url Actual</th>
+        <th>Url Destino</th>
+        <th>Plataforma</th>
+        <th>Lenguaje</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+      </tr>
     </thead>
     <tbody>
       {% verbatim %}
-      <tr ng-repeat="ev in eventos">
+      <tr ng-repeat="ev in eventos | orderBy: '-Fecha'">
         <td>{{ ev.Tipo }}</td>
         <td>{{ ev.Browser }}</td>
         <td>{{ ev.URL_Actual }}</td>
