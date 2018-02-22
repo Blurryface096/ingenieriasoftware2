@@ -115,7 +115,7 @@ def crear_juego(request):
                                 break
                 else:
                     preguntas=listapreg
-                preguntastriv = PreguntasTrivia(juego=instance, preguntas_juego=preguntas)
+                preguntastriv = PreguntasTrivia(juego=instance, preguntas_juego.set(preguntas))
                 preguntastriv.save()
 
 
