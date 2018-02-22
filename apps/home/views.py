@@ -141,10 +141,10 @@ def entrar_juego(request,juego):
     namespace=obtener_namespace(tipo_jug)
     condicion=False
     objetos=[]
-    if tipo_jug == 'Polla':
+    if tipo_jug == 'polla':
         objetos = ParticipacionPolla.objects.all()
 
-    elif tipo_jug == 'Equipo':
+    elif tipo_jug == 'equipo':
         objetos = ParticipacionEquipoIdeal.objects.all()
     else:
         objetos = ParticipacionTrivia.objects.all()
